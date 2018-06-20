@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wykazSkargModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_skargi">
+    <Key>
+      <PropertyRef Name="ident" />
+    </Key>
+    <Property Name="ident" Type="Int32" Nullable="false" />
+    <Property Name="numer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rok" Type="Int32" />
+    <Property Name="dataWplywu" Type="DateTime" Precision="3" />
+    <Property Name="dataPisma" Type="DateTime" Precision="3" />
+    <Property Name="Sygnatura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="wizytator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="zakreslono" Type="Int32" />
+    <Property Name="dataZakreslenia" Type="DateTime" Precision="3" />
+    <Property Name="uwagi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="czyus" Type="Int32" />
+    <Property Name="idBieglego" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="wapEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_skargi" EntityType="Self.tbl_skargi" />
+  </EntityContainer>
+</Schema>

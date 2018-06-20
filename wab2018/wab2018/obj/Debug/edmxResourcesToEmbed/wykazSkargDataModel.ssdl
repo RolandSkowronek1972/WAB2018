@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wykazSkargModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_skargi">
+    <Key>
+      <PropertyRef Name="ident" />
+    </Key>
+    <Property Name="ident" Type="int" Nullable="false" />
+    <Property Name="numer" Type="nvarchar" MaxLength="50" />
+    <Property Name="rok" Type="int" />
+    <Property Name="dataWplywu" Type="datetime" />
+    <Property Name="dataPisma" Type="datetime" />
+    <Property Name="Sygnatura" Type="nvarchar" MaxLength="50" />
+    <Property Name="wizytator" Type="nvarchar" MaxLength="150" />
+    <Property Name="zakreslono" Type="int" />
+    <Property Name="dataZakreslenia" Type="datetime" />
+    <Property Name="uwagi" Type="nvarchar" MaxLength="500" />
+    <Property Name="czyus" Type="int" />
+    <Property Name="idBieglego" Type="int" />
+  </EntityType>
+  <EntityContainer Name="wykazSkargModelStoreContainer">
+    <EntitySet Name="tbl_skargi" EntityType="Self.tbl_skargi" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

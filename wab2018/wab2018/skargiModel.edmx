@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="skargiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_osoby">
+          <Key>
+            <PropertyRef Name="ident" />
+            <PropertyRef Name="pesel" />
+          </Key>
+          <Property Name="ident" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="nazwisko" Type="nvarchar" MaxLength="100" />
+          <Property Name="ulica" Type="nvarchar" MaxLength="100" />
+          <Property Name="kod_poczt" Type="varchar" MaxLength="6" />
+          <Property Name="miejscowosc" Type="nvarchar" MaxLength="50" />
+          <Property Name="data_poczatkowa" Type="datetime" />
+          <Property Name="data_koncowa" Type="datetime" />
+          <Property Name="id_kreatora" Type="int" Nullable="false" />
+          <Property Name="data_kreacji" Type="datetime" Nullable="false" />
+          <Property Name="pesel" Type="bigint" Nullable="false" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="d_usuniecia" Type="datetime" />
+          <Property Name="id_usuwajacego" Type="int" />
+          <Property Name="przyczyna_usuniecia" Type="nvarchar" MaxLength="500" />
+          <Property Name="tytul" Type="nvarchar" MaxLength="50" />
+          <Property Name="czy_zaw" Type="bit" />
+          <Property Name="tel1" Type="nvarchar" MaxLength="30" />
+          <Property Name="tel2" Type="nvarchar" MaxLength="30" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" />
+          <Property Name="adr_kores" Type="nvarchar" MaxLength="100" />
+          <Property Name="kod_poczt_kor" Type="nvarchar" MaxLength="10" />
+          <Property Name="miejscowosc_kor" Type="nvarchar" MaxLength="50" />
+          <Property Name="uwagi" Type="nvarchar" MaxLength="500" />
+          <Property Name="d_zawieszenia" Type="datetime" />
+          <Property Name="specjalizacjeWidok" Type="nvarchar" MaxLength="1000" />
+          <Property Name="specjalizacja_opis" Type="nvarchar" MaxLength="1000" />
+          <Property Name="typ" Type="int" />
+          <Property Name="dataKoncaZawieszenia" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_skargi">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" Nullable="false" />
+          <Property Name="numer" Type="nvarchar" MaxLength="50" />
+          <Property Name="rok" Type="int" />
+          <Property Name="dataWplywu" Type="datetime" />
+          <Property Name="dataPisma" Type="datetime" />
+          <Property Name="Sygnatura" Type="nvarchar" MaxLength="50" />
+          <Property Name="wizytator" Type="nvarchar" MaxLength="150" />
+          <Property Name="zakreslono" Type="int" />
+          <Property Name="dataZakreslenia" Type="datetime" />
+          <Property Name="uwagi" Type="nvarchar" MaxLength="500" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="idBieglego" Type="int" />
+        </EntityType>
+        <EntityContainer Name="skargiModelStoreContainer">
+          <EntitySet Name="tbl_osoby" EntityType="Self.tbl_osoby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_skargi" EntityType="Self.tbl_skargi" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="skargiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_osoby">
+          <Key>
+            <PropertyRef Name="ident" />
+            <PropertyRef Name="pesel" />
+          </Key>
+          <Property Name="ident" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ulica" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="kod_poczt" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="miejscowosc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="data_poczatkowa" Type="DateTime" Precision="3" />
+          <Property Name="data_koncowa" Type="DateTime" Precision="3" />
+          <Property Name="id_kreatora" Type="Int32" Nullable="false" />
+          <Property Name="data_kreacji" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pesel" Type="Int64" Nullable="false" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="d_usuniecia" Type="DateTime" Precision="3" />
+          <Property Name="id_usuwajacego" Type="Int32" />
+          <Property Name="przyczyna_usuniecia" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="tytul" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="czy_zaw" Type="Boolean" />
+          <Property Name="tel1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="tel2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="adr_kores" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="kod_poczt_kor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="miejscowosc_kor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="uwagi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="d_zawieszenia" Type="DateTime" Precision="3" />
+          <Property Name="specjalizacjeWidok" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="specjalizacja_opis" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="typ" Type="Int32" />
+          <Property Name="dataKoncaZawieszenia" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_skargi">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" />
+          <Property Name="numer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rok" Type="Int32" />
+          <Property Name="dataWplywu" Type="DateTime" Precision="3" />
+          <Property Name="dataPisma" Type="DateTime" Precision="3" />
+          <Property Name="Sygnatura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="wizytator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="zakreslono" Type="Int32" />
+          <Property Name="dataZakreslenia" Type="DateTime" Precision="3" />
+          <Property Name="uwagi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="idBieglego" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="skargiDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_osoby" EntityType="Self.tbl_osoby" />
+          <EntitySet Name="tbl_skargi" EntityType="Self.tbl_skargi" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="skargiModelStoreContainer" CdmEntityContainer="skargiDbContext">
+          <EntitySetMapping Name="tbl_osoby">
+            <EntityTypeMapping TypeName="skargiModel.tbl_osoby">
+              <MappingFragment StoreEntitySet="tbl_osoby">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="kod_poczt" ColumnName="kod_poczt" />
+                <ScalarProperty Name="miejscowosc" ColumnName="miejscowosc" />
+                <ScalarProperty Name="data_poczatkowa" ColumnName="data_poczatkowa" />
+                <ScalarProperty Name="data_koncowa" ColumnName="data_koncowa" />
+                <ScalarProperty Name="id_kreatora" ColumnName="id_kreatora" />
+                <ScalarProperty Name="data_kreacji" ColumnName="data_kreacji" />
+                <ScalarProperty Name="pesel" ColumnName="pesel" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="d_usuniecia" ColumnName="d_usuniecia" />
+                <ScalarProperty Name="id_usuwajacego" ColumnName="id_usuwajacego" />
+                <ScalarProperty Name="przyczyna_usuniecia" ColumnName="przyczyna_usuniecia" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+                <ScalarProperty Name="czy_zaw" ColumnName="czy_zaw" />
+                <ScalarProperty Name="tel1" ColumnName="tel1" />
+                <ScalarProperty Name="tel2" ColumnName="tel2" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="adr_kores" ColumnName="adr_kores" />
+                <ScalarProperty Name="kod_poczt_kor" ColumnName="kod_poczt_kor" />
+                <ScalarProperty Name="miejscowosc_kor" ColumnName="miejscowosc_kor" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="d_zawieszenia" ColumnName="d_zawieszenia" />
+                <ScalarProperty Name="specjalizacjeWidok" ColumnName="specjalizacjeWidok" />
+                <ScalarProperty Name="specjalizacja_opis" ColumnName="specjalizacja_opis" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="dataKoncaZawieszenia" ColumnName="dataKoncaZawieszenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_skargi">
+            <EntityTypeMapping TypeName="skargiModel.tbl_skargi">
+              <MappingFragment StoreEntitySet="tbl_skargi">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="numer" ColumnName="numer" />
+                <ScalarProperty Name="rok" ColumnName="rok" />
+                <ScalarProperty Name="dataWplywu" ColumnName="dataWplywu" />
+                <ScalarProperty Name="dataPisma" ColumnName="dataPisma" />
+                <ScalarProperty Name="Sygnatura" ColumnName="Sygnatura" />
+                <ScalarProperty Name="wizytator" ColumnName="wizytator" />
+                <ScalarProperty Name="zakreslono" ColumnName="zakreslono" />
+                <ScalarProperty Name="dataZakreslenia" ColumnName="dataZakreslenia" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="idBieglego" ColumnName="idBieglego" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
