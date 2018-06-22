@@ -240,3 +240,223 @@
 &nbsp;
         </div>
 </asp:Content>
+
+
+  <Templates>
+            <EditForm>
+
+                   <% if(!grid.IsNewRowEditing) { %>
+                        <td rowspan="4" style="vertical-align: top">
+                            <div style="border: solid 1px #c0c0c0; padding: 2px;">
+                             
+                            </div>
+                        </td>
+                        <% } %>
+
+                         <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1">
+            <TabPages >
+                      <dx:TabPage Text="Dane osobowe" meta:resourcekey="TabPageResource8">
+                       <ContentCollection>
+                        <dx:ContentControl ID="ContentControl7" runat="server" meta:resourcekey="ContentControl7Resource1">
+
+
+
+
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>Tytuł</td>
+                                    <td>
+                                            <dx:ASPxTextBox runat="server" ID="TxBTytul" Text='<%# Bind("tytul") %>' Width="100%" />
+                                    </td>
+                                    <td style="width: 50%">Specjalizacja&nbsp; opis (doprecyzowanie) </td>
+                                </tr>
+                                <tr>
+                                    <td>Imie</td>
+                                    <td>
+                                     <dx:ASPxTextBox runat="server" ID="txImie" Text='<%# Bind("imie") %>' Width="100%" />
+                                    </td>
+                                    <td align="center" rowspan="4" valign="top">
+                           <dx:ASPxTextBox runat="server" ID="txspecjalizacja_opis" Text='<%# Bind("specjalizacja_opis") %>' Width="100%" Height="99%" TextMode="MultiLine" />
+
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nazwisko</td>
+                                    <td>
+                                             <dx:ASPxTextBox runat="server" ID="TxNazwisko" Text='<%# Bind("nazwisko") %>' Width="100%" Height="99%" TextMode="MultiLine" />
+
+                                       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PESEL</td>
+                                    <td>
+                                             <dx:ASPxTextBox runat="server" ID="txPesel" Text='<%# Bind("pesel") %>' Width="100%" Height="99%" TextMode="MultiLine" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Data powołania od</td>
+                                    <td>
+                                   <dx:ASPxDateEdit runat="server" ID="txDataPoczatkuPowolania" Value='<%# Bind("data_poczatkowa") %>' Width="100%" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Data powołania do</td>
+                                    <td>
+                                   <dx:ASPxDateEdit runat="server" ID="txdatzKoncaPowolania" Value='<%# Bind("data_koncowa") %>' Width="100%" />
+                                    </td>
+                                    <td style="width: 50%">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:DropDownList ID="ddlZawiszenie" runat="server" AutoPostBack="True"  meta:resourcekey="DropDownList4Resource1">
+                                            <asp:ListItem Value="0" meta:resourcekey="ListItemResource1">Brak zawieszenia</asp:ListItem>
+                                            <asp:ListItem Value="1" meta:resourcekey="ListItemResource2">Zawieszenie</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblPoczatekZawieszenia" runat="server" Text="Początek zawieszenia" Visible="False"></asp:Label>
+                                    </td>
+                                    <td style="width: 50%">
+                                        <dx:ASPxDateEdit ID="poczatekZawieszeniaData" runat="server" meta:resourceKey="zawieszenieDataResource1" >
+                                        </dx:ASPxDateEdit>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <asp:Label ID="lblKoniecZawieszenia" runat="server" Text="Koniec zawieszenia" Visible="true"></asp:Label>
+                                    </td>
+                                    <td style="width: 50%">
+                                        <dx:ASPxDateEdit ID="koniecZawieszeniaData" runat="server" meta:resourceKey="zawieszenieDataResource1"  Visible="true">
+                                        </dx:ASPxDateEdit>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                      
+
+
+                            </dx:ContentControl>
+                            </ContentCollection>
+                      </dx:TabPage>
+
+                      <dx:TabPage Text="Dane kontaktowe" meta:resourcekey="TabPageResource9">
+                    <ContentCollection>
+                        <dx:ContentControl ID="ContentControl8" runat="server" meta:resourcekey="ContentControl8Resource1">
+                                
+
+                                   <br />
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+                      <dx:TabPage Text="Specjalizacje" meta:resourcekey="TabPageResource10">
+                    <ContentCollection>
+                        <dx:ContentControl ID="ContentControl9" runat="server" meta:resourcekey="ContentControl9Resource1">
+                             <table style="width: 100%;">
+                                 <tr>
+                                     <td style="vertical-align: top;width:50%" width="100%">
+                                         Specjalizacje biegłego</td><td style="vertical-align: top;width:50%">
+                                             Dostępne specjalizacje</td></tr>
+                                 <tr>
+                                     <td style="vertical-align: top;width:50%" width="100%">
+                                         <asp:Panel ID="Panel4" runat="server" Height="240px" ScrollBars="Vertical" meta:resourcekey="Panel4Resource1">
+
+                                        
+                                         </asp:Panel>
+                                     </td>
+                                     <td style="vertical-align: top;width:50%">
+                                             <asp:Panel ID="Panel9" runat="server" ScrollBars="Vertical" Height="250px" meta:resourcekey="Panel9Resource1">
+                                             </asp:Panel>
+                                         
+                                     </td>
+                                 </tr>
+                             </table>                            <br />
+                         <asp:SqlDataSource ID="SqlDataSource1f" runat="server" 
+                                    ConnectionString="<%$ ConnectionStrings:wap %>" 
+                                    
+                                    SelectCommand="SELECT DISTINCT id_,nazwa FROM [glo_specjalizacje] ORDER BY [nazwa]">
+                                </asp:SqlDataSource>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+                      <dx:TabPage Text="uwagi" meta:resourcekey="TabPageResource11">
+                    <ContentCollection>
+                        <dx:ContentControl ID="ContentControl10" runat="server" meta:resourcekey="ContentControl10Resource1">
+                            <div style="min-height:275px;"><table style="width: 100%;"><tr><td>Uwagi</td></tr><tr><td><asp:TextBox ID="TxUwagi" runat="server" TextMode="MultiLine" Width="100%" Height="100%" Rows="12" meta:resourcekey="TxUwagiResource1"></asp:TextBox></td></tr></table></div>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+                      <dx:TabPage Text="Dane statystyczne" meta:resourcekey="TabPageResource12">
+                    <ContentCollection>
+                        <dx:ContentControl ID="ContentControl11" runat="server" meta:resourcekey="ContentControl11Resource1">
+                            <div style="min-height:275px;">
+                                <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="kwerendyStatystyczne" DataTextField="Nazwa" DataValueField="kwerenda">
+                                </asp:DropDownList>
+                                
+                                <asp:SqlDataSource ID="kwerendyStatystyczne" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT Nazwa, kwerenda, id_ FROM dane_statystyczne WHERE (czy_us &lt;&gt; 1) ORDER BY Nazwa">
+                                </asp:SqlDataSource>
+                    <asp:GridView ID="GridView2" runat="server"  meta:resourcekey="GridView2Resource2" Width="100%"></asp:GridView></div>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+                      <dx:TabPage Text="Historia powołań" meta:resourcekey="TabPageResource13">
+                    <ContentCollection>
+                        <dx:ContentControl ID="ContentControl12" runat="server" meta:resourcekey="ContentControl12Resource1">
+                              <div style="min-height:275px;">
+                                  <table style="width: 100%;">
+                                      <tr>
+                                          <td style="width: 160px" valign="top">
+                                              <table style="width:100%;"><tr><td>od:</td><td>
+                                                  <dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" meta:resourcekey="ASPxDateEdit1Resource1">
+                                                  </dx:ASPxDateEdit>
+                                                  </td></tr><tr><td>do </td><td>
+                                                      <dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" meta:resourcekey="ASPxDateEdit2Resource1" AllowNull="False">
+                                                      </dx:ASPxDateEdit>
+                                                      </td></tr><tr><td  colspan="2">
+                                                      <asp:LinkButton ID="LinkButton5" runat="server" CausesValidation="False" CssClass="button_"  Width="100%" meta:resourcekey="LinkButton5Resource1">Dodaj</asp:LinkButton>
+                                                      </td></tr><tr><td  colspan="2">
+                                                      <asp:LinkButton ID="LinkButton8" runat="server" CausesValidation="False" CssClass="button_"  Width="100%" meta:resourcekey="LinkButton8Resource1">Zmień</asp:LinkButton>
+                                                  </td></tr><tr><td  colspan="2">
+                                                      <asp:LinkButton ID="LinkButton9" runat="server" CausesValidation="False" CssClass="button_"  Width="100%" meta:resourcekey="LinkButton9Resource1">Usuń</asp:LinkButton>
+                                                      </td></tr></table><br />
+                                              <asp:Label ID="Label2" runat="server" meta:resourcekey="Label2Resource1"></asp:Label>
+                                              <br /><br /></td><td style="width: 60%" valign="top"><asp:Panel ID="Panel3" runat="server" Height="200px" ScrollBars="Vertical" meta:resourcekey="Panel3Resource1">
+                                              <asp:SqlDataSource ID="powolania" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT ident, data_od, data_do, czyus, id_bieglego FROM tbl_powolania WHERE (czyus = 0) AND (id_bieglego = @id_bieglego)">
+                                                  <SelectParameters>
+                                                      <asp:SessionParameter Name="id_bieglego" SessionField="id_osoby" Type="Int32" />
+                                                  </SelectParameters>
+                                              </asp:SqlDataSource>
+                                              <asp:GridView ID="GridView25" runat="server" AutoGenerateColumns="False" CellPadding="0" DataKeyNames="ident,data_od,data_do" DataSourceID="powolania" ForeColor="#333333" GridLines="None"  Width="100%" meta:resourcekey="GridView25Resource1">
+                                                  <AlternatingRowStyle BackColor="White" />
+                                                  <Columns>
+                                                      <asp:CommandField ShowSelectButton="True" meta:resourcekey="CommandFieldResource1" />
+                                                      <asp:BoundField DataField="data_od" DataFormatString="{0:d}" HeaderText="od" SortExpression="data_od" ReadOnly="True" meta:resourcekey="BoundFieldResource1" />
+                                                      <asp:BoundField DataField="data_do" DataFormatString="{0:d}" HeaderText="do" SortExpression="data_do" ReadOnly="True" meta:resourcekey="BoundFieldResource2" />
+                                                  </Columns>
+                                                  <EditRowStyle BackColor="#2461BF" />
+                                                  <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                  <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                  <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                                  <RowStyle BackColor="#EFF3FB" />
+                                                  <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                  <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                  <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                  <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                  <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                              </asp:GridView>
+                                              </asp:Panel></td></tr></table></div>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:TabPage>
+             
+            </TabPages>
+        </dx:ASPxPageControl>
+                <div style="text-align: right; padding: 2px">
+                    <dx:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server" />
+                    <dx:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server" />
+                </div>
+       
+            </EditForm>
+        </Templates>

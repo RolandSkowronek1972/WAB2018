@@ -41,6 +41,17 @@ a:active
 .przesuniecie {
     padding-right:20px;
 }
+.prc50 {
+width:50%;
+}
+.prc25 {
+width:25%;
+}
+
+.col_20 {
+width:20px;
+
+}
 
 .ax {
     -moz-box-shadow: inset 0px 1px 0px 0px #bee2f9;

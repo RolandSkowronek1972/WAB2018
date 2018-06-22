@@ -1842,6 +1842,11 @@ iTextSharp.text.      Document document = new iTextSharp.text.Document(PageSize.
             {           }
             txNumer.Text = cl.PodajNumerNowejSkargi(rokD);
         }
+
+        protected void ASPxPageControl1_ActiveTabChanged(object source, TabControlEventArgs e)
+        {
+
+        }
     }
 
 }
