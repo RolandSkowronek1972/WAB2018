@@ -10,7 +10,7 @@
     width: 100%; background-color: #FFFFFF; min-height:100% " >
     
   
-          <asp:ScriptManager ID="ScriptManager1" runat="server">
+           g<asp:ScriptManager ID="ScriptManager1" runat="server">
           </asp:ScriptManager>
     
   

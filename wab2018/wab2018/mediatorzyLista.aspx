@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id ="mainWindow" class="newPage">
-    <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora">
+    <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData">
         <Columns>
             <dx:GridViewCommandColumn ShowNewButtonInHeader="true" ShowEditButton="true" VisibleIndex="0" />
             
@@ -63,7 +63,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Imie</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px" Text='<%# Eval("imie")%>'>
+                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px" Text='<%# Eval("imie")%>' required>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
@@ -75,7 +75,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Nazwisko</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px" Text='<%# Eval("nazwisko")%>'>
+                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px" Text='<%# Eval("nazwisko")%>' required>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
@@ -83,7 +83,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">PESEL</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px" Text='<%# Eval("Pesel")%>'>
+                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px" Text='<%# Eval("Pesel")%>' >
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -91,8 +91,12 @@
         <tr>
             <td class=" normal przesuniecie prc25">Data powołania od: </td>
             <td class="prc25">
-                <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server" Date='<%# Eval("data_poczatkowa")%>'>
+              
+                         <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server" Date='<%# Eval("data_poczatkowa")%>'>
                 </dx:ASPxDateEdit>
+                    
+                 
+               
             </td>
             <td class="col_20"></td>
         </tr>
@@ -240,7 +244,13 @@
                               <dx:TabPage Text="Dane statystyczne" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                     
+                                             <div style="min-height:275px;">
+                                <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="kwerendyStatystyczne" DataTextField="Nazwa" DataValueField="kwerenda"  >
+                                </asp:DropDownList>
+                                
+                                <asp:SqlDataSource ID="kwerendyStatystyczne" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT Nazwa, kwerenda, id_ FROM dane_statystyczne WHERE (czy_us &lt;&gt; 1) ORDER BY Nazwa">
+                                </asp:SqlDataSource>
+                    <asp:GridView ID="GridView2" runat="server" Css meta:resourcekey="GridView2Resource2" Width="100%"></asp:GridView></div>
                                          
                                     </dx:ContentControl>
                                 </ContentCollection>

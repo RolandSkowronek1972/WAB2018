@@ -410,7 +410,7 @@
                          
                               <asp:Panel ID="Panel2" runat="server" Visible="False" meta:resourcekey="Panel2Resource1">
 
-      <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="6" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1">
+      <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1" OnActiveTabChanged="ASPxPageControl1_ActiveTabChanged">
             <TabPages >
                       <dx:TabPage Text="Dane osobowe" meta:resourcekey="TabPageResource8">
                        <ContentCollection>

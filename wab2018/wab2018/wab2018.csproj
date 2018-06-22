@@ -16,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>wab2018</RootNamespace>
     <AssemblyName>wab2018</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -172,8 +172,6 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="ListaMediatorow.aspx" />
-    <Content Include="mediatorzy.aspx" />
     <Content Include="mediatorzyLista.aspx" />
     <Content Include="nowyMediator.aspx" />
     <Content Include="Add_01.aspx" />
@@ -302,21 +300,6 @@
     <Content Include="Web.old.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GridViewFeaturesHelper.cs" />
-    <Compile Include="ListaMediatorow.aspx.cs">
-      <DependentUpon>ListaMediatorow.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListaMediatorow.aspx.designer.cs">
-      <DependentUpon>ListaMediatorow.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="mediatorzy.aspx.cs">
-      <DependentUpon>mediatorzy.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mediatorzy.aspx.designer.cs">
-      <DependentUpon>mediatorzy.aspx</DependentUpon>
-    </Compile>
     <Compile Include="mediatorzyLista.aspx.cs">
       <DependentUpon>mediatorzyLista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
