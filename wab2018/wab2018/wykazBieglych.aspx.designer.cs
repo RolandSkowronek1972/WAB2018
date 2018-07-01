@@ -733,22 +733,22 @@ namespace wab2018 {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
         
         /// <summary>
-        /// kwerendyStatystyczne control.
+        /// kwerendyStatystyczne1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource kwerendyStatystyczne;
+        protected global::System.Web.UI.WebControls.SqlDataSource kwerendyStatystyczne1;
         
         /// <summary>
-        /// GridView2 control.
+        /// GridView26 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.GridView GridView26;
         
         /// <summary>
         /// ContentControl12 control.

@@ -16,12 +16,12 @@ namespace wab2018
     public partial class wykazBieglych : System.Web.UI.Page
     {
         public Class2 cl = new Class2();
+        private cm Common = new cm();
         Hashtable copiedValues = null;
         string[] copiedFields = new string[] { "id_" };
-    
+
         protected void Page_Load(object sender, EventArgs e)
         {
-           
 
 
             if (CheckBox4.Checked)
@@ -69,9 +69,9 @@ namespace wab2018
                 }
                 Specjalizacje_temp.DataBind();
                 ustaw_baze();
-             
 
-                }
+
+            }
             Specjalizacje_temp.DataBind();
             ustaw_baze();
             ASPxGridView5.DataBind();
@@ -130,7 +130,7 @@ namespace wab2018
 
         protected void uruchomFiltrowaniePoSpecjalizacji(object sender, EventArgs e)
         {
-            if (CheckBox1.Checked )
+            if (CheckBox1.Checked)
             {
                 DropDownList1.Enabled = true;
             }
@@ -217,7 +217,7 @@ namespace wab2018
             try
             {
                 if (e.ButtonID != "Clone2") return;
-             //   copiedValues = new Hashtable();
+                //   copiedValues = new Hashtable();
                 string id = ASPxGridView6.GetRowValues(e.VisibleIndex, "id_").ToString();
 
 
@@ -279,12 +279,12 @@ namespace wab2018
             {
                 nowaSkarha = (bool)Session["nowaSkarga"];
             }
-            catch 
-            {}
+            catch
+            { }
             string idBieglego = "0";
             try
             {
-                 idBieglego = (string)Session["id_osoby"];
+                idBieglego = (string)Session["id_osoby"];
 
             }
             catch (Exception)
@@ -293,12 +293,12 @@ namespace wab2018
             }
             if (nowaSkarha)
             {
-            
-                cl.dodajSkarge( int.Parse (idBieglego), txNumer.Text.Trim(), txRok.Text, txSygnatura.Text, ASPxDateWplyw.Date.ToShortDateString(), ASPxDatePismo.Date.ToShortDateString(), txWizytator.Text, uwagi.Text, CheckBox3.Checked, ASPxDateZakreslenie.Date.ToShortDateString(), user_id.ToString (), 1);
+
+                cl.dodajSkarge(int.Parse(idBieglego), txNumer.Text.Trim(), txRok.Text, txSygnatura.Text, ASPxDateWplyw.Date.ToShortDateString(), ASPxDatePismo.Date.ToShortDateString(), txWizytator.Text, uwagi.Text, CheckBox3.Checked, ASPxDateZakreslenie.Date.ToShortDateString(), user_id.ToString(), 1);
             }
             else
             {
-                int idSkargi = int.Parse((string)Session ["idSkargi"]);
+                int idSkargi = int.Parse((string)Session["idSkargi"]);
                 cl.usunSkarge(user_id.ToString(), idSkargi);
                 cl.dodajSkarge(int.Parse(idBieglego), txNumer.Text.Trim(), txRok.Text, txSygnatura.Text, ASPxDateWplyw.Date.ToShortDateString(), ASPxDatePismo.Date.ToShortDateString(), txWizytator.Text, uwagi.Text, CheckBox3.Checked, ASPxDateZakreslenie.Date.ToShortDateString(), user_id.ToString(), 1);
             }
@@ -320,8 +320,8 @@ namespace wab2018
 
             int idSkargi = int.Parse((string)Session["idSkargi"]);
             cl.usunSkarge(user_id.ToString(), idSkargi);
-           
-        Panel11.Visible = false;
+
+            Panel11.Visible = false;
             ListaSkarg.DataBind();
             ListaSkarg.Visible = true;
         }
@@ -360,7 +360,7 @@ namespace wab2018
             log = log + "Powolanie od: " + powolanieOd + "<br/>";
             log = log + "Powołanie do" + powolanieDo + "<br/>";
             string uwagi = TxUwagi.Text.Trim();
-            DateTime  dataPoczatkuZawieszenia = DateTime.Parse("1900-01-01");
+            DateTime dataPoczatkuZawieszenia = DateTime.Parse("1900-01-01");
             DateTime dataKoncaZawieszenia = DateTime.Parse("1900-01-01");
 
             //==============================================
@@ -405,12 +405,12 @@ namespace wab2018
                 log = log + "powolanie Do =  " + powolanieDo + "<br/>";
                 log = log + "dat_1 =  " + dat_1.ToString() + "<br/>";
                 log = log + "dat_2 =  " + dat_2.ToString() + "<br/>";
-                log = log + "DataZawieszenia =  " + dataPoczatkuZawieszenia  + "<br/>";
+                log = log + "DataZawieszenia =  " + dataPoczatkuZawieszenia + "<br/>";
 
                 if (err == 0)
                 {
                     log = log + "err=  " + err + "<br/>";
-                    string txt = cl.modyfikuj_osobe(idBieglego, user_id, imie, nazwisko, ulica1, kod1, miejscowosc1, DateTime.Parse(powolanieOd), DateTime.Parse(powolanieDo), tytul, pesel, emil, uwagi, int.Parse(czyZaw), ulica2, kod2, miejscowosc2, tel1, tel2, dataPoczatkuZawieszenia ,dataKoncaZawieszenia, txspecjalizacja_opis.Text.Trim(), 1);
+                    string txt = cl.modyfikuj_osobe(idBieglego, user_id, imie, nazwisko, ulica1, kod1, miejscowosc1, DateTime.Parse(powolanieOd), DateTime.Parse(powolanieDo), tytul, pesel, emil, uwagi, int.Parse(czyZaw), ulica2, kod2, miejscowosc2, tel1, tel2, dataPoczatkuZawieszenia, dataKoncaZawieszenia, txspecjalizacja_opis.Text.Trim(), 1);
                     log = log + "komunikat po modyfikacji" + txt + "<br/>";
                     if (txt != "0")
                     {
@@ -486,9 +486,9 @@ namespace wab2018
         {
             zmianaWyswietlaniaZawieszenia();
         }
-       
 
-       
+
+
         protected void ASPxDateEdit7_DateChanged(object sender, EventArgs e)
         {
 
@@ -542,7 +542,7 @@ namespace wab2018
 
             ASPxDateEdit3.Text = (string)Session["do"];
             zapamietajDaneBieglego();
-    
+
         }
 
         protected void zmienPowolanie(object sender, EventArgs e)
@@ -630,15 +630,15 @@ namespace wab2018
             }
             catch (Exception)
             { }
-         
+
         }
 
         protected void nowaSkarga(object sender, EventArgs e)
         {
-            for (int i = DateTime.Now.Year-10; i < DateTime.Now.Year+2; i++)
+            for (int i = DateTime.Now.Year - 10; i < DateTime.Now.Year + 2; i++)
             {
 
-                txRok.Items.Add(new System.Web.UI.WebControls. ListItem(i.ToString()));
+                txRok.Items.Add(new System.Web.UI.WebControls.ListItem(i.ToString()));
             }
             try
             {
@@ -648,13 +648,13 @@ namespace wab2018
             catch (Exception)
             {
 
-             
+
             }
             Panel11.Visible = true;
             ListaSkarg.Visible = false;
             Session["nowaSkarga"] = true;
-            
-            txNumer.Text = cl.PodajNumerNowejSkargi(int.Parse(txRok.SelectedValue.ToString ()));
+
+            txNumer.Text = cl.PodajNumerNowejSkargi(int.Parse(txRok.SelectedValue.ToString()));
             txWizytator.Text = "";
             uwagi.Text = "";
             txSygnatura.Text = "";
@@ -679,21 +679,21 @@ namespace wab2018
             }
             var dane = ListaSkarg.GetDataRow(VisibleIndex);
 
-            txNumer.Text =dane[0].ToString();
+            txNumer.Text = dane[0].ToString();
             try
             {
-                txRok.SelectedIndex = txRok.Items.IndexOf(txRok.Items.FindByValue(dane[1].ToString ()));
+                txRok.SelectedIndex = txRok.Items.IndexOf(txRok.Items.FindByValue(dane[1].ToString()));
             }
             catch (Exception)
             { }
-            txSygnatura.Text = dane[4].ToString ();
+            txSygnatura.Text = dane[4].ToString();
             txWizytator.Text = dane[5].ToString();
-            
+
             ASPxDateWplyw.Date = (DateTime)dane[2];
             ASPxDatePismo.Date = (DateTime)dane[3];
             ASPxDateZakreslenie.Date = (DateTime)dane[7];
             CheckBox3.Checked = false;
-            if (dane[6].ToString () == "1")
+            if (dane[6].ToString() == "1")
             {
                 CheckBox3.Checked = true;
             }
@@ -733,41 +733,52 @@ namespace wab2018
             catch
             { }
 
-            if (idBieglego.ToString() != idOsoby)
+            if (DropDownList4.Items.Count == 0)
             {
+                int idStatystyki = 0;
+                DropDownList4.DataBind();
                 try
                 {
-
-                    if (DropDownList4.Items.Count == 0)
-                    {
-                        DropDownList4.DataBind();
-                        try
-                        {
-                            DropDownList4.SelectedIndex = (int)Session["ddl2"];
-                        }
-                        catch
-                        { }
-                    }
-                    int wybor = DropDownList4.SelectedIndex;
-                    Session["ddl2"] = DropDownList4.SelectedIndex;
-                    Panel11.Visible = false;
-                    ListaSkarg.Visible = true;
-                    kwerendyStatystyczne.SelectCommand = DropDownList4.SelectedValue.ToString();
-
-                    //      string idBieglego = (string)Session["id_osoby"];
-                    string querry = DropDownList4.SelectedValue.ToString();
-                    DataTable dT = cl.tabelaStatystyczna(querry, idBieglego.ToString());
-                    GridView1.DataSource = null;
-                    GridView1.DataSourceID = null;
-                    GridView1.AutoGenerateColumns = true;
-                    GridView1.DataSource = dT;
-                    GridView1.DataBind();
-
-
-
+                    idStatystyki = (int)Session["idStatystyki"];
+                    
                 }
                 catch
-                { }
+                {
+                    
+                }
+                try
+                {
+                    string txt = (string)Session["idStatystykitxt"];
+                    idStatystyki = int.Parse(txt);
+                }
+                catch (Exception)
+                {
+                    
+                }
+                try
+                {
+                    DropDownList4.SelectedIndex = idStatystyki;
+                }
+                catch (Exception)
+                {
+                    
+                }
+            }
+
+            try
+            {
+                string kwerenda = DropDownList4.SelectedValue.ToString();
+                pokazStatystyki(kwerenda,idBieglego);
+            }
+            catch
+            {
+
+
+            }
+            if (idBieglego.ToString() != idOsoby)
+            {
+                Panel11.Visible = false;
+                ListaSkarg.Visible = true;
                 string txt = DateTime.Now.Ticks.ToString();
                 Session["sesja"] = txt;
                 cl.odczytaj_specjalizacje_osoby(idBieglego.ToString(), (string)Session["sesja"]);
@@ -898,7 +909,7 @@ namespace wab2018
         protected void callbackPanel_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
             // tu jest przekazywany parametr
-        
+
 
             int employeeId = 0;
             try
@@ -908,15 +919,15 @@ namespace wab2018
             }
             catch (Exception)
             {
-                if (Session["employeeId"]!=null)
+                if (Session["employeeId"] != null)
                 {
                     employeeId = (int)Session["employeeId"];
                 }
-               
+
             }
             otworzPopup(employeeId, 1);
 
-            
+
 
         }
 
@@ -1007,7 +1018,7 @@ namespace wab2018
                 biegly["uwagi"] = TxUwagi.Text;
                 biegly["opis"] = txspecjalizacja_opis.Text.Trim();
                 daneBieglego.Rows.Clear();
-                daneBieglego.Rows.Add(biegly); 
+                daneBieglego.Rows.Add(biegly);
                 Session["daneBieglego"] = daneBieglego;
             }
             catch
@@ -1018,7 +1029,7 @@ namespace wab2018
         }//end of zapamietajDaneBieglego
         protected void ustaw_baze()
         {
-           
+
             string kwerenda = string.Empty;
             if (CheckBox4.Checked)
             {
@@ -1040,12 +1051,12 @@ namespace wab2018
 
                 }
                 daneBieglychArchiwum.SelectCommand = kwerenda;
-               listaBieglych0.DataBind();
+                listaBieglych0.DataBind();
 
             }
             else
             {
-           //     archiwum1 = null;
+                //     archiwum1 = null;
                 if (CheckBox1.Checked)
                 {
                     //z kategoriami
@@ -1067,7 +1078,7 @@ namespace wab2018
                 daneBieglych.SelectCommand = kwerenda;
                 daneBieglych.DataBind();
                 listaBieglych.DataBind();
-           
+
             }
 
             //  maintable = cl.wyciagnijDaneBieglych(kwerenda);
@@ -1092,12 +1103,12 @@ namespace wab2018
                 koniecZawieszeniaData.Visible = true;
                 lblPoczatekZawieszenia.Visible = true;
                 lblKoniecZawieszenia.Visible = true;
-                if (poczatekZawieszeniaData.Date.Year<1910 )
+                if (poczatekZawieszeniaData.Date.Year < 1910)
                 {
                     poczatekZawieszeniaData.Date = DateTime.Now;
                     poczatekZawieszeniaData.Text = poczatekZawieszeniaData.Date.ToShortDateString();
                 }
-                if (koniecZawieszeniaData.Date.Year<1910)
+                if (koniecZawieszeniaData.Date.Year < 1910)
                 {
                     koniecZawieszeniaData.Date = poczatekZawieszeniaData.Date.AddMonths(1);
                     koniecZawieszeniaData.Text = koniecZawieszeniaData.Date.ToShortDateString();
@@ -1109,8 +1120,8 @@ namespace wab2018
 
         public void changeQuerry(object sender, EventArgs e)
         {
-            Session["ddl2"] = DropDownList4.SelectedIndex;
-             Label5.Text = DropDownList4.SelectedValue.ToString();
+            Session["ddl2"] = DropDownList3.SelectedIndex;
+            Label5.Text = DropDownList3.SelectedValue.ToString();
             try
             {
                 string idBieglego = (string)Session["id_osoby"];
@@ -1126,7 +1137,30 @@ namespace wab2018
             { }
 
         }
+        public void changeQuerry2(object sender, EventArgs e)
+        {
+            Session["ddl2"] = DropDownList4.SelectedIndex;
+            try
+            {
+                int idBieglego =int.Parse ( (string)Session["id_osoby"]);
+                string querry = DropDownList4.SelectedValue.ToString();
+                pokazStatystyki(querry, idBieglego);
+            }
+            catch
+            { }
 
+        }
+        protected void pokazStatystyki(string kwerenda,int idBieglego)
+        {
+            
+            DataTable dT = cl.tabelaStatystyczna(kwerenda, idBieglego.ToString ());
+            GridView26.DataSource = null;
+            GridView26.DataSourceID = null;
+            GridView26.AutoGenerateColumns = true;
+            GridView26.DataSource = dT;
+            GridView26.DataBind();
+
+        }
         protected void robRaportjednejSpecjalizacji(String specjalizacja)
         {
             //podliczenie
@@ -1203,9 +1237,9 @@ namespace wab2018
 
             //    var cl.plFontBIG = FontFactory.GetFont(BaseFont.HELVETICA, BaseFont.CP1257, 35, Font.NORMAL);
 
-            
 
-            iTextSharp.text. Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
+
+            iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
             string path = Server.MapPath("//pdf");// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
@@ -1236,7 +1270,7 @@ namespace wab2018
             cell.Border = Rectangle.NO_BORDER;
             fitst.AddCell(cell);
             string text = "BIEGŁYCH SĄDOWYCH ";
-            
+
             cell = new PdfPCell(new Paragraph(text, head));
             cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cell.Border = Rectangle.NO_BORDER;
@@ -1292,7 +1326,7 @@ namespace wab2018
             pdfDoc.Add(tab);
 
             pdfDoc.NewPage();
-            
+
             Biegli = new DataTable();
             iloscStron = 0;
             Biegli = cl.wyciagnijBieglychZSpecjalizacja(idSpecjalizacji, CheckBox4.Checked);
@@ -1391,8 +1425,7 @@ namespace wab2018
             specjalizacjeWyliczenie.Columns.Add("str", typeof(string));
             DataTable specjalizacje = new DataTable();
             specjalizacje = cl.odczytaj_specjalizacjeLista();
-      //      string sylfaenpath = Environment.GetEnvironmentVariable("SystemRoot") + "\\fonts\\sylfaen.ttf";aaa
-         
+
             foreach (DataRow dRow in specjalizacje.Rows)
             {
 
@@ -1451,19 +1484,19 @@ namespace wab2018
 
             //==============================================================
 
-            
+
 
             // wyciąfnij listę ludzi z dana specjalizacją 
-            
+
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
             //  PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream("C:\\temp\\" + filename, FileMode.Create));
 
             string path = Server.MapPath("//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
-            string fileName = path  + "//zestawienie_Specjalizacji_"+ DateTime.Now.ToString().Replace (":","-")+".pdf";
-            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream( fileName, FileMode.Create));
+            string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
+            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
             pdfDoc.Open();
 
-           
+
             pdfDoc.AddTitle("zestawienie_Specjalizacji");
             pdfDoc.AddCreationDate();
 
@@ -1476,7 +1509,7 @@ namespace wab2018
             fitst.AddCell(cell);
             cell = new PdfPCell(new Paragraph("LISTA", cl.plFontBIG));
 
-         
+
             cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
 
             cell.Border = Rectangle.NO_BORDER;
@@ -1621,24 +1654,24 @@ namespace wab2018
 
             }// end of each
 
-            
+
             pdfDoc.Close();
             WebClient client = new WebClient();
             Byte[] buffer = client.DownloadData(fileName);
-            if (buffer !=null)
+            if (buffer != null)
             {
                 Response.ContentType = "application/pdf";
                 Response.AddHeader("content-lenght", buffer.Length.ToString());
                 Response.BinaryWrite(buffer);
             }
-          
+
 
         }
         protected PdfPTable generujCzescRaportu(DataTable biegli, string specjalizacje)
         {
 
             int[] tblWidth = { 8, 30, 30, 32 };
-            
+
 
             PdfPTable tabelaGlowna = new PdfPTable(4);
             tabelaGlowna.SetWidths(tblWidth);
@@ -1681,7 +1714,7 @@ namespace wab2018
                     specki = specki + specRow[0].ToString().ToLower() + "; ";
                 }
                 specki = specki + specjalizacjaOpis;
-                tabelaGlowna.AddCell(new Paragraph(specki, cl.plFont1)); 
+                tabelaGlowna.AddCell(new Paragraph(specki, cl.plFont1));
             }
 
 
@@ -1692,7 +1725,7 @@ namespace wab2018
         protected void ASPxGridViewExporter1_RenderBrick(object sender, ASPxGridViewExportRenderingEventArgs e)
         {
             GridViewDataColumn dataColumn = e.Column as GridViewDataColumn;
-            if (e.RowType==GridViewRowType.Data && dataColumn!=null && dataColumn.FieldName=="Z")
+            if (e.RowType == GridViewRowType.Data && dataColumn != null && dataColumn.FieldName == "Z")
             {
                 if (e.Text == "Niezaznaczony")
                 {
@@ -1705,59 +1738,13 @@ namespace wab2018
             }
         }
 
-        protected void zmianaStatystyki(object sender, EventArgs e)
-        {
-
-            int wybor = DropDownList4.SelectedIndex;
-            Session["ddl2"] = DropDownList4.SelectedIndex;
-            Label5.Text = DropDownList4.SelectedValue.ToString();
-            Session ["kwerendaStaystyczna"]= DropDownList4.SelectedValue.ToString().Trim();
-            try
-            {
-                string idBieglego = (string)Session["id_osoby"];
-                string querry = DropDownList4.SelectedValue.ToString();
-                DataTable dT = cl.tabelaStatystyczna(querry, idBieglego);
-                GridView1.DataSource = null;
-                GridView1.DataSourceID = null;
-               GridView1.AutoGenerateColumns = true;
-              GridView1.DataSource = dT;
-              GridView1.DataBind();
-            }
-            catch
-            { }
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            int wybor = DropDownList4.SelectedIndex;
-            Session["ddl2"] = DropDownList4.SelectedIndex;
-            Label5.Text = DropDownList4.SelectedValue.ToString();
-            try
-            {
-                string idBieglego = (string)Session["id_osoby"];
-                string querry = DropDownList4.SelectedValue.ToString();
-                DataTable dT = cl.tabelaStatystyczna(querry, idBieglego);
-                GridView1.DataSource = null;
-                GridView1.DataSourceID = null;
-                GridView1.AutoGenerateColumns = true;
-                GridView1.DataSource = dT;
-                GridView1.DataBind();
-            }
-            catch
-            { }
-
-        }
-
-        protected void DropDownList4_DataBound(object sender, EventArgs e)
-        {
-          
-        }
+    
 
         static private void internationalPDF()
         {
             try
             {
-iTextSharp.text.      Document document = new iTextSharp.text.Document(PageSize.A4, 72, 65, 72, 65);
+                iTextSharp.text.Document document = new iTextSharp.text.Document(PageSize.A4, 72, 65, 72, 65);
 
                 string filename = "international" + DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".pdf";
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("C:\\temp\\" + filename, FileMode.Create));
@@ -1839,14 +1826,29 @@ iTextSharp.text.      Document document = new iTextSharp.text.Document(PageSize.
                 rokD = int.Parse(rok);
             }
             catch (Exception)
-            {           }
+            { }
             txNumer.Text = cl.PodajNumerNowejSkargi(rokD);
         }
 
-        protected void ASPxPageControl1_ActiveTabChanged(object source, TabControlEventArgs e)
+
+
+        protected void zmienStatystyke(object sender, EventArgs e)
         {
+
+            var cos = sender;
+        }
+
+        
+
+        protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["idStatystyki"] = DropDownList4.SelectedIndex;
+            int idBieglego = int.Parse((string)Session["id_osoby"]);
+            Session["idStatystykitxt"] = DropDownList4.SelectedIndex.ToString();
+
+            string kwerenda = DropDownList4.SelectedValue.ToString();
+            pokazStatystyki(kwerenda, idBieglego);
 
         }
     }
-
 }

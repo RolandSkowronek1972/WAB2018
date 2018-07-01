@@ -26,12 +26,13 @@ namespace wab2018
                     {
                         string dt = DateTime.Now.DayOfYear.ToString() + DateTime.Now.TimeOfDay.Ticks.ToString();
                         Session["sesja"] = dt;
-                        if (string.IsNullOrEmpty(TextBox6.Text.Trim()))
+                        if (string.IsNullOrEmpty(txPowolanieOd.Text.Trim()))
                         {
 
 
-                            TextBox6.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                            TextBox7.Text = "31.12." + DateTime.Now.AddYears(4).Year.ToString();
+                            txPowolanieOd.Date = DateTime.Now;
+                            string endDate = (DateTime.Now.Date.Year + 4).ToString() + "-12-31";
+                            txPowolanieDo.Date = DateTime.Parse(endDate);
                         }
                         TextBox1.Focus();
                     }
@@ -56,21 +57,21 @@ namespace wab2018
             string data_2_t = string.Empty;
             try
             {
-                data_1_t = TextBox6.Text.Substring(6, 4) + "-" + TextBox6.Text.Substring(3, 2) + "-" + TextBox6.Text.Substring(0, 2);
+                data_1_t = txPowolanieOd.Text.Substring(6, 4) + "-" + txPowolanieOd.Text.Substring(3, 2) + "-" + txPowolanieOd.Text.Substring(0, 2);
             }
             catch (Exception)
             {
-                data_1_t = TextBox6.Text;
+                data_1_t = txPowolanieOd.Text;
 
             }
             try
             {
-                data_2_t = TextBox7.Text.Substring(6, 4) + "-" + TextBox7.Text.Substring(3, 2) + "-" + TextBox7.Text.Substring(0, 2);
+                data_2_t = txPowolanieDo.Text.Substring(6, 4) + "-" + txPowolanieDo.Text.Substring(3, 2) + "-" + txPowolanieDo.Text.Substring(0, 2);
 
             }
             catch (Exception)
             {
-                data_2_t = TextBox7.Text;
+                data_2_t = txPowolanieDo.Text;
 
 
             }
@@ -83,7 +84,7 @@ namespace wab2018
             }
             catch
             {
-                data_pocz = DateTime.Parse(TextBox6.Text);
+                data_pocz = DateTime.Parse(txPowolanieOd.Text);
             }
 
             DateTime data_konc = DateTime.Now;
@@ -93,7 +94,7 @@ namespace wab2018
             }
             catch
             {
-                data_konc = DateTime.Parse(TextBox7.Text);
+                data_konc = DateTime.Parse(txPowolanieDo.Text);
             }
 
             string id_kreatora = (string)Session["user_id"];
@@ -141,17 +142,17 @@ namespace wab2018
             TextBox3.Text = "";
             TextBox4.Text = "";
             TextBox5.Text = "";
-            TextBox6.Text = DateTime.Now.Date.ToShortDateString();
-            TextBox7.Text = DateTime.Now.AddYears(4).Date.ToShortDateString();
+            txPowolanieOd.Text = DateTime.Now.Date.ToShortDateString();
+            txPowolanieDo.Text = DateTime.Now.AddYears(4).Date.ToShortDateString();
 
         }
 
-        protected void TextBox6_TextChanged(object sender, EventArgs e)
+        protected void txPowolanieOd_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                int year = DateTime.Parse(TextBox6.Text).Year + 4;
-                TextBox7.Text = "31-12-" + year.ToString();
+                int year = DateTime.Parse(txPowolanieOd.Text).Year + 4;
+                txPowolanieDo.Text = "31-12-" + year.ToString();
             }
             catch
             {

@@ -246,6 +246,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/log4net.dll">
       <publishTime>06/17/2018 14:29:37</publishTime>
     </File>
+    <File Include="bin/Microsoft.AspNet.EntityDataSource.dll">
+      <publishTime>06/19/2018 19:49:50</publishTime>
+    </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>06/17/2018 14:31:52</publishTime>
     </File>
@@ -355,7 +358,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>06/22/2018 10:47:40</publishTime>
+      <publishTime>07/01/2018 20:19:06</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -505,13 +508,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2018 13:51:14</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>06/22/2018 10:37:22</publishTime>
+      <publishTime>07/01/2018 11:13:06</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
-      <publishTime>04/30/2018 04:31:30</publishTime>
+      <publishTime>07/01/2018 13:18:20</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>06/22/2018 03:10:14</publishTime>
+      <publishTime>06/30/2018 07:17:06</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>06/17/2018 14:28:54</publishTime>
@@ -645,23 +648,32 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Styles/Site.css">
       <publishTime>06/22/2018 00:31:53</publishTime>
     </File>
+    <File Include="userControls/daneStatystyczne.ascx">
+      <publishTime>06/24/2018 21:48:36</publishTime>
+    </File>
+    <File Include="userControls/historiaPowolanMediatirow.ascx">
+      <publishTime>06/24/2018 17:01:08</publishTime>
+    </File>
     <File Include="version.txt">
-      <publishTime>06/20/2018 05:03:37</publishTime>
+      <publishTime>07/01/2018 20:18:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/22/2018 10:47:44</publishTime>
+      <publishTime>07/01/2018 18:27:06</publishTime>
     </File>
     <File Include="Web.old.config">
       <publishTime>04/20/2018 08:56:12</publishTime>
     </File>
     <File Include="wykazBieglych.aspx">
-      <publishTime>06/20/2018 13:22:44</publishTime>
+      <publishTime>07/01/2018 20:09:16</publishTime>
     </File>
     <File Include="wykazMediatorow.aspx">
       <publishTime>06/22/2018 10:10:00</publishTime>
     </File>
     <File Include="wykazSkarg.aspx">
-      <publishTime>06/18/2018 08:30:59</publishTime>
+      <publishTime>07/01/2018 14:36:01</publishTime>
+    </File>
+    <File Include="zawieszenia.ascx">
+      <publishTime>06/25/2018 15:45:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

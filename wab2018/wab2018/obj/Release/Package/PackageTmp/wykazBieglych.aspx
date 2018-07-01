@@ -2,6 +2,7 @@
 
 <%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register assembly="DevExpress.Web.Bootstrap.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Bootstrap" tagprefix="dx" %>
+<%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -192,7 +193,7 @@
                         <dx:PanelContent runat="server" meta:resourcekey="PanelContentResource1">
                             <asp:Panel ID="Panel1" runat="server" Visible="False" meta:resourcekey="Panel1Resource1">
 
-                                  <dx:ASPxPageControl ID="carTabPage" runat="server" ActiveTabIndex="4" EnableHierarchyRecreation="True" Theme="Office2010Blue" meta:resourcekey="carTabPageResource1" >
+                                  <dx:ASPxPageControl ID="carTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Theme="Office2010Blue" meta:resourcekey="carTabPageResource1" >
             <TabPages >
                   <dx:TabPage Text="Dane osobowe" meta:resourcekey="TabPageResource1">
                        <ContentCollection>
@@ -322,10 +323,7 @@
                         <dx:ContentControl ID="ContentControl4" runat="server" meta:resourcekey="ContentControl4Resource1">
                             <div style="min-height:275px;"><asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" OnSelectedIndexChanged="changeQuerry" DataSourceID="kwerendyStatystyczne0" DataTextField="Nazwa" DataValueField="kwerenda" meta:resourcekey="DropDownList3Resource1"></asp:DropDownList>
                     <asp:GridView ID="GridView1" runat="server" Css meta:resourcekey="GridView1Resource1"></asp:GridView>
-                                <asp:SqlDataSource ID="kwerendyStatystyczne0" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT Nazwa, kwerenda, id_ FROM dane_statystyczne WHERE (czy_us &lt;&gt; 1) AND (id_ = @idBieglego) ORDER BY Nazwa">
-                                    <SelectParameters>
-                                        <asp:SessionParameter Name="idBieglego" SessionField="id_osoby" />
-                                    </SelectParameters>
+                                <asp:SqlDataSource ID="kwerendyStatystyczne0" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT Nazwa, kwerenda, id_ FROM dane_statystyczne WHERE (czy_us &lt;&gt; 1)  ORDER BY Nazwa">
                                 </asp:SqlDataSource>
                             </div>
                         </dx:ContentControl>
@@ -410,7 +408,7 @@
                          
                               <asp:Panel ID="Panel2" runat="server" Visible="False" meta:resourcekey="Panel2Resource1">
 
-      <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1" OnActiveTabChanged="ASPxPageControl1_ActiveTabChanged">
+      <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="4" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1">
             <TabPages >
                       <dx:TabPage Text="Dane osobowe" meta:resourcekey="TabPageResource8">
                        <ContentCollection>
@@ -695,13 +693,28 @@
                       <dx:TabPage Text="Dane statystyczne" meta:resourcekey="TabPageResource12">
                     <ContentCollection>
                         <dx:ContentControl ID="ContentControl11" runat="server" meta:resourcekey="ContentControl11Resource1">
+                            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="kwerendyStatystyczne1" DataTextField="Nazwa" DataValueField="kwerenda" meta:resourceKey="DropDownList3Resource1" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged" AppendDataBoundItems="True" Height="16px" ViewStateMode="Disabled" Width="139px">
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="kwerendyStatystyczne1" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT Nazwa, kwerenda FROM dane_statystyczne WHERE (czy_us &lt;&gt; 1) ORDER BY Nazwa"></asp:SqlDataSource>
+                            <br />
+                            <asp:GridView ID="GridView26" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" Css="" GridLines="Horizontal" meta:resourceKey="GridView1Resource1">
+                                <AlternatingRowStyle BackColor="#F7F7F7" />
+                                <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+                                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+                                <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+                                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+                                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+                                <SortedAscendingCellStyle BackColor="#F4F4FD" />
+                                <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+                                <SortedDescendingCellStyle BackColor="#D8D8F0" />
+                                <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                            </asp:GridView>
                             <div style="min-height:275px;">
-                                <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="kwerendyStatystyczne" DataTextField="Nazwa" DataValueField="kwerenda" OnSelectedIndexChanged="zmianaStatystyki" OnDataBound="DropDownList4_DataBound">
-                                </asp:DropDownList>
+                                <br />
                                
-                                <asp:SqlDataSource ID="kwerendyStatystyczne" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT Nazwa, kwerenda, id_ FROM dane_statystyczne WHERE (czy_us &lt;&gt; 1)  ORDER BY Nazwa">
-                                </asp:SqlDataSource>
-                    <asp:GridView ID="GridView2" runat="server" Css meta:resourcekey="GridView2Resource2" Width="100%"></asp:GridView></div>
+                                <br />
+                                <br />
+                            </div>
                         </dx:ContentControl>
                     </ContentCollection>
                 </dx:TabPage>
@@ -777,7 +790,7 @@
                                                       <tr>
                                                           <td  style="background-color: #E1F0FF; width: 20%;">Numer</td>
                                                           <td  style="background-color: #E1F0FF">
-                                                              <asp:TextBox ID="txNumer" runat="server" meta:resourcekey="txNumerResource1" ReadOnly="True"></asp:TextBox>
+                                                              <asp:TextBox ID="txNumer" runat="server" meta:resourcekey="txNumerResource1"></asp:TextBox>
                                                           </td>
                                                          
                                                           <td  style="background-color: #E1F0FF; width: 20%;">Rok</td>
@@ -881,7 +894,7 @@
                                                       </dx:GridViewDataCheckColumn>
                                                       <dx:GridViewDataTextColumn Caption="Uwagi" FieldName="uwagi" ShowInCustomizationForm="True" VisibleIndex="8" meta:resourcekey="GridViewDataTextColumnResource25">
                                                       </dx:GridViewDataTextColumn>
-                                                             <dx:GridViewCommandColumn ShowNewButton="true" VisibleIndex="0" ButtonRenderMode="Image" Caption=" " meta:resourcekey="GridViewCommandColumnResource3">
+                                                             <dx:GridViewCommandColumn ShowNewButton="true" VisibleIndex="0" ButtonRenderMode="Image" Caption=" " meta:resourcekey="GridViewCommandColumnResource3" ShowNewButtonInHeader="True">
                                                           <CustomButtons>
                     <dx:GridViewCommandColumnCustomButton ID="wybierz" meta:resourcekey="GridViewCommandColumnCustomButtonResource3">
                         <Image ToolTip="Edytuj/usuń skagę" Url="img/button_edycja.png" />
@@ -891,11 +904,20 @@
                                                                </dx:GridViewCommandColumn>
                                                   </Columns>
                                               </dx:ASPxGridView>
-                                              <asp:SqlDataSource ID="SqlDataSkargi2" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>"  SelectCommand="SELECT numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, ident FROM tbl_skargi WHERE (idBieglego = @idBieglego) AND (czyUs = 0)">
+                                              <asp:SqlDataSource ID="SqlDataSkargi2" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>"  SelectCommand="SELECT numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, ident FROM tbl_skargi WHERE (idBieglego = @idBieglego) AND (czyUs = 0)" UpdateCommand="UPDATE tbl_skargi SET numer = @numer, rok = @rok, dataWplywu = @dataWplywu, dataPisma = @dataPisma, Sygnatura = @sygnatura, wizytator = wizytator, zakreslono = zakreslono, dataZakreslenia = dataZakreslenia, uwagi = uwagi WHERE (ident = @ident)">
                                                   <SelectParameters>
                                                       <asp:SessionParameter Name="idBieglego" SessionField="id_osoby" DefaultValue="" />
                                                   </SelectParameters>
+                                                  <UpdateParameters>
+                                                      <asp:Parameter Name="numer" />
+                                                      <asp:Parameter Name="rok" />
+                                                      <asp:Parameter Name="dataWplywu" />
+                                                      <asp:Parameter Name="dataPisma" />
+                                                      <asp:Parameter Name="sygnatura" />
+                                                      <asp:Parameter Name="ident" />
+                                                  </UpdateParameters>
                                               </asp:SqlDataSource>
+                                                  <br />
                                               </asp:Panel>
 
                                           </div>

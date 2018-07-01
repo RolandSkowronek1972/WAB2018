@@ -120,13 +120,11 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\AjaxMin.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.Bootstrap.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\obj\Release\wab2018.csprojResolveAssemblyReference.cache
 C:\projekts\wab_2018\wab2018\wab2018\bin\log4net.config
-C:\projekts\wab_2018\wab2018\wab2018\bin\itextsharp.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\Antlr3.Runtime.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\EntityFramework.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\EntityFramework.SqlServer.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\Microsoft.Web.Infrastructure.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\System.Net.Http.Formatting.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\Antlr3.Runtime.pdb
 C:\projekts\wab_2018\wab2018\wab2018\bin\EntityFramework.xml
-C:\projekts\wab_2018\wab2018\wab2018\bin\EntityFramework.SqlServer.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\System.Net.Http.Formatting.xml
+C:\projekts\wab_2018\wab2018\wab2018\bin\Microsoft.AspNet.EntityDataSource.dll

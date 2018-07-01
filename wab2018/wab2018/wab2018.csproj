@@ -70,20 +70,16 @@
     <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v17.1.Presets, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="itextsharp, Version=5.5.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Users\test\Desktop\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.EntityDataSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.EntityDataSource.6.0.0\lib\net40\Microsoft.AspNet.EntityDataSource.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -119,13 +115,13 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -166,12 +162,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="userControls\daneStatystyczne.ascx" />
+    <Content Include="userControls\historiaPowolanMediatirow.ascx" />
     <Content Include="mediatorzyLista.aspx" />
     <Content Include="nowyMediator.aspx" />
     <Content Include="Add_01.aspx" />
@@ -215,13 +207,8 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="zawieszenia.ascx" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -235,16 +222,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="skargiModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>skargiModel.edmx</DependentUpon>
-      <LastGenOutput>skargiModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="skargiModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>skargiModel.edmx</DependentUpon>
-      <LastGenOutput>skargiModel.cs</LastGenOutput>
-    </Content>
     <Content Include="wykazMediatorow.aspx" />
     <Content Include="wykazBieglych.aspx" />
     <Content Include="Lista_11.aspx" />
@@ -275,13 +252,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <EntityDeploy Include="skargiModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>skargiModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="skargiModel.edmx.diagram">
-      <DependentUpon>skargiModel.edmx</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -300,6 +270,20 @@
     <Content Include="Web.old.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="userControls\daneStatystyczne.ascx.cs">
+      <DependentUpon>daneStatystyczne.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\daneStatystyczne.ascx.designer.cs">
+      <DependentUpon>daneStatystyczne.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\historiaPowolanMediatirow.ascx.cs">
+      <DependentUpon>historiaPowolanMediatirow.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\historiaPowolanMediatirow.ascx.designer.cs">
+      <DependentUpon>historiaPowolanMediatirow.ascx</DependentUpon>
+    </Compile>
     <Compile Include="mediatorzyLista.aspx.cs">
       <DependentUpon>mediatorzyLista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -307,33 +291,19 @@
     <Compile Include="mediatorzyLista.aspx.designer.cs">
       <DependentUpon>mediatorzyLista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="skargiModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>skargiModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="skargiModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>skargiModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="skargiModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>skargiModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_osoby.cs">
-      <DependentUpon>skargiModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_skargi.cs">
-      <DependentUpon>skargiModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="wykazSkarg.aspx.cs">
       <DependentUpon>wykazSkarg.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="wykazSkarg.aspx.designer.cs">
       <DependentUpon>wykazSkarg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="zawieszenia.ascx.cs">
+      <DependentUpon>zawieszenia.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zawieszenia.ascx.designer.cs">
+      <DependentUpon>zawieszenia.ascx</DependentUpon>
     </Compile>
     <Content Include="App_Code\specjalizacje.cs" />
     <Compile Include="Master.Master.cs">
@@ -463,6 +433,7 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="logs\" />
     <Folder Include="pdf\" />
   </ItemGroup>

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="nowyMediator.aspx.cs" Inherits="wab2018.nowyMediator" %>
 
+<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -128,24 +130,22 @@
                 <td class="style1">
                     Powołanie od:</td>
                 <td class="style3">
-                    <asp:TextBox ID="TextBox6" runat="server" AutoPostBack="True" CausesValidation="True" OnTextChanged="TextBox6_TextChanged"></asp:TextBox>
+                    <dx:ASPxDateEdit ID="txPowolanieOd" runat="server">
+                    </dx:ASPxDateEdit>
                   
                 </td>
                 <td class="style1" style="width: 40%">
-                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                        Height="20px" ImageUrl="~/img/cal_1.jpg" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td>
                     Powołanie do:</td>
                 <td class="style2">
-                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                    <dx:ASPxDateEdit ID="txPowolanieDo" runat="server">
+                    </dx:ASPxDateEdit>
                 </td>
                 <td style="width: 40%">
-                    <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                        Height="20px" ImageUrl="~/img/cal_1.jpg" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td abbr="0" align="center" class="auto-style3">

@@ -1516,7 +1516,7 @@ namespace wab2018
             return result;
 
         }// end of czy zawieszony
-
+     
         public int acces_level(int id)
         {
 
