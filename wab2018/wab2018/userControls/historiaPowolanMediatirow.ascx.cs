@@ -28,11 +28,11 @@ namespace wab2018
         {
             e.NewValues["data_od"] = DateTime.Now;
             e.NewValues["data_do"] = DateTime.Now.AddYears(10);
-            string biegly = (string)Session["idMoediatora"];
+            string biegly = (string)Session["idMediatora"];
             e.NewValues["id_bieglego"] = biegly;
             e.NewValues["d_kreacji"] = DateTime.Now.Date;
             e.NewValues["kreator"] = (string)Session["user_id"];
-            e.NewValues["czyue"] = "0";
+            e.NewValues["czyus"] = "0";
             //INSERT INTO[tbl_powolania]([id_bieglego], [id_powolania], [data_od], [data_do], [kreator], [modyfikator], [czyus]) VALUES(@id_bieglego, @id_powolania, @data_od, @data_do, @d_kreacji, @d_modyfikacji, @kreator, @modyfikator, @czyus)
 
 
@@ -45,9 +45,27 @@ namespace wab2018
                 ASPxGridView1.SettingsEditing.Mode = (GridViewEditingMode)index;
         }
 
-        protected void ASPxTextBox1_TextChanged(object sender, EventArgs e)
+      
+        protected void ASPxGridView1_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
-
+            e.Editor.ReadOnly = false;
         }
+
+        protected void ASPxGridView1_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            var cos = e.NewValues["data_od"];
+            var ident = e.NewValues["ident"];
+        }
+
+       
+
+        protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            string biegly = (string)Session["idMediatora"];
+            e.NewValues["id_powolania"] = "1";
+            e.NewValues["id_bieglego"] = biegly;
+        }
+
+       
     }
 }

@@ -2,6 +2,9 @@
 using System.Web.UI;
 using DevExpress.Web.Data;
 using DevExpress.Web;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+
 namespace wab2018
 {
     public partial class mediatorzyLista : System.Web.UI.Page
@@ -18,6 +21,8 @@ namespace wab2018
 
         protected void updateMediatora(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            
+            
             string id= e.OldValues["ident"].ToString();
             Session["idMediatora"] = e.OldValues["ident"].ToString();
             var tytul = grid.FindEditFormTemplateControl("tytul");
@@ -30,8 +35,7 @@ namespace wab2018
             e.NewValues["data_poczatkowa"] = controlTextDate("txPoczatekPowolania");
             e.NewValues["data_koncowa"] = controlTextDate("txDataKoncaPowolania");
 
-        //    e.NewValues["d_zawieszenia"] = controlPoczatekZawieszeniafromWUC();
-        //    e.NewValues["dataKoncaZawieszenia"] = controlKoniecZawieszeniafromWUC();
+       
             //zawieszenie
             e.NewValues["pesel"] = controlText("txPESEL");
             e.NewValues["email"] = controlText("txEmail");
@@ -45,9 +49,30 @@ namespace wab2018
             e.NewValues["miejscowosc"] = controlText("txMiejscowosc");
             e.NewValues["miejscowosc"] = controlText("txMiejscowosc");
             // zrobić czeckboxa
-            e.NewValues["czy_zaw"] = controlCheckboxfromWUC();
-            
+            //cbZawieszenie
+            e.NewValues["czy_zaw"] = controlCheckbox("cbZawieszenie");
 
+
+            //daty
+            if (controlCheckbox("cbZawieszenie"))
+            {
+                e.NewValues["d_zawieszenia"] = controlTextDate("txPoczatekZawieszenia");
+                e.NewValues["dataKoncaZawieszenia"] = controlTextDate("txKoniecZawieszenia");
+            }
+            // specjalizacje
+            controlGridview();
+            //gridSpecjalizacje
+        }
+        protected void  controlGridview()
+        {
+            ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
+            ASPxGridView gridView = pageControl.FindControl("gridSpecjalizacje") as ASPxGridView;
+          /*  for (int i = 0; i < gridView.VisibleRowCount; i++)
+            {
+                gridView.Selection.SelectRow(i);
+                    
+            }*/
+            
         }
         protected bool controlCheckbox(string control)
         {
@@ -114,9 +139,19 @@ namespace wab2018
 
             Session["idMediatora"] = id;
             Session["id_osoby"] = id;
+            object lst = grid.GetRowValuesByKeyValue(e.EditingKeyValue,new string[] { "czy_zaw" });
             ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
-            zawieszenia txt = pageControl.FindControl("zawieszenia1") as zawieszenia;
-            ASPxGridView specjalizacje = pageControl.FindControl("TabelaSpecjalizacji") as ASPxGridView;
+            var txt = pageControl.FindControl("dvPassport") as object;
+        //    controlGridview();
+
+            //   ClientScriptManager sc = Page.ClientScript;
+            // sc.RegisterStartupScript(this.GetType(), "key", "alert('Hello!I am an alert box!!');", false);
+            //  Page.ClientScript.RegisterClientScriptInclude("Registration", "alert('Hello!I am an alert circle!!');");
+            // Page.RegisterStartupScript("key", "alert('Hello!I am an alert traigle!!');");
+            //var zawieszeni = lst(0);
+            //  ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
+            //  zawieszenia txt = pageControl.FindControl("zawieszenia1") as zawieszenia;
+
 
         }
         protected void grid_BatchUpdate(object sender, ASPxDataBatchUpdateEventArgs e)

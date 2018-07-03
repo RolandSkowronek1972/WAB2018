@@ -136,7 +136,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2018 11:20:50</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>06/17/2018 14:28:20</publishTime>
+      <publishTime>03/02/2015 14:40:30</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>06/17/2018 14:28:20</publishTime>
@@ -358,7 +358,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/01/2018 20:19:06</publishTime>
+      <publishTime>07/01/2018 22:16:59</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -508,13 +508,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2018 13:51:14</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>07/01/2018 11:13:06</publishTime>
+      <publishTime>07/01/2018 22:00:19</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
       <publishTime>07/01/2018 13:18:20</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>06/30/2018 07:17:06</publishTime>
+      <publishTime>07/01/2018 21:16:40</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>06/17/2018 14:28:54</publishTime>
@@ -657,8 +657,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="version.txt">
       <publishTime>07/01/2018 20:18:41</publishTime>
     </File>
+    <File Include="WAB.edmx.diagram">
+      <publishTime>07/01/2018 21:20:07</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>07/01/2018 18:27:06</publishTime>
+      <publishTime>07/01/2018 22:17:01</publishTime>
     </File>
     <File Include="Web.old.config">
       <publishTime>04/20/2018 08:56:12</publishTime>

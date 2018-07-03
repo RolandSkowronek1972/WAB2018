@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master"  CodeBehind="mediatorzyLista.aspx.cs" Inherits="wab2018.mediatorzyLista"  enableEventValidation="false" %>
 <%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register src="userControls/historiaPowolanMediatirow.ascx" tagname="historiaPowolanMediatirow" tagprefix="uc1" %>
-<%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc2" %>
 <%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Data.Linq" tagprefix="dx" %>
+<%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -41,9 +41,10 @@
     <div id ="mainWindow" class="newPage" onload="ShowHideDivX()">
     <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnBatchUpdate="grid_BatchUpdate">
         <Settings ShowFilterRow="True" />
+        <SettingsDataSecurity AllowDelete="False" />
         <SettingsSearchPanel Visible="True" />
         <Columns>
-            <dx:GridViewCommandColumn ShowNewButtonInHeader="true" ShowEditButton="true" VisibleIndex="0" ShowDeleteButton="True" ShowClearFilterButton="True" />
+            <dx:GridViewCommandColumn ShowNewButtonInHeader="true" ShowEditButton="true" VisibleIndex="0" ShowClearFilterButton="True" />
             
                      <dx:GridViewDataTextColumn Caption="Tytuł" FieldName="tytul" ShowInCustomizationForm="True" VisibleIndex="1">
                      </dx:GridViewDataTextColumn>
@@ -57,7 +58,7 @@
                      </dx:GridViewDataTextColumn>
                    
                   
-                     <dx:GridViewDataCheckColumn Caption="Z" FieldName="zawieszony" VisibleIndex="7" meta:resourcekey="GridViewDataCheckColumnResource1" ShowInCustomizationForm="True">
+                     <dx:GridViewDataCheckColumn Caption="Z" FieldName="czy_zaw" VisibleIndex="7" meta:resourcekey="GridViewDataCheckColumnResource1" ShowInCustomizationForm="True">
                          </dx:GridViewDataCheckColumn>
                      <dx:GridViewDataTextColumn Caption="Specjalizacje" FieldName="specjalizacjeWidok" ShowInCustomizationForm="True" VisibleIndex="15">
                      </dx:GridViewDataTextColumn>
@@ -146,7 +147,7 @@
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25"> 
-               <dx:ASPxCheckBox ID="cbZawieszenie" runat="server"   Checked='<%# Eval("czy_zaw")%>'  Text="Zawieszenie" Theme="Moderno">
+      <dx:ASPxCheckBox ID="cbZawieszenie" runat="server"   Checked='<%# Eval("czy_zaw")%>'  Text="Zawieszenie" Theme="Moderno"> 
             <ClientSideEvents CheckedChanged="function(s, e) {
 	         var dvPassport = document.getElementById(&quot;dvPassport&quot;);
               
@@ -322,7 +323,39 @@
                             <dx:TabPage Text="Specjalizacje" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-xxxxx
+   <table style="width:100%;">
+            <tr>
+                <td>
+                    <dx:ASPxCheckBox ID="cbSpecjalizacjaCywilne" runat="server" Text="Cywilne" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxCheckBox ID="cbSpecjalizacjaRodzinne" runat="server" Text="Rodzinne" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxCheckBox ID="cbSpecjalizacjaGospodarcze" runat="server" Text="Gospodarcze" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxCheckBox ID="cbSpecjalizacjaKarne" runat="server" Text="Karne" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <dx:ASPxCheckBox ID="cbSpecjalizacjaPracy" runat="server" Text="Pracy" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+            </tr>
+        </table>
+     
                                  
                                            </dx:ContentControl>
                                 </ContentCollection>
@@ -330,7 +363,7 @@ xxxxx
                               <dx:TabPage Text="Dane statystyczne" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                            <uc2:daneStatystyczne ID="daneStatystyczne1" runat="server" />
+                                          <uc2:daneStatystyczne ID="daneStatystyczne1" runat="server" />
      
                                     </dx:ContentControl>
                                 </ContentCollection>
@@ -343,14 +376,7 @@ xxxxx
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
-                              <dx:TabPage Text="Skargi" Visible="true">
-                                <ContentCollection>
-                                    <dx:ContentControl runat="server">
-                                            <uc2:daneStatystyczne ID="daneStatystyczne2" runat="server" />
-     
-                                    </dx:ContentControl>
-                                </ContentCollection>
-                            </dx:TabPage>
+                            
                             
                         </TabPages>
                     </dx:ASPxPageControl>
@@ -408,51 +434,6 @@ xxxxx
         
         
        
-     <dx:ASPxGridView ID="tabelaSpecjalizacji" runat="server" AutoGenerateColumns="False" DataSourceID="daneSpecjalizacji" KeyFieldName="idSpecjalizacji">
-          
-            <SettingsPager Visible="False">
-            </SettingsPager> 
-                                  <SettingsBehavior AllowFocusedRow="True" />
-<SettingsEditing Mode="Inline" />
-            <Columns>
-                <dx:GridViewCommandColumn ShowEditButton="True" ShowInCustomizationForm="True" VisibleIndex="0">
-                </dx:GridViewCommandColumn>
-                <dx:GridViewDataCheckColumn Caption="Specjalizacja" FieldName="czyAktywna" VisibleIndex="3">
-                </dx:GridViewDataCheckColumn>
-                <dx:GridViewDataTextColumn FieldName="nazwa" ReadOnly="True" VisibleIndex="4">
-                </dx:GridViewDataTextColumn>
-            </Columns>
-        </dx:ASPxGridView>   
-        
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
-        
-       
-     
-                                             
-        <asp:SqlDataSource ID="daneSpecjalizacji" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT tblListaSpecjalizacji.idSpecjalizacji, tblListaSpecjalizacji.ident, tblListaSpecjalizacji.idczlowieka, tblListaSpecjalizacji.czyAktywna, glo_specjalizacje.nazwa FROM tblListaSpecjalizacji LEFT OUTER JOIN glo_specjalizacje ON tblListaSpecjalizacji.idSpecjalizacji = glo_specjalizacje.id_ WHERE (tblListaSpecjalizacji.idczlowieka = @idCzlowieka)" UpdateCommand="UPDATE tblListaSpecjalizacji SET czyAktywna = @czyAktywna WHERE (idczlowieka = @idCzlowieka) AND (idSpecjalizacji = @idSpecjalizacji)">
-            <SelectParameters>
-                <asp:SessionParameter Name="idCzlowieka" SessionField="idMediatora" />
-            </SelectParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="czyAktywna" />
-                <asp:Parameter Name="idCzlowieka" />
-                <asp:Parameter Name="idSpecjalizacji" />
-            </UpdateParameters>
-        </asp:SqlDataSource>
-   
-       
-        
-                
-        
         
         
        
@@ -479,10 +460,12 @@ xxxxx
   
         
         <br />
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" DataSourceID="EntityDataSource1">
-        </dx:ASPxGridView>
-        <asp:EntityDataSource ID="EntityDataSource1" runat="server">
+        
+        <asp:EntityDataSource ID="dsEntity" runat="server"
+    DefaultContainerName="wapEntities" ConnectionString="name=wapEntities" EntitySetName="tbl_osoby" EnableFlattening="False" EnableDelete="True" EnableInsert="True" EnableUpdate="True">
         </asp:EntityDataSource>
+        
+        
         <br />
         <br />
      

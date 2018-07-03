@@ -13,15 +13,6 @@ namespace wab2018 {
     public partial class historiaPowolanMediatirow {
         
         /// <summary>
-        /// ASPxGridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
-        
-        /// <summary>
         /// ListaPowolanMediatorow control.
         /// </summary>
         /// <remarks>
@@ -31,21 +22,12 @@ namespace wab2018 {
         protected global::System.Web.UI.WebControls.SqlDataSource ListaPowolanMediatorow;
         
         /// <summary>
-        /// ASPxDateEdit1 control.
+        /// ASPxGridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEdit1;
-        
-        /// <summary>
-        /// ASPxTextBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
+        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
     }
 }

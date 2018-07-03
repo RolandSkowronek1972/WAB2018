@@ -70,6 +70,10 @@
     <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v17.1.Presets, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Users\test\Desktop\itextsharp.dll</HintPath>
@@ -108,6 +112,7 @@
       <HintPath>..\..\..\wab_x\bin\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\netstandard2.0\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -208,6 +213,16 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="WAB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WAB.edmx</DependentUpon>
+      <LastGenOutput>WAB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WAB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WAB.edmx</DependentUpon>
+      <LastGenOutput>WAB.cs</LastGenOutput>
+    </Content>
     <Content Include="zawieszenia.ascx" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -252,6 +267,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <EntityDeploy Include="WAB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WAB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="WAB.edmx.diagram">
+      <DependentUpon>WAB.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -270,6 +292,18 @@
     <Content Include="Web.old.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="glo_grupy_specjalizacji.cs">
+      <DependentUpon>WAB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="glo_specjalizacje.cs">
+      <DependentUpon>WAB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_osoby.cs">
+      <DependentUpon>WAB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_skargi.cs">
+      <DependentUpon>WAB.tt</DependentUpon>
+    </Compile>
     <Compile Include="userControls\daneStatystyczne.ascx.cs">
       <DependentUpon>daneStatystyczne.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -290,6 +324,21 @@
     </Compile>
     <Compile Include="mediatorzyLista.aspx.designer.cs">
       <DependentUpon>mediatorzyLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WAB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WAB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WAB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WAB.edmx</DependentUpon>
     </Compile>
     <Compile Include="wykazSkarg.aspx.cs">
       <DependentUpon>wykazSkarg.aspx</DependentUpon>

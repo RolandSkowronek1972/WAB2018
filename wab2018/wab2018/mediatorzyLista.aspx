@@ -14,7 +14,11 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript">
         var index = -1;
-    
+        function heja() {
+            alert("Oj");
+            
+             
+        }
         function grid_RowClick(s, e) {
             if (tabelaSpecjalizacji.IsEditing() == true) {
                 index = e.visibleIndex;
@@ -41,9 +45,10 @@
     <div id ="mainWindow" class="newPage" onload="ShowHideDivX()">
     <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnBatchUpdate="grid_BatchUpdate">
         <Settings ShowFilterRow="True" />
+        <SettingsDataSecurity AllowDelete="False" />
         <SettingsSearchPanel Visible="True" />
         <Columns>
-            <dx:GridViewCommandColumn ShowNewButtonInHeader="true" ShowEditButton="true" VisibleIndex="0" ShowDeleteButton="True" ShowClearFilterButton="True" />
+            <dx:GridViewCommandColumn ShowNewButtonInHeader="true" ShowEditButton="true" VisibleIndex="0" ShowClearFilterButton="True" />
             
                      <dx:GridViewDataTextColumn Caption="Tytuł" FieldName="tytul" ShowInCustomizationForm="True" VisibleIndex="1">
                      </dx:GridViewDataTextColumn>
@@ -57,7 +62,7 @@
                      </dx:GridViewDataTextColumn>
                    
                   
-                     <dx:GridViewDataCheckColumn Caption="Z" FieldName="zawieszony" VisibleIndex="7" meta:resourcekey="GridViewDataCheckColumnResource1" ShowInCustomizationForm="True">
+                     <dx:GridViewDataCheckColumn Caption="Z" FieldName="czy_zaw" VisibleIndex="7" meta:resourcekey="GridViewDataCheckColumnResource1" ShowInCustomizationForm="True">
                          </dx:GridViewDataCheckColumn>
                      <dx:GridViewDataTextColumn Caption="Specjalizacje" FieldName="specjalizacjeWidok" ShowInCustomizationForm="True" VisibleIndex="15">
                      </dx:GridViewDataTextColumn>
@@ -74,6 +79,13 @@
         </Columns>
            
         <SettingsPager Mode="ShowAllRecords" />
+        
+        
+         <ClientSideEvents RowExpanding="function(s, e) {
+	}" SelectionChanged="function(s, e) {
+	alert(&quot;Oj!&quot;);
+
+}" />
         
         
          <Templates>
@@ -146,18 +158,19 @@
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25"> 
-               <dx:ASPxCheckBox ID="cbZawieszenie" runat="server"   Checked='<%# Eval("czy_zaw")%>'  Text="Zawieszenie" Theme="Moderno">
+      <dx:ASPxCheckBox ID="cbZawieszenie" runat="server"   Checked='<%# Eval("czy_zaw")%>'  Text="Zawieszenie" Theme="Moderno"> 
             <ClientSideEvents CheckedChanged="function(s, e) {
 	         var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-              
+            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
                     if (s.GetCheckState() ==&quot;Checked&quot;)
                     {
                         
                         dvPassport.style.display = &quot;block&quot; ;
-                    }
+                                    }
                     else
                     {
                          dvPassport.style.display = &quot;none&quot; ;
+                
                     }
                 }" />
         </dx:ASPxCheckBox>
@@ -168,6 +181,10 @@
         </tr>
         <tr>
             <td colspan="2" class=" normal przesuniecie prc25"> 
+                <asp:Panel ID="Panel1" runat="server" BackColor="#FFCC00" Visible='<%# Eval("czy_zaw")%>'>
+            panel 1<br />
+            <br />
+            p1</asp:Panel>
                 <div id="dvPassport" style="display: none">
                      <table style="width:100%;">
                 <tr>
@@ -322,41 +339,47 @@
                             <dx:TabPage Text="Specjalizacje" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-   <table style="width:100%;">
-            <tr>
-                <td>
-                    <dx:ASPxCheckBox ID="cbSpecjalizacjaCywilne" runat="server" Text="Cywilne" Theme="Moderno">
-                    </dx:ASPxCheckBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <dx:ASPxCheckBox ID="cbSpecjalizacjaRodzinne" runat="server" Text="Rodzinne" Theme="Moderno">
-                    </dx:ASPxCheckBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <dx:ASPxCheckBox ID="cbSpecjalizacjaGospodarcze" runat="server" Text="Gospodarcze" Theme="Moderno">
-                    </dx:ASPxCheckBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <dx:ASPxCheckBox ID="cbSpecjalizacjaKarne" runat="server" Text="Karne" Theme="Moderno">
-                    </dx:ASPxCheckBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <dx:ASPxCheckBox ID="cbSpecjalizacjaPracy" runat="server" Text="Pracy" Theme="Moderno">
-                    </dx:ASPxCheckBox>
-                </td>
-            </tr>
-        </table>
+          
+                                       
+
+        
+                       <dx:ASPxGridView ID="ASPxGridViewSpecjalizacje" runat="server" AutoGenerateColumns="False" DataSourceID="specjalizacjeOsob" Theme="Moderno" KeyFieldName="Row" EnableRowsCache="False" EnableCallbackAnimation="True" SettingsEditing-Mode="Batch">
+            <Columns>
+                <dx:GridViewCommandColumn ShowEditButton="False" VisibleIndex="0">
+                </dx:GridViewCommandColumn>
+                <dx:GridViewDataCheckColumn Caption="Przydzielono" FieldName="stab"  VisibleIndex="1">
+                </dx:GridViewDataCheckColumn>
+                <dx:GridViewDataTextColumn Caption="Specjalizacja" FieldName="nazwa" ReadOnly="True" VisibleIndex="2">
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="idOsoby" VisibleIndex="4">
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="idSpecjalizacji" VisibleIndex="3">
+                </dx:GridViewDataTextColumn>
+            </Columns>
+<SettingsEditing Mode="Batch"></SettingsEditing>
+
+                              <EditFormLayoutProperties>
+            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="700" />
+        </EditFormLayoutProperties>
+        
+        </dx:ASPxGridView>
+       
      
                                  
-                                           </dx:ContentControl>
+        <asp:SqlDataSource ID="specjalizacjeOsob" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT ROW_NUMBER() OVER(ORDER BY View_SpecjalizacjeIOsoby.id_ ASC) AS Row, View_SpecjalizacjeIOsoby.Expr1 as stab, View_SpecjalizacjeIOsoby.nazwa, View_SpecjalizacjeIOsoby.id_ as idSpecjalizacji, View_SpecjalizacjeIOsoby.ident as idOsoby FROM View_SpecjalizacjeIOsoby INNER JOIN glo_specjalizacje ON View_SpecjalizacjeIOsoby.id_ = glo_specjalizacje.id_ WHERE (View_SpecjalizacjeIOsoby.ident = @ident) AND (glo_specjalizacje.grupa = 1000) ORDER BY View_SpecjalizacjeIOsoby.nazwa" UpdateCommand="IF @stab = 0 BEGIN DELETE FROM tbl_specjalizacje_osob WHERE id_osoby = @idOsoby AND id_specjalizacji = @idSpecjalizacji END IF @stab &lt;&gt; 0 BEGIN INSERT INTO tbl_specjalizacje_osob(id_osoby, id_specjalizacji) VALUES (@idOsoby,@idSpecjalizacji) END">
+            <SelectParameters>
+              
+                <asp:SessionParameter Name="ident" SessionField="id_osoby" />
+              
+            </SelectParameters>
+           
+            <UpdateParameters>
+                <asp:Parameter Name="stab" Type="Boolean" />
+                  <asp:Parameter Name="idOsoby" Type="Int32" />
+                <asp:Parameter Name="idSpecjalizacji" Type="Int32" />
+            </UpdateParameters>
+           
+        </asp:SqlDataSource>                                   </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
                               <dx:TabPage Text="Dane statystyczne" Visible="true">
@@ -371,7 +394,9 @@
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
                                      <uc1:historiaPowolanMediatirow ID="historiaPowolanMediatirow1" runat="server" />
-                                         
+                                        <br /> 
+                                        
+                                
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
@@ -435,9 +460,10 @@
        
         
         
-       
+                                     
+
         
-        
+          
         
         
         
@@ -458,13 +484,41 @@
         
   
         
+        
+        
+        
+        
+        
+       
+        
+        
+        
+        
+        
+        
+  
+        
         <br />
         
-        <asp:EntityDataSource ID="EntityDataSource1" runat="server">
+        <asp:EntityDataSource ID="dsEntity" runat="server"
+    DefaultContainerName="wapEntities" ConnectionString="name=wapEntities" EntitySetName="tbl_osoby" EnableFlattening="False" EnableDelete="True" EnableInsert="True" EnableUpdate="True">
         </asp:EntityDataSource>
+        
+        
+        
+        
+        
+        
         <br />
+        
+           
+
+        
+        
+        
         <br />
-     
+        
+           
              
                                      
         
