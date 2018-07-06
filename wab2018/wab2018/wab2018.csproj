@@ -213,6 +213,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="userControls\specjalizacje.ascx" />
     <Content Include="WAB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WAB.edmx</DependentUpon>
@@ -298,6 +299,7 @@
     <Compile Include="glo_specjalizacje.cs">
       <DependentUpon>WAB.tt</DependentUpon>
     </Compile>
+    <Compile Include="nowiMediatorzy.cs" />
     <Compile Include="tbl_osoby.cs">
       <DependentUpon>WAB.tt</DependentUpon>
     </Compile>
@@ -324,6 +326,13 @@
     </Compile>
     <Compile Include="mediatorzyLista.aspx.designer.cs">
       <DependentUpon>mediatorzyLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\specjalizacje.ascx.cs">
+      <DependentUpon>specjalizacje.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\specjalizacje.ascx.designer.cs">
+      <DependentUpon>specjalizacje.ascx</DependentUpon>
     </Compile>
     <Compile Include="WAB.Context.cs">
       <AutoGen>True</AutoGen>

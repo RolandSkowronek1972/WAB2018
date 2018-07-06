@@ -1241,6 +1241,19 @@ namespace wab2018
 
         }// end of dodaj_osobe
 
+        public string dodaj_osobe(int typ,int idKreatora)
+        {
+            log.Info("Start funkcji dodaj_osobe w wersji skróconej");
+
+            DataTable parameters = Common.makeParameterTable();
+            parameters.Rows.Add("@typ", typ);
+            parameters.Rows.Add("@IdKreatora", idKreatora);
+            string odp= Common.runQuerryWithResult ("insert into  tbl_osoby (typ,id_kreatora,data_kreacji,pesel,czy_zaw)  values (@typ,@IdKreatora,Getdate(),0,0) select @@identity", con_str, parameters);
+            return odp;
+           
+
+        }// end of dodaj_osobe
+
 
 
         //================================================================================
@@ -1680,7 +1693,7 @@ namespace wab2018
             }
             return dT;
 
-        } // end of loguj
+        } // end of tabelaStatystyczna
 
 
         public DataTable dane_korespondencyjne(string id_)

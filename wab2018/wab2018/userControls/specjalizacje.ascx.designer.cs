@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wab2018 {
+namespace wab2018.userControls {
     
     
-    public partial class mediatorzyLista {
+    public partial class specjalizacje {
         
         /// <summary>
-        /// grid control.
+        /// specjalizacjeOsob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView grid;
+        protected global::System.Web.UI.WebControls.SqlDataSource specjalizacjeOsob;
         
         /// <summary>
-        /// grid0 control.
+        /// ASPxGridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView grid0;
-        
-        /// <summary>
-        /// mediatorzy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource mediatorzy;
+        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
     }
 }

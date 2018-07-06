@@ -20,8 +20,9 @@ namespace wab2018
 
         protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
         {
-          
-          
+
+            var a= e.AffectedRecords;
+            var b = e.Exception.Message.ToString(); 
         }
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
@@ -33,8 +34,7 @@ namespace wab2018
             e.NewValues["d_kreacji"] = DateTime.Now.Date;
             e.NewValues["kreator"] = (string)Session["user_id"];
             e.NewValues["czyus"] = "0";
-            //INSERT INTO[tbl_powolania]([id_bieglego], [id_powolania], [data_od], [data_do], [kreator], [modyfikator], [czyus]) VALUES(@id_bieglego, @id_powolania, @data_od, @data_do, @d_kreacji, @d_modyfikacji, @kreator, @modyfikator, @czyus)
-
+          
 
         }
 

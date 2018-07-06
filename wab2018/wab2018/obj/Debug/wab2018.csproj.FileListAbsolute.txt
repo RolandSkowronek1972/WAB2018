@@ -1,5 +1,3 @@
-C:\projekts\wab_2018\wab2018\wab2018\obj\Debug\wab2018.csprojResolveAssemblyReference.cache
-C:\projekts\wab_2018\wab2018\wab2018\obj\Debug\wab2018.dll.licenses
 C:\projekts\wab_2018\wab2018\wab2018\bin\roslyn\csc.exe
 C:\projekts\wab_2018\wab2018\wab2018\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -128,5 +126,7 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\de\DevExpress.Sparkline.v17.1.Core.reso
 C:\projekts\wab_2018\wab2018\wab2018\bin\es\DevExpress.Sparkline.v17.1.Core.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\ja\DevExpress.Sparkline.v17.1.Core.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\ru\DevExpress.Sparkline.v17.1.Core.resources.dll
+C:\projekts\wab_2018\wab2018\wab2018\obj\Debug\wab2018.dll.licenses
 C:\projekts\wab_2018\wab2018\wab2018\obj\Debug\wab2018.dll
 C:\projekts\wab_2018\wab2018\wab2018\obj\Debug\wab2018.pdb
+C:\projekts\wab_2018\wab2018\wab2018\obj\Debug\wab2018.csprojResolveAssemblyReference.cache

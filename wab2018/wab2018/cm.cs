@@ -22,6 +22,41 @@ namespace wab2018
             return parameters;
 
         }
+
+        public void runQuerry(string kwerenda,  DataTable parameters)
+        {
+            log.Debug("start runQuerry");
+            var conn = new SqlConnection(con_str);
+            using (SqlCommand sqlCmd = new SqlCommand(kwerenda, conn))
+            {
+                try
+                {
+                    log.Debug("try to open DB connection");
+                    conn.Open();
+                    if (parameters != null)
+                    {
+                        foreach (DataRow row in parameters.Rows)
+                        {
+                            sqlCmd.Parameters.AddWithValue(row[0].ToString().Trim(), row[1].ToString().Trim());
+                            log.Debug("add parameter -0 name: " + row[0].ToString().Trim() + " value: " + row[1].ToString().Trim());
+                        }
+                    }
+                    log.Debug("executing querry");
+                    sqlCmd.ExecuteScalar();
+                    log.Debug("querry executed");
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    log.Error("runQuerry Error: " + ex.Message);
+                    conn.Close();
+                }
+            } // end of using
+
+
+        }
+
         public void runQuerry(string kwerenda, string connStr, DataTable parameters)
         {
             log.Debug("start runQuerry");
