@@ -211,17 +211,8 @@
     <Content Include="ClassDiagram1.cd" />
     <Content Include="userControls\specjalizacje.ascx" />
     <Content Include="userControls\statystykiHistoria.ascx" />
-    <Content Include="WAB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WAB.edmx</DependentUpon>
-      <LastGenOutput>WAB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="WAB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WAB.edmx</DependentUpon>
-      <LastGenOutput>WAB.cs</LastGenOutput>
-    </Content>
     <Content Include="zawieszenia.ascx" />
+    <Content Include="biegliNaglowek.master" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -265,13 +256,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <EntityDeploy Include="WAB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WAB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="WAB.edmx.diagram">
-      <DependentUpon>WAB.edmx</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,19 +274,14 @@
     <Content Include="Web.old.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="glo_grupy_specjalizacji.cs">
-      <DependentUpon>WAB.tt</DependentUpon>
+    <Compile Include="biegliNaglowek.master.cs">
+      <DependentUpon>biegliNaglowek.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="glo_specjalizacje.cs">
-      <DependentUpon>WAB.tt</DependentUpon>
+    <Compile Include="biegliNaglowek.master.designer.cs">
+      <DependentUpon>biegliNaglowek.master</DependentUpon>
     </Compile>
     <Compile Include="nowiMediatorzy.cs" />
-    <Compile Include="tbl_osoby.cs">
-      <DependentUpon>WAB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_skargi.cs">
-      <DependentUpon>WAB.tt</DependentUpon>
-    </Compile>
     <Compile Include="userControls\daneStatystyczne.ascx.cs">
       <DependentUpon>daneStatystyczne.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -337,21 +316,6 @@
     </Compile>
     <Compile Include="userControls\statystykiHistoria.ascx.designer.cs">
       <DependentUpon>statystykiHistoria.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="WAB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WAB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WAB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WAB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WAB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WAB.edmx</DependentUpon>
     </Compile>
     <Compile Include="wykazSkarg.aspx.cs">
       <DependentUpon>wykazSkarg.aspx</DependentUpon>

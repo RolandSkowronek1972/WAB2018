@@ -204,7 +204,12 @@ min-height:600px;
 
 
 }
+.newHeder {
+    
+   display:flex;
 
+
+}
 .header
 {
     position: relative;
@@ -276,34 +281,7 @@ div.menu ul
     padding: 0px;
     width: auto;
 }
-/*
-div.menu ul li a, div.menu ul li a:visited
-{
-    background-color: #465c71;
-    border: 1px #4e667d solid;
-    color: #dde4ec;
-    display: block;
-    line-height: 1.35em;
-    padding-right:20px;
-    padding: 4px 20px;
-    text-decoration: none;
-    white-space: nowrap;
-}
 
-div.menu ul li a:hover
-{
-    background-color: #bfcbd6;
-    color: #465c71;
-    text-decoration: none;
-}
-
-div.menu ul li a:active
-{
-    background-color: #465c71;
-    color: #cfdbe6;
-    text-decoration: none;
-}
-    */
 /* FORM ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -534,10 +512,11 @@ box-shadow:         2px 2px 3px 4px rgba(50, 50, 50, 0.41);
     position:relative;
     top:1px;
 }
- .normal {
+.normal {
     text-decoration: none;
     color: black;
-    z-index:99999;
+    z-index: 99999;
+}
  .Panel_1_cal
     {
         border-bottom: 2px solid white;

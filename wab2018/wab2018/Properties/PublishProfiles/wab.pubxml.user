@@ -21,6 +21,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="biegli.aspx">
       <publishTime>06/20/2018 04:52:23</publishTime>
     </File>
+    <File Include="biegliNaglowek.master">
+      <publishTime>07/07/2018 04:22:59</publishTime>
+    </File>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>08/13/2014 06:30:48</publishTime>
     </File>
@@ -358,7 +361,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/07/2018 02:42:47</publishTime>
+      <publishTime>07/07/2018 06:34:09</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -508,7 +511,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2018 13:51:14</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>07/07/2018 02:34:59</publishTime>
+      <publishTime>07/07/2018 05:33:21</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
       <publishTime>07/01/2018 13:18:20</publishTime>
@@ -646,7 +649,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 17:28:42</publishTime>
     </File>
     <File Include="Styles/Site.css">
-      <publishTime>06/22/2018 00:31:53</publishTime>
+      <publishTime>07/07/2018 05:54:12</publishTime>
     </File>
     <File Include="userControls/daneStatystyczne.ascx">
       <publishTime>06/24/2018 21:48:36</publishTime>
@@ -655,13 +658,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2018 16:47:16</publishTime>
     </File>
     <File Include="userControls/specjalizacje.ascx">
-      <publishTime>07/03/2018 23:14:31</publishTime>
+      <publishTime>07/07/2018 02:58:55</publishTime>
     </File>
     <File Include="userControls/statystykiHistoria.ascx">
       <publishTime>07/06/2018 21:24:58</publishTime>
     </File>
     <File Include="version.txt">
-      <publishTime>07/07/2018 00:19:52</publishTime>
+      <publishTime>07/07/2018 06:34:03</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>

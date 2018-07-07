@@ -183,11 +183,7 @@ namespace wab2018
 
         } // end of grid_CancelRowEditing
 
-        protected void grid_RowInserted(object sender, ASPxDataInsertedEventArgs e)
-        {
-            var a = e.AffectedRecords;
-            
-        }
+      
 
         protected void grid_RowValidating(object sender, ASPxDataValidationEventArgs e)
         {
@@ -210,51 +206,6 @@ namespace wab2018
             }
         }
 
-        protected void sterowanieWyboremSpecjalizacji(object sender, EventArgs e)
-        {
-            if (cbZnacznikSpecjalizacji.Checked)
-            {
-                dlSpecjalizacje.Enabled = true;
-
-            }
-            else
-            {
-                dlSpecjalizacje.Enabled = false;
-
-            }
-            ustawbaze();
-
-        }
-
-        protected void zmienWyświetlanie(object sender, EventArgs e)
-        {
-
-            ustawbaze();
-        }
-
-        protected void cbArchiwum_CheckedChanged(object sender, EventArgs e)
-        {
-            ustawbaze();
-        }
-        protected void ustawbaze()
-        {
-            string kwerendaGlowna = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa >= GETDATE())";
-            if (cbArchiwum.Checked)
-            {
-                kwerendaGlowna = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa < GETDATE())";
-
-            }
-            if (cbZnacznikSpecjalizacji.Checked)
-            {
-                string idSpecjalizacji = dlSpecjalizacje.SelectedValue.ToString().Trim();
-
-                kwerendaGlowna = kwerendaGlowna + " and (select count(*) from tbl_specjalizacje_osob where id_osoby=tbl_osoby.ident and id_specjalizacji=" + idSpecjalizacji + ")=1";
-            }
-
-            mediatorzy.SelectCommand = kwerendaGlowna;
-            mediatorzy.DataBind();
-
-
-        }
+  
     }
 }

@@ -23,9 +23,9 @@
     <Columns>
         <dx:GridViewDataTextColumn FieldName="Row" ReadOnly="True" Visible="False" VisibleIndex="2">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataCheckColumn FieldName="stab" VisibleIndex="0">
+        <dx:GridViewDataCheckColumn FieldName="stab" VisibleIndex="0" Caption="Posiadana specjalizacja">
         </dx:GridViewDataCheckColumn>
-        <dx:GridViewDataTextColumn FieldName="nazwa" ReadOnly="True" VisibleIndex="1">
+        <dx:GridViewDataTextColumn FieldName="nazwa" ReadOnly="True" VisibleIndex="1" Caption="Nazwa specjalizacji">
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="idSpecjalizacji" Visible="False" VisibleIndex="3">
         </dx:GridViewDataTextColumn>

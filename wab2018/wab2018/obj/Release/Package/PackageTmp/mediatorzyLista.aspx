@@ -7,8 +7,16 @@
 <%@ Register src="userControls/specjalizacje.ascx" tagname="specjalizacje" tagprefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style1 {
-            height: 39px;
+       
+        .auto-style2 {
+            width: 69px;
+        }
+        .auto-style3 {
+            height: 21px;
+        }
+        .auto-style4 {
+            width: 20px;
+            height: 21px;
         }
         </style>
 </asp:Content>
@@ -46,26 +54,8 @@
 
     <div id ="mainWindow" class="newPage" onload="ShowHideDivX()">
    
-            <br />
-        <div style ="display:flex; position:relative">
-                 <div style="width:25%;">
-                     Filtruj po specjalizacji:    <asp:CheckBox ID="cbZnacznikSpecjalizacji" runat="server" AutoPostBack="True" OnCheckedChanged="sterowanieWyboremSpecjalizacji" />
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT id_, nazwa FROM glo_specjalizacje WHERE (grupa = 1000) ORDER BY nazwa"></asp:SqlDataSource>
-        </div>
-       
-            <div style="width:25%; ">
-        Specjalizacje:&nbsp;&nbsp;&nbsp;&nbsp; 
-        <asp:DropDownList ID="dlSpecjalizacje" runat="server" DataSourceID="Specjalizacje" DataTextField="nazwa" DataValueField="id_" AutoPostBack="True" Enabled="False" OnSelectedIndexChanged="zmienWyświetlanie">
-                </asp:DropDownList>
-                <asp:SqlDataSource ID="Specjalizacje" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT id_, nazwa FROM glo_specjalizacje WHERE (grupa = 1000) ORDER BY nazwa"></asp:SqlDataSource>
-        </div>
-       
-             <div style="width:25%; ">Archiwum<asp:CheckBox ID="cbArchiwum" runat="server" AutoPostBack="True" OnCheckedChanged="cbArchiwum_CheckedChanged" />
-        </div>
-        </div>
-        
-        <br />
-    <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowInserted="grid_RowInserted" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' OnCommandButtonInitialize="grid_CommandButtonInitialize" ViewStateMode="Enabled">
+        <h2>          &nbsp; Wykaz mediatorów sądowych</h2>   <br />
+    <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' OnCommandButtonInitialize="grid_CommandButtonInitialize" ViewStateMode="Enabled">
         <Settings ShowFilterRow="True" />
         <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True" />
         <SettingsDataSecurity AllowDelete="False" />
@@ -131,15 +121,15 @@
                             <dx:TabPage Text="Dane osobowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                 <table style="width:100%;" onload ="heja();">
+                       <table style="width:100%;" onload ="heja();">
         <tr>
-            <td class="auto-style1">Tytuł</td>
-            <td class="auto-style1">
+            <td >Tytuł</td>
+            <td >
                 <dx:ASPxTextBox ID="txTytul" runat="server" Width="170px" Text='<%# Eval("tytul")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class="auto-style1">Specjalizacja opis</td>
+            <td >Specjalizacja opis</td>
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25">Imie</td>
@@ -151,7 +141,7 @@
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class="prc50 normal " rowspan="8">
+            <td class="prc50 normal " rowspan="7">
                 <dx:ASPxMemo ID="txSpecjalizacjeOpis" runat="server" Height="100%" Width="99%" Text='<%# Eval("specjalizacja_opis")%>'>
                 </dx:ASPxMemo>
             </td>
@@ -160,19 +150,6 @@
             <td class=" normal przesuniecie prc25">Nazwisko</td>
             <td class="prc25">
                 <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px" Text='<%# Eval("nazwisko")%>'  >
-                    <ValidationSettings>
-                        <RequiredField IsRequired="true" />
-                    </ValidationSettings>
-
-
-                </dx:ASPxTextBox>
-            </td>
-            <td class="col_20"></td>
-        </tr>
-           <tr>
-            <td class=" normal przesuniecie prc25">Instytucja</td>
-            <td class="prc25">
-                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -262,12 +239,12 @@
             <td colspan="2" class=" normal przesuniecie prc25"> 
          
                 <div id="dvPassport" style="display: none">
-                    JavaScript can change the style of an HTML element.
+          
                      <table style="width:100%;">
                 <tr>
                     <td  class="prc50">Data początku zawieszenia</td>
                     <td>                                                                                
-                        <dx:ASPxDateEdit ID="txPoczatekZawieszenia" runat="server" Theme="Moderno"  Value='<%# ((Eval("d_zawieszenia")) == null) ? Eval("now"): Eval("data_poczatkowa") %>'> 
+                        <dx:ASPxDateEdit ID="txPoczatekZawieszenia" runat="server" Theme="Moderno"  Value='<%# ((Eval("d_zawieszenia")) == null) ? Eval("now"): Eval("d_zawieszenia") %>'> 
                           
                         </dx:ASPxDateEdit>
                     </td>
@@ -297,7 +274,6 @@
         
     </table>
    
-   
 <hr />
 
 
@@ -311,16 +287,16 @@
                                <dx:TabPage Text="Dane kontaktowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                     <table style="width:100%;">
+                                <table style="width:100%;">
         <tr>
-            <td colspan="2">Adres zameldowania</td>
-            <td class="col_20">&nbsp;</td>
-            <td colspan="2">Adres prywatny</td>
+            <td colspan="2" class="auto-style3">Adres</td>
+            <td class="auto-style4"></td>
+            <td colspan="2" class="auto-style3">Adres prywatny</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Adres</td>
+            <td class=" normal przesuniecie prc25">Instyrucja</td>
             <td>
-                <dx:ASPxTextBox ID="txAdres" runat="server" Width="170px" Text='<%# Eval("ulica")%>'>
+                <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -331,15 +307,28 @@
             </td>
         </tr>
         <tr>
+            <td class=" normal przesuniecie prc25">Adres</td>
+            <td>
+                <dx:ASPxTextBox ID="txAdres" runat="server" Width="170px" Text='<%# Eval("ulica")%>'>
+                </dx:ASPxTextBox>
+            </td>
+            <td class="col_20">&nbsp;</td>
+            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
+            <td>
+                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'>
+                </dx:ASPxTextBox>
+            </td>
+        </tr>
+        <tr>
             <td class=" normal przesuniecie prc25">Kod pocztowy</td>
             <td class="dxflEmptyItem">
                 <dx:ASPxTextBox ID="txKodPocztowy" runat="server" Width="170px" Text='<%# Eval("kod_poczt")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
+            <td class=" normal przesuniecie prc25">Miejscowosc</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'>
+                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>'>
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -350,9 +339,9 @@
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class=" normal przesuniecie prc25">Miejscowosc</td>
+            <td class="prc25 normal">Telefon</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>'>
+                <dx:ASPxTextBox ID="txTelefon2" runat="server" Width="170px" Text='<%# Eval("tel2")%>'>
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -363,9 +352,8 @@
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
-            <td class="prc25 normal">Telefon</td>
-            <td class="prc25 normal">  <dx:ASPxTextBox ID="txTelefon2" runat="server" Width="170px" Text='<%# Eval("tel2")%>'>
-                </dx:ASPxTextBox></td>
+            <td class="prc25 normal">&nbsp;</td>
+            <td class="prc25 normal">  &nbsp;</td>
         </tr>
        
         <tr>
@@ -386,21 +374,8 @@
                               <dx:TabPage Text="Uwagi" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                     <table style="width:100%;">
-       
-        <tr>
-            <td class=" normal przesuniecie prc25">Uwagi</td>
-            <td class="col_20">&nbsp;</td>
-            <td>
-                <dx:ASPxMemo ID="txUwagi" runat="server" Height="200px" Width="99%" Text='<%# Eval("uwagi")%>'>
-        </dx:ASPxMemo>
-               
-            </td>
-          
-        </tr>
-      
-        </table>
-                                         
+                                           <dx:ASPxMemo ID="txUwagi" runat="server" Height="200px" Width="99%" Text='<%# Eval("uwagi")%>'> </dx:ASPxMemo>
+                                   
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
@@ -455,7 +430,7 @@
     
         
     
-    <dx:ASPxGridView ID="grid0" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowInserted="grid_RowInserted" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' OnCommandButtonInitialize="grid_CommandButtonInitialize">
+    <dx:ASPxGridView ID="grid0" runat="server" DataSourceID="mediatorzy" AutoGenerateColumns="False" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' OnCommandButtonInitialize="grid_CommandButtonInitialize">
         <Settings ShowFilterRow="True" />
         <SettingsDataSecurity AllowDelete="False" />
         <SettingsSearchPanel Visible="True" />
@@ -522,13 +497,13 @@
                                     <dx:ContentControl runat="server">
                                  <table style="width:100%;" onload ="heja();">
         <tr>
-            <td class="auto-style1">Tytuł</td>
-            <td class="auto-style1">
+            <td >Tytuł</td>
+            <td >
                 <dx:ASPxTextBox ID="txTytul0" runat="server" Width="170px" Text='<%# Eval("tytul")%>' ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class="auto-style1">Specjalizacja opis</td>
+            <td >Specjalizacja opis</td>
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25">Imie</td>
@@ -699,11 +674,24 @@
                                <dx:TabPage Text="Dane kontaktowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                     <table style="width:100%;">
+                           <table style="width:100%;">
         <tr>
-            <td colspan="2">Adres zameldowania</td>
-            <td class="col_20">&nbsp;</td>
-            <td colspan="2">Adres korespondencyjny</td>
+            <td colspan="2">Adres </td>
+            <td class="auto-style2">&nbsp;</td>
+            <td colspan="2">Adres prywatny</td>
+        </tr>
+        <tr>
+            <td class=" normal przesuniecie prc25">Instytucja</td>
+            <td>
+                <dx:ASPxTextBox ID="txInstytucja1" runat="server" Width="170px" Text='<%# Eval("instytucja")%>' ReadOnly="true">
+                </dx:ASPxTextBox>
+            </td>
+            <td class="auto-style2">&nbsp;</td>
+            <td class=" normal przesuniecie prc25">Adres</td>
+            <td>
+                <dx:ASPxTextBox ID="txAdresKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("adr_kores")%>'  ReadOnly="true">
+                </dx:ASPxTextBox>
+            </td>
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25">Adres</td>
@@ -711,10 +699,10 @@
                 <dx:ASPxTextBox ID="txAdres0" runat="server" Width="170px" Text='<%# Eval("ulica")%>' ReadOnly="true" >
                 </dx:ASPxTextBox>
             </td>
-            <td class="col_20">&nbsp;</td>
-            <td class=" normal przesuniecie prc25">Adres</td>
+            <td class="auto-style2">&nbsp;</td>
+            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
             <td>
-                <dx:ASPxTextBox ID="txAdresKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("adr_kores")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'  ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -724,10 +712,10 @@
                 <dx:ASPxTextBox ID="txKodPocztowy0" runat="server" Width="170px" Text='<%# Eval("kod_poczt")%>'  ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
-            <td class="col_20"></td>
-            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
+            <td class="auto-style2"></td>
+            <td class=" normal przesuniecie prc25">Miejscowość</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>' ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -737,10 +725,10 @@
                 <dx:ASPxTextBox ID="txMiejscowosc0" runat="server" Width="170px" Text='<%# Eval("miejscowosc")%>' ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
-            <td class="col_20"></td>
-            <td class=" normal przesuniecie prc25">Miejscowosc</td>
+            <td class="auto-style2"></td>
+            <td class=" normal przesuniecie prc25">Telefon</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txTelefon4" runat="server" Width="170px" Text='<%# Eval("tel2")%>'  ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -750,17 +738,7 @@
                 <dx:ASPxTextBox ID="txTelefon3" runat="server" Width="170px" Text='<%# Eval("tel1")%>' ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
-            <td class="col_20">&nbsp;</td>
-            <td class="prc25 normal">&nbsp;</td>
-            <td class="prc25 normal">&nbsp;</td>
-        </tr>
-        <tr>
-            <td class=" normal przesuniecie prc25">Telefon</td>
-            <td class="prc25">
-                <dx:ASPxTextBox ID="txTelefon4" runat="server" Width="170px" Text='<%# Eval("tel2")%>'  ReadOnly="true">
-                </dx:ASPxTextBox>
-            </td>
-            <td class="col_20"></td>
+            <td class="auto-style2">&nbsp;</td>
             <td class="prc25 normal">&nbsp;</td>
             <td class="prc25 normal">&nbsp;</td>
         </tr>
@@ -770,32 +748,20 @@
                 <dx:ASPxTextBox ID="txEmail0" runat="server" Width="170px" Text='<%# Eval("email")%>' ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
-            <td class="col_20"></td>
+            <td class="auto-style2"></td>
             <td class="prc25 normal">&nbsp;</td>
             <td class="prc25 normal">&nbsp;</td>
         </tr>
         </table>
-                                         
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
                               <dx:TabPage Text="Uwagi" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                     <table style="width:100%;">
-       
-        <tr>
-            <td class=" normal przesuniecie prc25">Uwagi</td>
-            <td class="col_20">&nbsp;</td>
-            <td>
-                <dx:ASPxMemo ID="txUwagi0" runat="server" Height="99%" Width="99%" Text='<%# Eval("uwagi")%>' ReadOnly="true">
-        </dx:ASPxMemo>
-               
-            </td>
-          
-        </tr>
-      
-        </table>
+                                         <dx:ASPxMemo ID="txUwagi0" runat="server" Height="99%" Width="99%" Text='<%# Eval("uwagi")%>' ReadOnly="true">
+                                               </dx:ASPxMemo>
+                                   
                                          
                                     </dx:ContentControl>
                                 </ContentCollection>
@@ -827,12 +793,12 @@
           
         </dx:GridViewDataTextColumn>
     </Columns>
-    <SettingsEditing Mode="Batch"></SettingsEditing>
+   
 
 </dx:ASPxGridView>                            
 
         
-                   aaaa
+                   
      
                                  
                                     </dx:ContentControl>
@@ -954,6 +920,25 @@
         
         
        
+       
+                 <br />
+        <br />
+        
+        
+        
+        
+       
+        
+        
+                                     
+
+        
+          
+        
+             
+        
+        
+       
         
         
         
@@ -1002,7 +987,8 @@
         
         
        
-        
+                 
+                                         
         
      
         
@@ -1025,13 +1011,6 @@
         
         
         
-  
-        
-            
-        
-        
-        
-  
         
         <br />
         
