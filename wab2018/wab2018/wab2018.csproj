@@ -95,10 +95,6 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\..\..\wab_x\bin\NPOI.dll</HintPath>
     </Reference>
@@ -214,6 +210,7 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="userControls\specjalizacje.ascx" />
+    <Content Include="userControls\statystykiHistoria.ascx" />
     <Content Include="WAB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WAB.edmx</DependentUpon>
@@ -333,6 +330,13 @@
     </Compile>
     <Compile Include="userControls\specjalizacje.ascx.designer.cs">
       <DependentUpon>specjalizacje.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\statystykiHistoria.ascx.cs">
+      <DependentUpon>statystykiHistoria.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\statystykiHistoria.ascx.designer.cs">
+      <DependentUpon>statystykiHistoria.ascx</DependentUpon>
     </Compile>
     <Compile Include="WAB.Context.cs">
       <AutoGen>True</AutoGen>

@@ -12,56 +12,56 @@
          <Members>
           <Member Name="#dodajPowolanie(System.Int32,System.DateTime,System.DateTime,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="1449">Object 'conn' can be disposed more than once in method 'Class2.dodajPowolanie(int, DateTime, DateTime, int)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1449</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#dodajSkarge(System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.String,System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="1317">Object 'conn' can be disposed more than once in method 'Class2.dodajSkarge(int, string, string, string, string, string, string, string, bool, string, string, int)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1317, 1322</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#modyfikuj_osobe(System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.DateTime,System.DateTime,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.DateTime,System.DateTime,System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="643">Object 'conn' can be disposed more than once in method 'Class2.modyfikuj_osobe(string, int, string, string, string, string, string, DateTime, DateTime, string, string, string, string, int, string, string, string, string, string, DateTime, DateTime, string, int)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 643, 675, 680</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#tabelaStatystyczna(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="1684">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Class2.tabelaStatystyczna(string, string)' could contain the following variables 'querry'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#tabelaStatystycznaNew(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="1658">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Class2.tabelaStatystycznaNew(string)' could contain the following variables 'querry'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#update_specjalizacjiWidoku(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="801">Object 'conn' can be disposed more than once in method 'Class2.update_specjalizacjiWidoku(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 801</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#wyciagnijDaneBieglych(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="470">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Class2.wyciagnijDaneBieglych(string)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#zmien_zawieszenie(System.String,System.DateTime,System.DateTime)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="Class2.cs" Line="562">Object 'conn' can be disposed more than once in method 'Class2.zmien_zawieszenie(string, DateTime, DateTime)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 562, 567</Issue>
             </Message>
            </Messages>
@@ -72,43 +72,53 @@
          <Members>
           <Member Name="#getDataTable(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="173">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.getDataTable(string)' could contain the following variables 'Kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="194">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.getDataTable(string)' could contain the following variables 'Kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#getDataTable(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="197">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.getDataTable(string, string)' could contain the following variables 'Kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="218">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.getDataTable(string, string)' could contain the following variables 'Kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#getDataTable(System.String,System.String,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="264">Object 'conn' can be disposed more than once in method 'cm.getDataTable(string, string, DataTable)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 264</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="247">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.getDataTable(string, string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#runQuerry(System.String,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="30">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerry(string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="51">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerry(string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#runQuerry(System.String,System.String,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="64">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerry(string, string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="85">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerry(string, string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#runQuerryWithResult(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="136">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerryWithResult(string, string)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="157">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerryWithResult(string, string)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#runQuerryWithResult(System.String,System.String,System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="100">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerryWithResult(string, string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="cm.cs" Line="121">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'cm.runQuerryWithResult(string, string, DataTable)' could contain the following variables 'kwerenda'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -118,7 +128,7 @@
          <Members>
           <Member Name="#laduj_dane(System.Int32,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="import.aspx.cs" Line="128">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'import.laduj_dane(int, string, string, string, string, string)' could contain the following variables 'sqlCmd.ExecuteScalar()'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
@@ -129,8 +139,8 @@
          <Members>
           <Member Name="#robRaportjednejSpecjalizacji(System.String)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-06 12:15:09Z" FixCategory="DependsOnFix">
-             <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="wykazBieglych.aspx.cs" Line="1406">Object 'pdfDoc' can be disposed more than once in method 'wykazBieglych.robRaportjednejSpecjalizacji(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1406</Issue>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-07-07 00:39:15Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\projekts\wab_2018\wab2018\wab2018" File="wykazBieglych.aspx.cs" Line="1439">Object 'pdfDoc' can be disposed more than once in method 'wykazBieglych.robRaportjednejSpecjalizacji(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1439</Issue>
             </Message>
            </Messages>
           </Member>
@@ -147,7 +157,7 @@
   <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
    <Name>Do not dispose objects multiple times</Name>
    <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
-   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1406</Resolution>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1439</Resolution>
    <Owner>RuleOwner</Owner>
    <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
    <Email />

@@ -358,7 +358,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/04/2018 15:29:17</publishTime>
+      <publishTime>07/07/2018 02:42:47</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -508,7 +508,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2018 13:51:14</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>07/04/2018 15:12:26</publishTime>
+      <publishTime>07/07/2018 02:34:59</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
       <publishTime>07/01/2018 13:18:20</publishTime>
@@ -657,26 +657,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="userControls/specjalizacje.ascx">
       <publishTime>07/03/2018 23:14:31</publishTime>
     </File>
+    <File Include="userControls/statystykiHistoria.ascx">
+      <publishTime>07/06/2018 21:24:58</publishTime>
+    </File>
     <File Include="version.txt">
-      <publishTime>07/04/2018 02:48:04</publishTime>
+      <publishTime>07/07/2018 00:19:52</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/01/2018 22:17:01</publishTime>
+      <publishTime>07/06/2018 18:15:18</publishTime>
     </File>
     <File Include="Web.old.config">
       <publishTime>04/20/2018 08:56:12</publishTime>
     </File>
     <File Include="wykazBieglych.aspx">
-      <publishTime>07/01/2018 20:09:16</publishTime>
+      <publishTime>07/06/2018 18:14:43</publishTime>
     </File>
     <File Include="wykazMediatorow.aspx">
       <publishTime>06/22/2018 10:10:00</publishTime>
     </File>
     <File Include="wykazSkarg.aspx">
-      <publishTime>07/01/2018 14:36:01</publishTime>
+      <publishTime>07/06/2018 14:54:18</publishTime>
     </File>
     <File Include="zawieszenia.ascx">
       <publishTime>06/25/2018 15:45:08</publishTime>

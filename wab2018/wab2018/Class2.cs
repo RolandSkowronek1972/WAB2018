@@ -1768,6 +1768,43 @@ namespace wab2018
             return result;
 
         } // end of staystykiBiegłego
+        public int podajIdOsobyPoNumerzeSkargi(int idSkargi)
+        {
+            log.Info("Start funkcji podajIdOsobyPoNumerzeSkargi");
+            DataTable parameters = Common.makeParameterTable();
+            parameters.Rows.Add("@idSakargi", idSkargi);
+            try
+            {
+                return int.Parse(Common.runQuerryWithResult("SELECT idBieglego  FROM tbl_skargi where ident=@idSakargi", con_str, parameters) );
+              
+            }
+            catch (Exception)
+            {
 
+              
+            }
+
+            return 0;
+        }
+        public string podajNazwiskoOsobyPoNumerzeSkargi(int idSkargi)
+        {
+            log.Info("Start funkcji podajIdOsobyPoNumerzeSkargi");
+            DataTable parameters = Common.makeParameterTable();
+            parameters.Rows.Add("@idSakargi", idSkargi);
+            try
+            {
+                return Common.runQuerryWithResult("select distinct tbl_osoby.nazwisko from tbl_osoby join tbl_skargi on tbl_osoby .ident=tbl_skargi.idBieglego where tbl_skargi.ident=@idSakargi", con_str, parameters);
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return string.Empty;
+        }
+
+     
     }
 }

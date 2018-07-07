@@ -72,7 +72,7 @@ namespace wab2018
                                 Menu1.Items.Add(mn);
 
                                 mn = new MenuItem();
-                                mn.NavigateUrl = "wykazMediatorow.aspx";
+                                mn.NavigateUrl = "mediatorzyLista.aspx";
                                 mn.Text = "Wykaz mediatorów";
                                 Menu1.Items.Add(mn);
 
@@ -103,7 +103,7 @@ namespace wab2018
                                 Menu1.Items.Add(mn);
 
                                 mn = new MenuItem();
-                                mn.NavigateUrl = "wykazMediatorow.aspx";
+                                mn.NavigateUrl = "mediatorzyLista.aspx";
                                 mn.Text = "Wykaz mediatorów";
                                 Menu1.Items.Add(mn);
 
@@ -144,7 +144,7 @@ namespace wab2018
                                 Menu1.Items.Add(mn);
 
                                 mn = new MenuItem();
-                                mn.NavigateUrl = "wykazMediatorow.aspx";
+                                mn.NavigateUrl = "mediatorzyLista.aspx";
                                 mn.Text = "Wykaz mediatorów";
                                 Menu1.Items.Add(mn);
 
@@ -154,11 +154,7 @@ namespace wab2018
                                 mn.Text = "Nowy Biegły";
                                 Menu1.Items.Add(mn);
 
-                                mn = new MenuItem();
-                                mn.NavigateUrl = "nowyMediator.aspx";
-                                mn.Text = "Nowy mediator";
-                                Menu1.Items.Add(mn);
-
+                               
                                 mn = new MenuItem();
                                 mn.NavigateUrl = "Lista_03.aspx";
                                 mn.Text = "Obciążenia";

@@ -87,10 +87,11 @@
 
          <br />
          <asp:Panel ID="normalny" runat="server">
-             <dx:ASPxGridView ID="listaBieglych" runat="server" AutoGenerateColumns="False" DataSourceID="daneBieglych" Width="100%">
+             <dx:ASPxGridView ID="listaBieglych" runat="server" AutoGenerateColumns="False" DataSourceID="daneBieglych" Width="100%" OnBeforePerformDataSelect="listaBieglych_BeforePerformDataSelect">
                  <SettingsPager PageSize="50">
                  </SettingsPager>
                  <Settings ShowFilterRow="True" ShowFilterRowMenu="True" />
+                 <SettingsBehavior AllowFocusedRow="True" />
                  <Columns>
                        <dx:GridViewDataTextColumn VisibleIndex="0" meta:resourcekey="GridViewDataTextColumnResource1" ShowInCustomizationForm="True">
                            <Settings AllowAutoFilter="True" />
@@ -408,7 +409,7 @@
                          
                               <asp:Panel ID="Panel2" runat="server" Visible="False" meta:resourcekey="Panel2Resource1">
 
-      <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="4" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1">
+      <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Theme="Office2010Blue"  meta:resourcekey="ASPxPageControl1Resource1" TabIndex="1">
             <TabPages >
                       <dx:TabPage Text="Dane osobowe" meta:resourcekey="TabPageResource8">
                        <ContentCollection>
@@ -904,7 +905,7 @@
                                                                </dx:GridViewCommandColumn>
                                                   </Columns>
                                               </dx:ASPxGridView>
-                                              <asp:SqlDataSource ID="SqlDataSkargi2" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>"  SelectCommand="SELECT numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, ident FROM tbl_skargi WHERE (idBieglego = @idBieglego) AND (czyUs = 0)" UpdateCommand="UPDATE tbl_skargi SET numer = @numer, rok = @rok, dataWplywu = @dataWplywu, dataPisma = @dataPisma, Sygnatura = @sygnatura, wizytator = wizytator, zakreslono = zakreslono, dataZakreslenia = dataZakreslenia, uwagi = uwagi WHERE (ident = @ident)">
+                                              <asp:SqlDataSource ID="SqlDataSkargi2" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>"  SelectCommand="SELECT numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, ident FROM tbl_skargi WHERE (idBieglego = @idBieglego) AND (czyus = 0) ORDER BY numer, rok" UpdateCommand="UPDATE tbl_skargi SET numer = @numer, rok = @rok, dataWplywu = @dataWplywu, dataPisma = @dataPisma, Sygnatura = @sygnatura, wizytator = wizytator, zakreslono = zakreslono, dataZakreslenia = dataZakreslenia, uwagi = uwagi WHERE (ident = @ident)">
                                                   <SelectParameters>
                                                       <asp:SessionParameter Name="idBieglego" SessionField="id_osoby" DefaultValue="" />
                                                   </SelectParameters>

@@ -128,3 +128,4 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\Antlr3.Runtime.pdb
 C:\projekts\wab_2018\wab2018\wab2018\bin\EntityFramework.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\System.Net.Http.Formatting.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\Microsoft.AspNet.EntityDataSource.dll
+C:\projekts\wab_2018\wab2018\wab2018\bin\WebGrease.dll

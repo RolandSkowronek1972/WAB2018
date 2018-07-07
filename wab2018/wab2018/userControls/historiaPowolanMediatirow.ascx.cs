@@ -22,13 +22,13 @@ namespace wab2018
         {
 
             var a= e.AffectedRecords;
-            var b = e.Exception.Message.ToString(); 
+           
         }
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
             e.NewValues["data_od"] = DateTime.Now;
-            e.NewValues["data_do"] = DateTime.Now.AddYears(10);
+            e.NewValues["data_do"] = DateTime.Now.AddYears(5);
             string biegly = (string)Session["idMediatora"];
             e.NewValues["id_bieglego"] = biegly;
             e.NewValues["d_kreacji"] = DateTime.Now.Date;

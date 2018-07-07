@@ -34,6 +34,7 @@ namespace wab2018
                 archiwum.Visible = false;
                 normalny.Visible = true;
             }
+        
             if (ASPxPageControl1.ActiveTabIndex != 5)
             {
                 ASPxDateEdit1.Text = DateTime.Now.Date.ToShortDateString();
@@ -105,7 +106,39 @@ namespace wab2018
             string powP = (string)Session["od"];
             //  poczPowolania.Text = powP;
             //  koniecPowolania.Text = (string)Session["do"];
+            var parametr = Request.QueryString["skarga"];
+            if (parametr != null)
+            {
+                int idBieglego = cl.podajIdOsobyPoNumerzeSkargi(int.Parse(parametr));
+                string nazwisko= cl.podajNazwiskoOsobyPoNumerzeSkargi(int.Parse(parametr));
+                try
+                {
+                    var kontrolka = listaBieglych.FindFilterRowTemplateControl("Nazwisko");
+                    GridViewDataColumn kolumna = (GridViewDataColumn)listaBieglych.Columns["Nazwisko"];
+                    listaBieglych.ApplyFilterToColumn (kolumna, DevExpress.Data.Filtering.CriteriaOperator.Parse(nazwisko.Trim()).ToString());
+         //           DevExpress.Data.Filtering.CriteriaOperator.Parse("nazwisko=" + nazwisko.Trim()).ToString()
+                     
+                }
+                catch (Exception)
+                {
 
+                }
+                if (idBieglego > 0)
+                {
+                    for (int i = 0; i < listaBieglych.VisibleRowCount; i++)
+                    {
+                        DataRow dr = listaBieglych.GetDataRow(i);
+                        {
+                            var inNr = dr[9].ToString();
+                            if (idBieglego==int.Parse (inNr))
+                            {
+
+                            }
+                        }
+                    }
+
+                }
+            }
         }
 
         protected void obsługaArchiwum(object sender, EventArgs e)
@@ -1848,6 +1881,11 @@ namespace wab2018
 
             string kwerenda = DropDownList4.SelectedValue.ToString();
             pokazStatystyki(kwerenda, idBieglego);
+
+        }
+
+        protected void listaBieglych_BeforePerformDataSelect(object sender, EventArgs e)
+        {
 
         }
     }

@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Web.UI.WebControls;
 using DevExpress.Web.Data;
 using DevExpress.Web;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data;
 
 namespace wab2018
 {
     public partial class mediatorzyLista : System.Web.UI.Page
     {
         nowiMediatorzy nm = new nowiMediatorzy();
-
+        cm Cm = new cm();
         Class2 cl = new Class2();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,10 +16,17 @@ namespace wab2018
 
             if (!IsPostBack)
             {
-                grid.StartEdit(2);
+
+
+                if (Session["user_id"] == null)
+                {
+                    Server.Transfer("logowanie.aspx");
+                }
+
+          
 
                 string rola = (string)Session["rola"];
-                if (rola == "3") //read only
+                if (rola == "1") //read only
                 {
                     grid.Visible = false;
                     grid0.Visible = true;
@@ -32,6 +37,8 @@ namespace wab2018
                     grid.Visible = true;
                     grid0.Visible = false;
                 }
+             
+            //    grid.StartEdit(2);
 
             }
 
@@ -39,7 +46,7 @@ namespace wab2018
 
         protected void updateMediatora(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-
+            string txt=mediatorzy.SelectCommand;
             //dane osobowe
             e.NewValues["tytul"] = nm.controlText("txTytul", grid);
             e.NewValues["imie"] = nm.controlText("txImie", grid);
@@ -77,7 +84,7 @@ namespace wab2018
             // uwagi i specjalizacje
             e.NewValues["uwagi"] = nm.controlTextMemo("txUwagi", grid);
             e.NewValues["specjalizacja_opis"] = nm.controlTextMemo("txSpecjalizacjeOpis", grid);
-
+            e.NewValues["instytucja"] = nm.controlText("txInstytucja", grid);
 
 
         }
@@ -87,10 +94,11 @@ namespace wab2018
         {
 
             e.NewValues["data_poczatkowa"] = DateTime.Now.Date;
-            e.NewValues["data_koncowa"] = DateTime.Now.AddYears(10);
+            DateTime   dataKoncz =  DateTime.Parse ( DateTime.Now.AddYears(5).Year.ToString() +"-"+ DateTime.Now.AddMonths(1).Month .ToString("D2") + "-01").AddDays (-1);
+            e.NewValues["data_koncowa"] = dataKoncz;
             //d_zawieszenia
             e.NewValues["d_zawieszenia"] = DateTime.Now;
-            e.NewValues["dataKoncaZawieszenia"] = DateTime.Now;
+            e.NewValues["dataKoncaZawieszenia"] = dataKoncz;
             string idOsoby = cl.dodaj_osobe(2,0);
 
             Session["idMediatora"] = idOsoby;
@@ -99,28 +107,11 @@ namespace wab2018
 
         protected void grid_StartRowEditing(object sender, ASPxStartRowEditingEventArgs e)
         {
+
             string id = e.EditingKeyValue.ToString();
-
-
             Session["idMediatora"] = id;
             Session["id_osoby"] = id;
-    //        object lst = grid.GetRowValuesByKeyValue(e.EditingKeyValue,new string[] { "czy_zaw" });
-         //   ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
-      //      var txt = pageControl.FindControl("dvPassport") as object;
-          //  ASPxCheckBox zawieszenie = pageControl.FindControl("cbZawieszenie") as ASPxCheckBox;
-           // zawieszenie.Checked = (bool)lst;
-           
-            //    controlGridview();
-
-            //   ClientScriptManager sc = Page.ClientScript;
-            // sc.RegisterStartupScript(this.GetType(), "key", "alert('Hello!I am an alert box!!');", false);
-            //  Page.ClientScript.RegisterClientScriptInclude("Registration", "alert('Hello!I am an alert circle!!');");
-            // Page.RegisterStartupScript("key", "alert('Hello!I am an alert traigle!!');");
-            //var zawieszeni = lst(0);
-            //  ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
-            //  zawieszenia txt = pageControl.FindControl("zawieszenia1") as zawieszenia;
-
-
+           // ustawbaze();
         }
        
 
@@ -163,7 +154,7 @@ namespace wab2018
             // uwagi i specjalizacje
             e.NewValues["uwagi"] = nm.controlTextMemo("txUwagi", grid);
             e.NewValues["specjalizacja_opis"] = nm.controlTextMemo("txSpecjalizacjeOpis", grid);
-
+            e.NewValues["instytucja"] = nm.controlText("txInstytucja", grid);
 
 
 
@@ -208,13 +199,62 @@ namespace wab2018
             string rola = (string)Session["rola"];
             if (rola == "1") //read only
             {
-                if (e.ButtonType==ColumnCommandButtonType.New)
+                if (e.ButtonType == ColumnCommandButtonType.New)
                 {
                     e.Visible = false;
+                }
+                else
+                {
+                    e.Visible = true;
                 }
             }
         }
 
-     
+        protected void sterowanieWyboremSpecjalizacji(object sender, EventArgs e)
+        {
+            if (cbZnacznikSpecjalizacji.Checked)
+            {
+                dlSpecjalizacje.Enabled = true;
+
+            }
+            else
+            {
+                dlSpecjalizacje.Enabled = false;
+
+            }
+            ustawbaze();
+
+        }
+
+        protected void zmienWyświetlanie(object sender, EventArgs e)
+        {
+
+            ustawbaze();
+        }
+
+        protected void cbArchiwum_CheckedChanged(object sender, EventArgs e)
+        {
+            ustawbaze();
+        }
+        protected void ustawbaze()
+        {
+            string kwerendaGlowna = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa >= GETDATE())";
+            if (cbArchiwum.Checked)
+            {
+                kwerendaGlowna = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa < GETDATE())";
+
+            }
+            if (cbZnacznikSpecjalizacji.Checked)
+            {
+                string idSpecjalizacji = dlSpecjalizacje.SelectedValue.ToString().Trim();
+
+                kwerendaGlowna = kwerendaGlowna + " and (select count(*) from tbl_specjalizacje_osob where id_osoby=tbl_osoby.ident and id_specjalizacji=" + idSpecjalizacji + ")=1";
+            }
+
+            mediatorzy.SelectCommand = kwerendaGlowna;
+            mediatorzy.DataBind();
+
+
+        }
     }
 }
