@@ -14,7 +14,8 @@
             callbackPanel.PerformCallback(keyValue);
         }
     </script>
-        <br />
+       <div id ="mainWindow" style="background-color:white;" min-height:800 px;" >
+
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" DataSourceID="skargiSQL" AutoGenerateColumns="False" EnableTheming="True" Theme="Moderno" Width="100%" KeyFieldName="idSkargi">
             <Settings ShowFilterRow="True" />
                                                             
@@ -23,7 +24,7 @@
             <Columns>
                  <dx:GridViewDataColumn Caption="Details" VisibleIndex="1" Width="15%">
                 <DataItemTemplate>
-                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">More Info...</a>
+                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Edycja skargi</a>
                 </DataItemTemplate>
             </dx:GridViewDataColumn>
                 <dx:GridViewDataTextColumn Caption="Numer" FieldName="numer" ShowInCustomizationForm="True" VisibleIndex="3">
@@ -83,7 +84,6 @@
             </UpdateParameters>
         </asp:SqlDataSource>
      
-      
-    <p>
-    </p>
+      </div>
+   
 </asp:Content>

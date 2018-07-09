@@ -26,9 +26,8 @@
         open(strOpen, "Dane biegłego", "toolbar=no, location=no, directories=no, status=no, menubar=0,  copyhistory=no,scrollbars=yes, width=700, height=400, top=" + yvalue + ", left=" + xvalue);
     }
     </script>
-
-      <div id ="mainWindow" class="newPage">  Biegli 
-
+     <div id ="mainWindow" style="background-color:white; min-height:800px; min-height:800px;" >
+    
     <h2>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>

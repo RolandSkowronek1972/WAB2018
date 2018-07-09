@@ -10,18 +10,19 @@ body
     margin: 0px;
     padding: 0px;
     color: #696969;
-    background-image: -webkit-gradient(
+  /*   background-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
     color-stop(0, #6B6969),
     color-stop(0.26, #E0E0E0));
+   
 background-repeat:no-repeat;
 background-image: -o-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
 background-image: -moz-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
 background-image: -webkit-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
 background-image: -ms-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
-background-image: linear-gradient(to bottom, #6B6969 0%, #E0E0E0 26%);
+background-image: linear-gradient(to bottom, #6B6969 0%, #E0E0E0 26%);*/
 }
 
 a:link, a:visited {
@@ -184,6 +185,29 @@ first child of the left and right table columns */
 
 
 }
+
+.newPage2 {
+    
+    margin-left:30px;
+    margin-right: 30px;
+    margin-bottom:0px;
+    height:auto !important;
+/*background-color:white;*/
+min-height:600px;
+    background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #6B6969),
+    color-stop(0.26, #E0E0E0));
+   
+background-repeat:no-repeat;
+background-image: -o-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
+background-image: -moz-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
+background-image: -webkit-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
+background-image: -ms-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
+background-image: linear-gradient(to bottom, #6B6969 0%, #E0E0E0 26%);*/
+}
 .newPage {
     
     margin-left:30px;
@@ -192,6 +216,7 @@ first child of the left and right table columns */
     height:auto !important;
 background-color:white;
 min-height:600px;
+   
 }
 .page
 {
@@ -617,15 +642,6 @@ padding: 15px 24px;
 
 height: 27px;
 
-    /*
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#F0F0F0",GradientType=0);
--webkit-border-radius: 0 0 5px 5px;
--moz-border-radius: 0 0 5px 5px;
-border-radius: 0 0 5px 5px;
-border-top: 1px solid #d6d6d6;
-padding: 15px 24px;
-margin: 0 0px;
-height: 42px;*/
 }
 img[alt='Skip Navigation Links'] {
 position:absolute;

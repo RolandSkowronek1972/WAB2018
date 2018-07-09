@@ -19,7 +19,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/20/2018 11:27:49</publishTime>
     </File>
     <File Include="biegli.aspx">
-      <publishTime>06/20/2018 04:52:23</publishTime>
+      <publishTime>07/07/2018 11:09:08</publishTime>
+    </File>
+    <File Include="biegliLista.aspx">
+      <publishTime>07/07/2018 10:54:59</publishTime>
     </File>
     <File Include="biegliNaglowek.master">
       <publishTime>07/07/2018 04:22:59</publishTime>
@@ -361,7 +364,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/07/2018 06:34:09</publishTime>
+      <publishTime>07/07/2018 11:13:06</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -409,7 +412,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:28:54</publishTime>
     </File>
     <File Include="default.aspx">
-      <publishTime>04/26/2018 21:47:36</publishTime>
+      <publishTime>07/07/2018 11:09:07</publishTime>
     </File>
     <File Include="druk1.aspx">
       <publishTime>04/20/2018 12:04:07</publishTime>
@@ -490,7 +493,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2018 21:47:36</publishTime>
     </File>
     <File Include="Lista_01.aspx">
-      <publishTime>04/26/2018 21:40:36</publishTime>
+      <publishTime>07/07/2018 11:09:08</publishTime>
     </File>
     <File Include="Lista_03.aspx">
       <publishTime>04/26/2018 23:38:21</publishTime>
@@ -505,13 +508,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/07/2018 17:59:15</publishTime>
     </File>
     <File Include="logowanie.aspx">
-      <publishTime>04/26/2018 21:38:18</publishTime>
+      <publishTime>07/07/2018 11:13:00</publishTime>
     </File>
     <File Include="Master.Master">
-      <publishTime>04/30/2018 13:51:14</publishTime>
+      <publishTime>07/07/2018 10:51:32</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>07/07/2018 05:33:21</publishTime>
+      <publishTime>07/07/2018 10:58:24</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
       <publishTime>07/01/2018 13:18:20</publishTime>
@@ -649,7 +652,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 17:28:42</publishTime>
     </File>
     <File Include="Styles/Site.css">
-      <publishTime>07/07/2018 05:54:12</publishTime>
+      <publishTime>07/07/2018 10:51:25</publishTime>
     </File>
     <File Include="userControls/daneStatystyczne.ascx">
       <publishTime>06/24/2018 21:48:36</publishTime>
@@ -658,13 +661,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2018 16:47:16</publishTime>
     </File>
     <File Include="userControls/specjalizacje.ascx">
-      <publishTime>07/07/2018 02:58:55</publishTime>
+      <publishTime>07/07/2018 10:15:06</publishTime>
     </File>
     <File Include="userControls/statystykiHistoria.ascx">
       <publishTime>07/06/2018 21:24:58</publishTime>
     </File>
     <File Include="version.txt">
-      <publishTime>07/07/2018 06:34:03</publishTime>
+      <publishTime>07/07/2018 10:58:24</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>
@@ -682,7 +685,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2018 10:10:00</publishTime>
     </File>
     <File Include="wykazSkarg.aspx">
-      <publishTime>07/06/2018 14:54:18</publishTime>
+      <publishTime>07/07/2018 11:12:59</publishTime>
     </File>
     <File Include="zawieszenia.ascx">
       <publishTime>06/25/2018 15:45:08</publishTime>

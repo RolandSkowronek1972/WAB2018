@@ -9,10 +9,10 @@
     </asp:ContentPlaceHolder>
     <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body class="newPage2">
     <form id="form1" runat="server" >
         <div class="newHeader">
-            <div style="display:flex; height:100%; background: #4b6c9e; padding-left: 20px; padding-right: 20px; padding-top :30px; height: 30px ;" >
+            <div id="naglowek" style="display:flex; height:100%; background: #4b6c9e; padding-left: 20px; padding-right: 20px; padding-top :30px; height: 30px ;" >
                 <div style="width:60%">
                     <h1>
                         <asp:Label ID="Label1" runat="server" style="font-style: italic" 
@@ -44,7 +44,7 @@
                 </asp:SqlDataSource>
          </div>
             </div>
-            <div style="display:flex;  padding-left: 4%; padding-right: 4%; height: 25px ;  background-color: #3a4f63;" >
+            <div id="menuGorne" style="display:flex;  padding-left: 4%; padding-right: 4%; height: 25px ;  background-color: #3a4f63;" >
 
                        <asp:Menu ID="Menu1" runat="server"  Orientation="Horizontal" DynamicHorizontalOffset="2" ForeColor="White" Height="20px" CssClass="ax" RenderingMode="Table" Width="0%" OnMenuItemClick="Menu1_MenuItemClick" >
                   <Items>

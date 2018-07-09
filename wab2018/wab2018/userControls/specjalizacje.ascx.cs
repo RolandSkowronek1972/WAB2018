@@ -22,8 +22,7 @@ namespace wab2018.userControls
 
                 
             }
-            
-            
+           
         }
 
         protected void ASPxGridView1_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)

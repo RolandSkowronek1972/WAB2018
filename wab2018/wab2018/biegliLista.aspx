@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master"  CodeBehind="mediatorzyLista.aspx.cs" Inherits="wab2018.mediatorzyLista"  enableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master"  CodeBehind="biegliLista.aspx.cs" Inherits="wab2018.biegliLista"  enableEventValidation="false" %>
 <%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register src="userControls/historiaPowolanMediatirow.ascx" tagname="historiaPowolanMediatirow" tagprefix="uc1" %>
 <%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Data.Linq" tagprefix="dx" %>
@@ -391,7 +391,14 @@
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
-                           
+                              <dx:TabPage Text="Dane statystyczne" Visible="true">
+                                <ContentCollection>
+                                    <dx:ContentControl runat="server">
+                                          <uc2:daneStatystyczne ID="daneStatystyczne1" runat="server" />
+     
+                                    </dx:ContentControl>
+                                </ContentCollection>
+                            </dx:TabPage>
                             <dx:TabPage Text="Historia powołań" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
@@ -797,7 +804,18 @@
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
-                           
+                              <dx:TabPage Text="Dane statystyczne" Visible="true">
+                                <ContentCollection>
+                                    <dx:ContentControl runat="server">
+                                       
+  
+        
+        <uc4:statystykiHistoria ID="statystykiHistoria1" runat="server" />
+        
+     
+                                    </dx:ContentControl>
+                                </ContentCollection>
+                            </dx:TabPage>
                             <dx:TabPage Text="Historia powołań" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">

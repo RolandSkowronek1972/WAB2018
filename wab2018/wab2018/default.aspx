@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-       <div id ="mainWindow" class="newPage">   
+      <div id ="mainWindow" style="background-color:white; min-height:800px;" >
 
    <asp:Panel ID="Panel1" runat="server"  Width="100%">
     

@@ -1,11 +1,10 @@
 ﻿using System;
 using DevExpress.Web.Data;
-using DevExpress.Web;
-using System.Data;
+
 
 namespace wab2018
 {
-    public partial class mediatorzyLista : System.Web.UI.Page
+    public partial class biegliLista : System.Web.UI.Page
     {
         nowiMediatorzy nm = new nowiMediatorzy();
         cm Cm = new cm();
@@ -37,26 +36,12 @@ namespace wab2018
                     grid.Visible = true;
                     grid0.Visible = false;
                 }
-                
-
+             
+            //    grid.StartEdit(2);
 
             }
-ustawKwerendeOdczytu();
-            var parametr = Request.QueryString["skarga"];
-            if (parametr != null)
-            {
-                int idBieglego = cl.podajIdOsobyPoNumerzeSkargi(int.Parse(parametr));
-                string nazwisko = cl.podajNazwiskoOsobyPoNumerzeSkargi(int.Parse(parametr));
-                int visibleIndex = grid.FindVisibleIndexByKeyValue(idBieglego);
 
-                //Remove the items
-                grid.Selection.SelectRow(visibleIndex);
-                grid.StartEdit(visibleIndex);
-                
-                ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
-                pageControl.ActiveTabIndex = 2;
-            }
-            }
+        }
 
         protected void updateMediatora(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
@@ -121,12 +106,12 @@ ustawKwerendeOdczytu();
 
         protected void grid_StartRowEditing(object sender, ASPxStartRowEditingEventArgs e)
         {
-            //txKoniecZawieszenia.
+
             string id = e.EditingKeyValue.ToString();
             Session["idMediatora"] = id;
             Session["id_osoby"] = id;
-            // ustawbaze();
-                    }
+           // ustawbaze();
+        }
        
 
         protected void grid_RowInserting(object sender, ASPxDataInsertingEventArgs e)
@@ -204,52 +189,7 @@ ustawKwerendeOdczytu();
             var nazwisko = e.NewValues["nazwisko"];
         }
 
-       
-
-        protected void grid_BeforePerformDataSelect(object sender, EventArgs e)
-        {
-            ustawKwerendeOdczytu();
-            mediatorzy.SelectCommand = (string)Session["kwerenda"];
-        }
-
-     
-        protected void poSpecjalizacji(object sender, EventArgs e)
-        {
-            ustawKwerendeOdczytu();
-        }
-        
-        protected void ustawKwerendeOdczytu()
-        {
-            string kwerendabazowa = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa >= GETDATE())";
-            Session["kwerenda"] = kwerendabazowa;
-            if (!ASPxCheckBox1 .Checked)
-            {
-                Session["kwerenda"] = kwerendabazowa;
-            }
-            else
-            {
-                Session["kwerenda"] = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa < GETDATE())";
-            }
-            // po specjalizacji
-           
-            if (DropDownList1.Enabled && ASPxCheckBox2.Checked)
-            {
-                string specjalizacja = DropDownList1.SelectedValue;
-                string kwerenda = (string)Session["kwerenda"];
-                kwerenda = kwerenda + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
-                Session["kwerenda"] = kwerenda;
-               
-            }
-            mediatorzy.DataBind();
-
-
-        }
-
-        protected void zminaArchiwum(object sender, EventArgs e)
-        {
-
-
-        }
+      
+  
     }
-    
 }

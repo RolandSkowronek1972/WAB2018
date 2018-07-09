@@ -163,10 +163,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="biegliLista.aspx" />
     <Content Include="userControls\daneStatystyczne.ascx" />
     <Content Include="userControls\historiaPowolanMediatirow.ascx" />
     <Content Include="mediatorzyLista.aspx" />
-    <Content Include="nowyMediator.aspx" />
     <Content Include="Add_01.aspx" />
     <Content Include="admin.aspx" />
     <Content Include="biegli.aspx" />
@@ -226,7 +226,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="wykazMediatorow.aspx" />
     <Content Include="wykazBieglych.aspx" />
     <Content Include="Lista_11.aspx" />
     <Content Include="Lista_osob .ascx" />
@@ -280,6 +279,13 @@
     </Compile>
     <Compile Include="biegliNaglowek.master.designer.cs">
       <DependentUpon>biegliNaglowek.master</DependentUpon>
+    </Compile>
+    <Compile Include="biegliLista.aspx.cs">
+      <DependentUpon>biegliLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="biegliLista.aspx.designer.cs">
+      <DependentUpon>biegliLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="nowiMediatorzy.cs" />
     <Compile Include="userControls\daneStatystyczne.ascx.cs">
@@ -338,13 +344,6 @@
     </Compile>
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
-    </Compile>
-    <Compile Include="nowyMediator.aspx.cs">
-      <DependentUpon>nowyMediator.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="nowyMediator.aspx.designer.cs">
-      <DependentUpon>nowyMediator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Add_01.aspx.cs">
       <DependentUpon>Add_01.aspx</DependentUpon>
@@ -410,13 +409,6 @@
     </Compile>
     <Compile Include="Lista_03.aspx.designer.cs">
       <DependentUpon>Lista_03.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="wykazMediatorow.aspx.cs">
-      <DependentUpon>wykazMediatorow.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="wykazMediatorow.aspx.designer.cs">
-      <DependentUpon>wykazMediatorow.aspx</DependentUpon>
     </Compile>
     <Compile Include="wykazBieglych.aspx.cs">
       <DependentUpon>wykazBieglych.aspx</DependentUpon>

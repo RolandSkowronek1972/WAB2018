@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+     <div id ="mainWindow" style="background-color:white; min-height:800px;" >
        <div id="tableX" style="z-index: 9999;
     top: 115px;
     position: absolute;
@@ -444,4 +444,5 @@
 
 
       </div>
+         </div>
 </asp:Content>

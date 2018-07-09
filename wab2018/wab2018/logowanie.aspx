@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <br />
-    <div id ="mainWindow" class="newPage"> 
+     
+    <div id ="mainWindow" style="background-color:white;" min-height:800 px;" >
         <br />
         <br />
         <br />
