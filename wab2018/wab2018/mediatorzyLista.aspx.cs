@@ -1,7 +1,13 @@
 ﻿using System;
 using DevExpress.Web.Data;
 using DevExpress.Web;
-using System.Data;
+using System.Configuration;
+using System.IO;
+using DevExpress.XtraPrinting;
+using System.Web;
+using System.Net;
+using System.Net.Mime;
+
 
 namespace wab2018
 {
@@ -41,7 +47,7 @@ namespace wab2018
 
 
             }
-ustawKwerendeOdczytu();
+            ustawKwerendeOdczytu();
             var parametr = Request.QueryString["skarga"];
             if (parametr != null)
             {
@@ -231,15 +237,25 @@ ustawKwerendeOdczytu();
                 Session["kwerenda"] = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa < GETDATE())";
             }
             // po specjalizacji
-           
-            if (DropDownList1.Enabled && ASPxCheckBox2.Checked)
+            if (DropDownList1.SelectedIndex==-1)
             {
-                string specjalizacja = DropDownList1.SelectedValue;
-                string kwerenda = (string)Session["kwerenda"];
-                kwerenda = kwerenda + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
-                Session["kwerenda"] = kwerenda;
-               
+                DropDownList1.SelectedIndex = 0;
             }
+            string kwerenda=(string)Session["kwerenda"];
+            try
+            {
+                if (ASPxCheckBox2.Checked)
+                {
+                    string specjalizacja = DropDownList1.SelectedValue;
+                  
+                    kwerenda = kwerenda + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
+                }
+               
+                
+            }
+            catch (Exception)
+            {   }
+            Session["kwerenda"] = kwerenda;
             mediatorzy.DataBind();
 
 
@@ -248,8 +264,66 @@ ustawKwerendeOdczytu();
         protected void zminaArchiwum(object sender, EventArgs e)
         {
 
+            ustawKwerendeOdczytu();
+        }
+
+        protected void ASPxCheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            DropDownList1.Enabled = ASPxCheckBox2.Checked;
+            ustawKwerendeOdczytu();
+        }
+
+        protected void _print(object sender, EventArgs e)
+        {
+            
+            using (MemoryStream ms = new MemoryStream())
+            {
+                PrintableComponentLink pcl = new PrintableComponentLink(new PrintingSystem());
+                //listaBieglych.Columns[0].Visible = false;
+                
+                ASPxGridViewExporter1.FileName = "Wykaz biegłych";
+                pcl.Component = ASPxGridViewExporter1;
+
+                pcl.Margins.Left = pcl.Margins.Right = 50;
+                pcl.Landscape = true;
+                pcl.CreateDocument(false);
+                pcl.PrintingSystem.Document.AutoFitToPagesWidth = 1;
+                pcl.ExportToPdf(ms);
+                WriteResponse(this.Response, ms.ToArray(), System.Net.Mime.DispositionTypeNames.Inline.ToString());
+            }
+            //  ASPxGridViewExporter1..GridView = ASPxGridView2;
+            /*PxGridViewExporter1.PrintSelectCheckBox = true;
+            ASPxGridViewExporter1.Landscape = true;
+
+            
+            ASPxGridViewExporter1.Landscape = true;
+            
+            ASPxGridViewExporter1.WritePdfToResponse();
+            */
+            //listaBieglych.Columns["Column"].Visible = true;
+        }
+        public static void WriteResponse(HttpResponse response, byte[] filearray, string type)
+        {
+            response.ClearContent();
+            response.Buffer = true;
+            response.Cache.SetCacheability(HttpCacheability.Private);
+            response.ContentType = "application/pdf";
+            ContentDisposition contentDisposition = new ContentDisposition();
+            contentDisposition.FileName = "test.pdf";
+            contentDisposition.DispositionType = type;
+            response.AddHeader("Content-Disposition", contentDisposition.ToString());
+            response.BinaryWrite(filearray);
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
+            try
+            {
+                response.End();
+            }
+            catch (System.Threading.ThreadAbortException)
+            {
+            }
 
         }
+
     }
-    
+
 }

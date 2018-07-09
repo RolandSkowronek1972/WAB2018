@@ -18,17 +18,19 @@
             width: 20px;
             height: 21px;
         }
+        .auto-style5 {
+            font-size: medium;
+        }
+        .auto-style6 {
+            width: 604px;
+        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript">
         var index = -1;
-        function heja() {
-         
-            
-             
-        }
+       
         function grid_RowClick(s, e) {
             if (tabelaSpecjalizacji.IsEditing() == true) {
                 index = e.visibleIndex;
@@ -55,17 +57,27 @@
     <div id ="mainWindow" style="background-color:white;" onload="ShowHideDivX()">
    
         <h2>          &nbsp; Wykaz mediatorów sądowych</h2>   <br />
-    &nbsp;
-        <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="zminaArchiwum" Text="Archiwum">
-        </dx:ASPxCheckBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px">
-        </dx:ASPxCheckBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Specjalizacje:&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="28px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="88px">
-        </asp:DropDownList>
         <asp:SqlDataSource ID="daneSpecjalizacji" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT id_, nazwa FROM glo_specjalizacje WHERE (grupa = 1000) ORDER BY nazwa"></asp:SqlDataSource>
-        <br />
+        <table style="width:100%;">
+            <tr>
+                <td style="width: 60%; vertical-align: bottom;">
+                    <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="zminaArchiwum" Text="Archiwum" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+                <td class="auto-style5" style="width: 10%; vertical-align: bottom;">
+                    Specjalizacje:</td>
+                <td style="width: 10%; vertical-align: bottom;">&nbsp;<dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px" OnCheckedChanged="ASPxCheckBox2_CheckedChanged" AutoPostBack="True" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+                <td style="width: 10%; vertical-align: bottom;">
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="32px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="99px">
+                    </asp:DropDownList>
+                </td>
+                <td style="width: 10%; vertical-align: bottom;">
+                    <asp:Button ID="Button1" runat="server" OnClick="_print" Text="Twórz zestawienie" CssClass="dxbButton" />
+                </td>
+            </tr>
+        </table>
     <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' ViewStateMode="Enabled" AutoGenerateColumns="False" OnBeforePerformDataSelect="grid_BeforePerformDataSelect">
         <Settings ShowFilterRow="True" />
         <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True" />
@@ -112,7 +124,7 @@
            
         </Columns>
            
-        <SettingsPager AlwaysShowPager="True" PageSize="5" />
+        <SettingsPager AlwaysShowPager="True" PageSize="200" />
         
         
          <ClientSideEvents RowExpanding="function(s, e) {
@@ -132,11 +144,11 @@
                             <dx:TabPage Text="Dane osobowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                       <table style="width:100%;" onload ="heja();">
+                       <table style="width:100%;" >
         <tr>
             <td >Tytuł</td>
             <td >
-                <dx:ASPxTextBox ID="txTytul" runat="server" Width="170px" Text='<%# Eval("tytul")%>'>
+                <dx:ASPxTextBox ID="txTytul" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("tytul")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
@@ -145,7 +157,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Imie</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px" Text='<%# Eval("imie")%>' >
+                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("imie")%>' >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -153,14 +165,14 @@
             </td>
             <td class="col_20"></td>
             <td class="prc50 normal " rowspan="7">
-                <dx:ASPxMemo ID="txSpecjalizacjeOpis" runat="server" Height="100%" Width="99%" Text='<%# Eval("specjalizacja_opis")%>'>
+                <dx:ASPxMemo ID="txSpecjalizacjeOpis" runat="server" Height="100%"  Theme="Moderno"  Width="99%" Text='<%# Eval("specjalizacja_opis")%>'>
                 </dx:ASPxMemo>
             </td>
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25">Nazwisko</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px" Text='<%# Eval("nazwisko")%>'  >
+                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("nazwisko")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -173,7 +185,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">PESEL</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px" Text='<%# Eval("Pesel")%>' >
+                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("Pesel")%>' >
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -182,7 +194,7 @@
             <td class=" normal przesuniecie prc25">Data powołania od: </td>
             <td class="prc25">
               
-                         <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'> 
+                         <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server"  Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'> 
                 </dx:ASPxDateEdit>
                     
                  
@@ -193,7 +205,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Data powołania do: </td>
             <td class="dxflEmptyItem">
-                <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5).Year"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
+                <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server"  Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5).Year"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
                 </dx:ASPxDateEdit>
             </td>
             <td class="col_20"></td>
@@ -249,8 +261,7 @@
         <tr>
             <td colspan="2" class=" normal przesuniecie prc25"> 
          
-                <div id="dvPassport" style="display: none">
-          
+            
                      <table style="width:100%;">
                 <tr>
                     <td  class="prc50">Data początku zawieszenia</td>
@@ -270,7 +281,7 @@
                 </tr>
                
             </table>
-                </div>
+               
         
             </td>
        
@@ -300,14 +311,14 @@
                                     <dx:ContentControl runat="server">
                                 <table style="width:100%;">
         <tr>
-            <td colspan="2" class="auto-style3">Adres</td>
+            <td colspan="2" class="auto-style3"><b>Adres</b></td>
             <td class="auto-style4"></td>
-            <td colspan="2" class="auto-style3">Adres prywatny</td>
+            <td colspan="2" class="auto-style3"><b>Adres prywatny</b></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Instyrucja</td>
+            <td class=" normal przesuniecie prc25">Instytucja</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
+                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -540,7 +551,7 @@
                                         <tr>
             <td class=" normal przesuniecie prc25">Instytucja</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txInstytucja0" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'  >
+                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -584,37 +595,7 @@
                 
          
             <dx:ASPxCheckBox ID="cbZawieszenie0" runat="server"    Checked='<%# Eval("czy_zaw") != null ? Eval("czy_zaw") : false %>'   Text="Zawieszenie" Theme="Moderno" CheckState="Unchecked"  ReadOnly="true"> 
-            <ClientSideEvents 
-                
-                CheckedChanged="function(s, e) {
-	         var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
-                    if (s.GetCheckState() ==&quot;Checked&quot;)
-                    {
-                        
-                        dvPassport.style.display = &quot;block&quot; ;
-                                    }
-                    else
-                    {
-                         dvPassport.style.display = &quot;none&quot; ;
-                
-                    }
-                }" ValueChanged="function(s, e) {
-                alert('zmiana');
-	 var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
-                    if (s.GetCheckState() ==&quot;Checked&quot;)
-                    {
-                        
-                        dvPassport.style.display = &quot;block&quot; ;
-                                    }
-                    else
-                    {
-                         dvPassport.style.display = &quot;none&quot; ;
-                
-                    }
-
-}" />
+          
         </dx:ASPxCheckBox>
            
               
@@ -629,7 +610,7 @@
         <tr>
             <td colspan="2" class=" normal przesuniecie prc25"> 
          
-                <div id="dvPassport0" style="display: none">
+                <div id="dvPassport0" style="display: block">
                     JavaScript can change the style of an HTML element.
                      <table style="width:100%;">
                 <tr>
@@ -839,7 +820,7 @@
         
     
     <br />
-      <asp:SqlDataSource ID="mediatorzy" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa &gt;= GETDATE()) order by nazwisko" DeleteCommand="UPDATE tbl_osoby SET czyus = 1, d_usuniecia = GETDATE(), id_usuwajacego = @id_usuwajacego WHERE (ident = @ident)" UpdateCommand="UPDATE tbl_osoby SET instytucja=@instytucja, imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = @pesel, tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia, ostatniaAktualizacja=GetDate() WHERE (ident = @ident)" InsertCommand="UPDATE tbl_osoby SET imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = (SELECT CASE WHEN COALESCE (@pesel , '') = '' THEN 0 ELSE @pesel END AS IsNullOrEmpty), tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia WHERE (ident = @ident)">
+      <asp:SqlDataSource ID="mediatorzy" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa &gt;= GETDATE()) order by nazwisko" DeleteCommand="UPDATE tbl_osoby SET czyus = 1, d_usuniecia = GETDATE(), id_usuwajacego = @id_usuwajacego WHERE (ident = @ident)" UpdateCommand="UPDATE tbl_osoby SET imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = @pesel, tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia, ostatniaAktualizacja = GETDATE(), instytucja = @instytucja WHERE (ident = @ident)" InsertCommand="UPDATE tbl_osoby SET imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = (SELECT CASE WHEN COALESCE (@pesel , '') = '' THEN 0 ELSE @pesel END AS IsNullOrEmpty), tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia WHERE (ident = @ident)">
           <DeleteParameters>
               <asp:SessionParameter Name="id_usuwajacego" SessionField="id_usuwajacego"/>
               <asp:SessionParameter Name="ident" SessionField="ident"/>
@@ -871,7 +852,6 @@
           </InsertParameters>
          
           <UpdateParameters>
-                 <asp:Parameter Name="instytucja"  />
               <asp:Parameter Name="imie" />
               <asp:Parameter Name="nazwisko" />
               <asp:Parameter Name="ulica" />
@@ -893,9 +873,29 @@
               <asp:Parameter Name="specjalizacjeWidok" />
               <asp:Parameter Name="specjalizacja_opis" />
               <asp:Parameter Name="dataKoncaZawieszenia" />
+                 <asp:Parameter Name="instytucja"  />
               <asp:Parameter Name="ident" />
           </UpdateParameters>
     </asp:SqlDataSource>
+        
+        
+        
+        
+       
+        
+        
+                                     
+
+        
+          
+        
+        
+        
+        
+       
+       
+                 <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server">
+        </dx:ASPxGridViewExporter>
         
         
         

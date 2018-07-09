@@ -18,6 +18,9 @@
             width: 20px;
             height: 21px;
         }
+        .auto-style5 {
+            font-size: medium;
+        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -55,7 +58,25 @@
     <div id ="mainWindow" style="background-color:white;" onload="ShowHideDivX()">
    
         <h2>          &nbsp; Wykaz mediatorów sądowych</h2>   <br />
-    <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' ViewStateMode="Enabled">
+        <asp:SqlDataSource ID="daneSpecjalizacji" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT id_, nazwa FROM glo_specjalizacje WHERE (grupa = 1000) ORDER BY nazwa"></asp:SqlDataSource>
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="zminaArchiwum" Text="Archiwum" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+                <td class="auto-style5">
+                    Specjalizacje:</td>
+                <td>&nbsp;<dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px" OnCheckedChanged="ASPxCheckBox2_CheckedChanged" AutoPostBack="True" Theme="Moderno">
+                    </dx:ASPxCheckBox>
+                </td>
+                <td>
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="32px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="99px">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+        </table>
+    <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' ViewStateMode="Enabled" AutoGenerateColumns="False" OnBeforePerformDataSelect="grid_BeforePerformDataSelect">
         <Settings ShowFilterRow="True" />
         <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True" />
         <SettingsDataSecurity AllowDelete="False" />
@@ -101,7 +122,7 @@
            
         </Columns>
            
-        <SettingsPager Mode="ShowAllRecords" />
+        <SettingsPager AlwaysShowPager="True" PageSize="20" />
         
         
          <ClientSideEvents RowExpanding="function(s, e) {
@@ -182,7 +203,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Data powołania do: </td>
             <td class="dxflEmptyItem">
-                <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5)"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
+                <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5).Year"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
                 </dx:ASPxDateEdit>
             </td>
             <td class="col_20"></td>
@@ -244,7 +265,7 @@
                 <tr>
                     <td  class="prc50">Data początku zawieszenia</td>
                     <td>                                                                                
-                        <dx:ASPxDateEdit ID="txPoczatekZawieszenia" runat="server" Theme="Moderno"  Value='<%# ((Eval("d_zawieszenia")) == null) ? Eval("now"): Eval("d_zawieszenia") %>'> 
+                        <dx:ASPxDateEdit ID="txPoczatekZawieszenia" runat="server" Theme="Moderno"  Value='<%# (Convert.ToDateTime (Eval("d_zawieszenia")) ==Convert.ToDateTime ( "1900-01-01 00:00:00.000")) ? Eval("now"): Eval("d_zawieszenia") %>'> 
                           
                         </dx:ASPxDateEdit>
                     </td>
@@ -252,7 +273,7 @@
                 <tr>
                     <td>Data końca zawieszenia</td>
                     <td>
-                        <dx:ASPxDateEdit ID="txKoniecZawieszenia" runat="server" Theme="Moderno"  Value='<%# ((Eval("dataKoncaZawieszenia")) == null) ? Eval(  "now.AddYear(5)"+":"+"DateTime.Now.Month"+":30") : Eval("dataKoncaZawieszenia") %>'> 
+                        <dx:ASPxDateEdit ID="txKoniecZawieszenia" runat="server" Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("dataKoncaZawieszenia")) == Convert.ToDateTime ( "1900-01-01 00:00:00.000")) ? ( Convert.ToString( DateTime.Parse ( DateTime.Now.AddYears(5).Year.ToString() +"-"+ DateTime.Now.AddMonths(1).Month .ToString("D2") + "-01").AddDays (-1) )) : Eval("dataKoncaZawieszenia") %>'> 
                             
                         </dx:ASPxDateEdit>
                     </td>
@@ -289,12 +310,12 @@
                                     <dx:ContentControl runat="server">
                                 <table style="width:100%;">
         <tr>
-            <td colspan="2" class="auto-style3">Adres</td>
+            <td colspan="2" class="auto-style3"><b>Adres</b></td>
             <td class="auto-style4"></td>
-            <td colspan="2" class="auto-style3">Adres prywatny</td>
+            <td colspan="2" class="auto-style3"><b>Adres prywatny</b></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Instyrucja</td>
+            <td class=" normal przesuniecie prc25">Instytucja</td>
             <td>
                 <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
                 </dx:ASPxTextBox>
@@ -828,7 +849,7 @@
         
     
     <br />
-      <asp:SqlDataSource ID="mediatorzy" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa &gt;= GETDATE())" DeleteCommand="UPDATE tbl_osoby SET czyus = 1, d_usuniecia = GETDATE(), id_usuwajacego = @id_usuwajacego WHERE (ident = @ident)" UpdateCommand="UPDATE tbl_osoby SET instytucja=@instytucja, imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = @pesel, tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia WHERE (ident = @ident)" InsertCommand="UPDATE tbl_osoby SET imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = (SELECT CASE WHEN COALESCE (@pesel , '') = '' THEN 0 ELSE @pesel END AS IsNullOrEmpty), tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia WHERE (ident = @ident)">
+      <asp:SqlDataSource ID="mediatorzy" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT DISTINCT ulica, kod_poczt, miejscowosc, czy_zaw, tel2, email, d_zawieszenia, dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ = 2) AND (data_koncowa &gt;= GETDATE()) order by nazwisko" DeleteCommand="UPDATE tbl_osoby SET czyus = 1, d_usuniecia = GETDATE(), id_usuwajacego = @id_usuwajacego WHERE (ident = @ident)" UpdateCommand="UPDATE tbl_osoby SET imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = @pesel, tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia, ostatniaAktualizacja = GETDATE(), instytucja = @instytucja WHERE (ident = @ident)" InsertCommand="UPDATE tbl_osoby SET imie = @imie, nazwisko = @nazwisko, ulica = @ulica, kod_poczt = @kod_poczt, miejscowosc = @miejscowosc, data_poczatkowa = @data_poczatkowa, data_koncowa = @data_koncowa, pesel = (SELECT CASE WHEN COALESCE (@pesel , '') = '' THEN 0 ELSE @pesel END AS IsNullOrEmpty), tytul = @tytul, czy_zaw = @czy_zaw, tel1 = @tel1, tel2 = @tel2, email = @email, adr_kores = @adr_kores, kod_poczt_kor = @kod_poczt_kor, miejscowosc_kor = @miejscowosc_kor, uwagi = @uwagi, d_zawieszenia = @d_zawieszenia, specjalizacjeWidok = @specjalizacjeWidok, specjalizacja_opis = @specjalizacja_opis, dataKoncaZawieszenia = @dataKoncaZawieszenia WHERE (ident = @ident)">
           <DeleteParameters>
               <asp:SessionParameter Name="id_usuwajacego" SessionField="id_usuwajacego"/>
               <asp:SessionParameter Name="ident" SessionField="ident"/>
@@ -856,34 +877,33 @@
               <asp:Parameter Name="specjalizacjeWidok" />
               <asp:Parameter Name="specjalizacja_opis" />
               <asp:Parameter Name="dataKoncaZawieszenia" />
-              <asp:Parameter Name="instytucja" />
                <asp:SessionParameter Name="ident" SessionField="id_osoby"/>
           </InsertParameters>
          
           <UpdateParameters>
-              <asp:Parameter Name="imie"   />
-              <asp:Parameter Name="nazwisko"  />
-              <asp:Parameter Name="ulica"  />
-              <asp:Parameter Name="kod_poczt"   />
-              <asp:Parameter Name="miejscowosc"  />
-              <asp:Parameter Name="data_poczatkowa"   />
-              <asp:Parameter Name="data_koncowa"  />
-              <asp:Parameter Name="pesel"  />
+              <asp:Parameter Name="imie" />
+              <asp:Parameter Name="nazwisko" />
+              <asp:Parameter Name="ulica" />
+              <asp:Parameter Name="kod_poczt" />
+              <asp:Parameter Name="miejscowosc" />
+              <asp:Parameter Name="data_poczatkowa" />
+              <asp:Parameter Name="data_koncowa" />
+              <asp:Parameter Name="pesel" />
               <asp:Parameter Name="tytul"  />
               <asp:Parameter Name="czy_zaw"  />
-              <asp:Parameter Name="tel1"  />
-              <asp:Parameter Name="tel2"  />
+              <asp:Parameter Name="tel1"   />
+              <asp:Parameter Name="tel2"   />
               <asp:Parameter Name="email"  />
               <asp:Parameter Name="adr_kores"  />
-              <asp:Parameter Name="kod_poczt_kor"  />
-              <asp:Parameter Name="miejscowosc_kor"  />
-              <asp:Parameter Name="uwagi"   />
-              <asp:Parameter Name="d_zawieszenia"  />
-              <asp:Parameter Name="specjalizacjeWidok"   />
-              <asp:Parameter Name="specjalizacja_opis"   />
-              <asp:Parameter Name="dataKoncaZawieszenia"   />
-              <asp:Parameter Name="ident"  />
+              <asp:Parameter Name="kod_poczt_kor" />
+              <asp:Parameter Name="miejscowosc_kor" />
+              <asp:Parameter Name="uwagi" />
+              <asp:Parameter Name="d_zawieszenia" />
+              <asp:Parameter Name="specjalizacjeWidok" />
+              <asp:Parameter Name="specjalizacja_opis" />
+              <asp:Parameter Name="dataKoncaZawieszenia" />
                  <asp:Parameter Name="instytucja"  />
+              <asp:Parameter Name="ident" />
           </UpdateParameters>
     </asp:SqlDataSource>
         

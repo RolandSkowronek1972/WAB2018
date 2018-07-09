@@ -18,22 +18,24 @@
             </SelectParameters>
            
         </asp:SqlDataSource>    
-<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="specjalizacjeOsob" KeyFieldName="idSpecjalizacji" OnRowUpdating="ASPxGridView1_RowUpdating" Theme="Moderno" EnableTheming="True" Width="100%">
+<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="specjalizacjeOsob" KeyFieldName="idSpecjalizacji" OnRowUpdating="ASPxGridView1_RowUpdating" Theme="Moderno" EnableTheming="True" Width="90%">
     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" />
     <Columns>
-        <dx:GridViewDataTextColumn FieldName="Row" ReadOnly="True" Visible="False" VisibleIndex="2">
+        <dx:GridViewDataTextColumn FieldName="Row" ReadOnly="True" Visible="False" VisibleIndex="3">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataCheckColumn FieldName="stab" VisibleIndex="0" Caption="Posiadana specjalizacja">
+        <dx:GridViewDataCheckColumn FieldName="stab" VisibleIndex="0" Caption="Posiadana specjalizacja" Width="25%">
         </dx:GridViewDataCheckColumn>
-        <dx:GridViewDataTextColumn FieldName="nazwa" ReadOnly="True" VisibleIndex="1" Caption="Nazwa specjalizacji">
+        <dx:GridViewDataTextColumn FieldName="nazwa" ReadOnly="True" VisibleIndex="1" Caption="Nazwa specjalizacji" Width="25%">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="idSpecjalizacji" Visible="False" VisibleIndex="3">
+        <dx:GridViewDataTextColumn FieldName="idSpecjalizacji" Visible="False" VisibleIndex="4">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="idOsoby" Visible="False" VisibleIndex="4">
+        <dx:GridViewDataTextColumn FieldName="idOsoby" Visible="False" VisibleIndex="5">
             <EditItemTemplate>
                 <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text='<%# Eval("idOsoby") %>'>
                 </dx:ASPxLabel>
             </EditItemTemplate>
+        </dx:GridViewDataTextColumn>
+        <dx:GridViewDataTextColumn Caption="Opis" ReadOnly="True" VisibleIndex="2" Width="50%">
         </dx:GridViewDataTextColumn>
     </Columns>
     <SettingsEditing Mode="Batch"></SettingsEditing>

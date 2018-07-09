@@ -364,7 +364,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/07/2018 11:13:06</publishTime>
+      <publishTime>07/09/2018 13:25:35</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -514,7 +514,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2018 10:51:32</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>07/07/2018 10:58:24</publishTime>
+      <publishTime>07/09/2018 13:25:26</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
       <publishTime>07/01/2018 13:18:20</publishTime>
@@ -667,7 +667,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/06/2018 21:24:58</publishTime>
     </File>
     <File Include="version.txt">
-      <publishTime>07/07/2018 10:58:24</publishTime>
+      <publishTime>07/09/2018 13:25:27</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>
