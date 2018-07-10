@@ -21,17 +21,16 @@
         .auto-style5 {
             font-size: medium;
         }
+        .auto-style6 {
+            width: 604px;
+        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript">
         var index = -1;
-        function heja() {
-         
-            
-             
-        }
+       
         function grid_RowClick(s, e) {
             if (tabelaSpecjalizacji.IsEditing() == true) {
                 index = e.visibleIndex;
@@ -61,18 +60,21 @@
         <asp:SqlDataSource ID="daneSpecjalizacji" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT id_, nazwa FROM glo_specjalizacje WHERE (grupa = 1000) ORDER BY nazwa"></asp:SqlDataSource>
         <table style="width:100%;">
             <tr>
-                <td>
+                <td style="width: 60%; vertical-align: bottom;">
                     <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="zminaArchiwum" Text="Archiwum" Theme="Moderno">
                     </dx:ASPxCheckBox>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style5" style="width: 10%; vertical-align: bottom;">
                     Specjalizacje:</td>
-                <td>&nbsp;<dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px" OnCheckedChanged="ASPxCheckBox2_CheckedChanged" AutoPostBack="True" Theme="Moderno">
+                <td style="width: 10%; vertical-align: bottom;">&nbsp;<dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px" OnCheckedChanged="ASPxCheckBox2_CheckedChanged" AutoPostBack="True" Theme="Moderno">
                     </dx:ASPxCheckBox>
                 </td>
-                <td>
+                <td style="width: 10%; vertical-align: bottom;">
                     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="32px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="99px">
                     </asp:DropDownList>
+                </td>
+                <td style="width: 10%; vertical-align: bottom;">
+                    <asp:Button ID="Button1" runat="server" OnClick="_print" Text="Twórz zestawienie" CssClass="dxbButton" />
                 </td>
             </tr>
         </table>
@@ -122,7 +124,7 @@
            
         </Columns>
            
-        <SettingsPager AlwaysShowPager="True" PageSize="20" />
+        <SettingsPager AlwaysShowPager="True" PageSize="200" />
         
         
          <ClientSideEvents RowExpanding="function(s, e) {
@@ -142,11 +144,11 @@
                             <dx:TabPage Text="Dane osobowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                       <table style="width:100%;" onload ="heja();">
+                       <table style="width:100%;" >
         <tr>
             <td >Tytuł</td>
             <td >
-                <dx:ASPxTextBox ID="txTytul" runat="server" Width="170px" Text='<%# Eval("tytul")%>'>
+                <dx:ASPxTextBox ID="txTytul" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("tytul")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
@@ -155,7 +157,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Imie</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px" Text='<%# Eval("imie")%>' >
+                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("imie")%>' >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -163,14 +165,14 @@
             </td>
             <td class="col_20"></td>
             <td class="prc50 normal " rowspan="7">
-                <dx:ASPxMemo ID="txSpecjalizacjeOpis" runat="server" Height="100%" Width="99%" Text='<%# Eval("specjalizacja_opis")%>'>
+                <dx:ASPxMemo ID="txSpecjalizacjeOpis" runat="server" Height="100%"  Theme="Moderno"  Width="99%" Text='<%# Eval("specjalizacja_opis")%>'>
                 </dx:ASPxMemo>
             </td>
         </tr>
         <tr>
             <td class=" normal przesuniecie prc25">Nazwisko</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px" Text='<%# Eval("nazwisko")%>'  >
+                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("nazwisko")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -183,7 +185,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">PESEL</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px" Text='<%# Eval("Pesel")%>' >
+                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("Pesel")%>' >
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -192,7 +194,7 @@
             <td class=" normal przesuniecie prc25">Data powołania od: </td>
             <td class="prc25">
               
-                         <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'> 
+                         <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server"  Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'> 
                 </dx:ASPxDateEdit>
                     
                  
@@ -203,7 +205,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Data powołania do: </td>
             <td class="dxflEmptyItem">
-                <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5).Year"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
+                <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server"  Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5).Year"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
                 </dx:ASPxDateEdit>
             </td>
             <td class="col_20"></td>
@@ -259,8 +261,7 @@
         <tr>
             <td colspan="2" class=" normal przesuniecie prc25"> 
          
-                <div id="dvPassport" style="display: none">
-          
+            
                      <table style="width:100%;">
                 <tr>
                     <td  class="prc50">Data początku zawieszenia</td>
@@ -280,7 +281,7 @@
                 </tr>
                
             </table>
-                </div>
+               
         
             </td>
        
@@ -317,7 +318,7 @@
         <tr>
             <td class=" normal przesuniecie prc25">Instytucja</td>
             <td>
-                <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
+                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -550,7 +551,7 @@
                                         <tr>
             <td class=" normal przesuniecie prc25">Instytucja</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txInstytucja0" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'  >
+                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -594,37 +595,7 @@
                 
          
             <dx:ASPxCheckBox ID="cbZawieszenie0" runat="server"    Checked='<%# Eval("czy_zaw") != null ? Eval("czy_zaw") : false %>'   Text="Zawieszenie" Theme="Moderno" CheckState="Unchecked"  ReadOnly="true"> 
-            <ClientSideEvents 
-                
-                CheckedChanged="function(s, e) {
-	         var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
-                    if (s.GetCheckState() ==&quot;Checked&quot;)
-                    {
-                        
-                        dvPassport.style.display = &quot;block&quot; ;
-                                    }
-                    else
-                    {
-                         dvPassport.style.display = &quot;none&quot; ;
-                
-                    }
-                }" ValueChanged="function(s, e) {
-                alert('zmiana');
-	 var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
-                    if (s.GetCheckState() ==&quot;Checked&quot;)
-                    {
-                        
-                        dvPassport.style.display = &quot;block&quot; ;
-                                    }
-                    else
-                    {
-                         dvPassport.style.display = &quot;none&quot; ;
-                
-                    }
-
-}" />
+          
         </dx:ASPxCheckBox>
            
               
@@ -639,7 +610,7 @@
         <tr>
             <td colspan="2" class=" normal przesuniecie prc25"> 
          
-                <div id="dvPassport0" style="display: none">
+                <div id="dvPassport0" style="display: block">
                     JavaScript can change the style of an HTML element.
                      <table style="width:100%;">
                 <tr>
@@ -906,6 +877,25 @@
               <asp:Parameter Name="ident" />
           </UpdateParameters>
     </asp:SqlDataSource>
+        
+        
+        
+        
+       
+        
+        
+                                     
+
+        
+          
+        
+        
+        
+        
+       
+       
+                 <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server">
+        </dx:ASPxGridViewExporter>
         
         
         

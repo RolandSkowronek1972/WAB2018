@@ -67,7 +67,7 @@ namespace wab2018
                                 Menu1.Items.Add(mn);
 
                                 mn = new MenuItem();
-                                mn.NavigateUrl = "wykazBieglych.aspx";
+                                mn.NavigateUrl = "biegliLista.aspx";
                                 mn.Text = "Wykaz biegłych";
                                 Menu1.Items.Add(mn);
 
@@ -98,7 +98,7 @@ namespace wab2018
 
 
                                 mn = new MenuItem();
-                                mn.NavigateUrl = "wykazBieglych.aspx";
+                                mn.NavigateUrl = "biegliLista.aspx";
                                 mn.Text = "Wykaz biegłych";
                                 Menu1.Items.Add(mn);
 
@@ -107,11 +107,7 @@ namespace wab2018
                                 mn.Text = "Wykaz mediatorów";
                                 Menu1.Items.Add(mn);
 
-                                mn = new MenuItem();
-                                mn.NavigateUrl = "Add_01.aspx";
-                                mn.Text = "Nowy Biegły";
-                                Menu1.Items.Add(mn);
-
+                                
                                 mn = new MenuItem();
                                 mn.NavigateUrl = "Lista_03.aspx";
                                 mn.Text = "Obciążenia";
@@ -139,7 +135,7 @@ namespace wab2018
 
 
                                 mn = new MenuItem();
-                                mn.NavigateUrl = "wykazBieglych.aspx";
+                                mn.NavigateUrl = "biegliLista.aspx";
                                 mn.Text = "Wykaz biegłych";
                                 Menu1.Items.Add(mn);
 
@@ -148,13 +144,7 @@ namespace wab2018
                                 mn.Text = "Wykaz mediatorów";
                                 Menu1.Items.Add(mn);
 
-
-                                mn = new MenuItem();
-                                mn.NavigateUrl = "Add_01.aspx";
-                                mn.Text = "Nowy Biegły";
-                                Menu1.Items.Add(mn);
-
-                               
+                                
                                 mn = new MenuItem();
                                 mn.NavigateUrl = "Lista_03.aspx";
                                 mn.Text = "Obciążenia";

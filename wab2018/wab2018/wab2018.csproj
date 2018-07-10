@@ -163,8 +163,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="biegliLista_old.aspx" />
     <Content Include="biegliLista.aspx" />
+    <Content Include="userControls\skargiOdczyt.ascx" />
     <Content Include="userControls\daneStatystyczne.ascx" />
+    <Content Include="userControls\cos.ascx" />
     <Content Include="userControls\historiaPowolanMediatirow.ascx" />
     <Content Include="mediatorzyLista.aspx" />
     <Content Include="Add_01.aspx" />
@@ -209,10 +212,11 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="userControls\skargiBieglych.ascx" />
+    <Content Include="userControls\specjalizacjeBiegli.ascx" />
     <Content Include="userControls\specjalizacje.ascx" />
     <Content Include="userControls\statystykiHistoria.ascx" />
     <Content Include="zawieszenia.ascx" />
-    <Content Include="biegliNaglowek.master" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -273,12 +277,12 @@
     <Content Include="Web.old.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="biegliNaglowek.master.cs">
-      <DependentUpon>biegliNaglowek.master</DependentUpon>
+    <Compile Include="biegliLista_old.aspx.cs">
+      <DependentUpon>biegliLista_old.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="biegliNaglowek.master.designer.cs">
-      <DependentUpon>biegliNaglowek.master</DependentUpon>
+    <Compile Include="biegliLista_old.aspx.designer.cs">
+      <DependentUpon>biegliLista_old.aspx</DependentUpon>
     </Compile>
     <Compile Include="biegliLista.aspx.cs">
       <DependentUpon>biegliLista.aspx</DependentUpon>
@@ -288,12 +292,26 @@
       <DependentUpon>biegliLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="nowiMediatorzy.cs" />
+    <Compile Include="userControls\skargiOdczyt.ascx.cs">
+      <DependentUpon>skargiOdczyt.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\skargiOdczyt.ascx.designer.cs">
+      <DependentUpon>skargiOdczyt.ascx</DependentUpon>
+    </Compile>
     <Compile Include="userControls\daneStatystyczne.ascx.cs">
       <DependentUpon>daneStatystyczne.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="userControls\daneStatystyczne.ascx.designer.cs">
       <DependentUpon>daneStatystyczne.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\cos.ascx.cs">
+      <DependentUpon>cos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\cos.ascx.designer.cs">
+      <DependentUpon>cos.ascx</DependentUpon>
     </Compile>
     <Compile Include="userControls\historiaPowolanMediatirow.ascx.cs">
       <DependentUpon>historiaPowolanMediatirow.ascx</DependentUpon>
@@ -308,6 +326,20 @@
     </Compile>
     <Compile Include="mediatorzyLista.aspx.designer.cs">
       <DependentUpon>mediatorzyLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\skargiBieglych.ascx.cs">
+      <DependentUpon>skargiBieglych.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\skargiBieglych.ascx.designer.cs">
+      <DependentUpon>skargiBieglych.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\specjalizacjeBiegli.ascx.cs">
+      <DependentUpon>specjalizacjeBiegli.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\specjalizacjeBiegli.ascx.designer.cs">
+      <DependentUpon>specjalizacjeBiegli.ascx</DependentUpon>
     </Compile>
     <Compile Include="userControls\specjalizacje.ascx.cs">
       <DependentUpon>specjalizacje.ascx</DependentUpon>

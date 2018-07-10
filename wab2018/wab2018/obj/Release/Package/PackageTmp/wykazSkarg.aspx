@@ -6,8 +6,8 @@
     <script type="text/javascript">
         var keyValue;
         function OnMoreInfoClick(element, key) {
-            alert(key);
-            document.open("wykazbieglych.aspx?skarga="+key, "", "", true);
+           
+            document.open("biegliLista.aspx?skarga="+key, "", "", true);
           
         }
         function popup_Shown(s, e) {
