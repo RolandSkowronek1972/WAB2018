@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace wab2018.userControls
 {
@@ -18,10 +15,7 @@ namespace wab2018.userControls
                 ASPxGridView1.DataBind();
             }
             catch (Exception ex)
-            {
-
-                
-            }
+            {      }
            
         }
 

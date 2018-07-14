@@ -7,8 +7,6 @@ using System.Web;
 using System.Net.Mime;
 
 using System.Data;
-using DevExpress.Web;
-using System.Collections;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Configuration;
@@ -104,6 +102,7 @@ namespace wab2018
 
         protected void updateMediatora(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            zawieszenia zaw = new zawieszenia();
             string txt=mediatorzy.SelectCommand;
             //dane osobowe
             e.NewValues["tytul"] = nm.controlText("txTytul", grid);
@@ -111,6 +110,7 @@ namespace wab2018
             e.NewValues["nazwisko"] = nm.controlText("txNazwisko", grid);
             e.NewValues["data_poczatkowa"] = nm.controlTextDate("txPoczatekPowolania", grid);
             e.NewValues["data_koncowa"] = nm.controlTextDate("txDataKoncaPowolania", grid);
+            
             if (nm.controlText("txPESEL", grid) == null)
             {
                 e.NewValues["Pesel"] = 0;
@@ -121,8 +121,10 @@ namespace wab2018
 
             }
             //d_zawieszenia
+
             bool cos= nm.controlCheckbox("cbZawieszenie", grid);
             e.NewValues["czy_zaw"] = nm.controlCheckbox("cbZawieszenie", grid);
+            
             if (nm.controlCheckbox("cbZawieszenie", grid))
             {
                 e.NewValues["d_zawieszenia"] = nm.controlTextDate("txPoczatekZawieszenia", grid);
@@ -152,7 +154,7 @@ namespace wab2018
         {
 
             e.NewValues["data_poczatkowa"] = DateTime.Now.Date;
-            DateTime   dataKoncz =  DateTime.Parse ( DateTime.Now.AddYears(5).Year.ToString() +"-"+ DateTime.Now.AddMonths(1).Month .ToString("D2") + "-01").AddDays (-1);
+            DateTime   dataKoncz =  DateTime.Parse ( DateTime.Now.AddYears(5).Year.ToString() +"-12-31");
             e.NewValues["data_koncowa"] = dataKoncz;
             //d_zawieszenia
             e.NewValues["d_zawieszenia"] = DateTime.Now;
@@ -162,6 +164,7 @@ namespace wab2018
 
             Session["idMediatora"] = idOsoby;
             Session["id_osoby"] = idOsoby;
+            Session["czy_zaw"] = false;
         }
 
         protected void grid_StartRowEditing(object sender, ASPxStartRowEditingEventArgs e)
@@ -170,8 +173,17 @@ namespace wab2018
             string id = e.EditingKeyValue.ToString();
             Session["idMediatora"] = id;
             Session["id_osoby"] = id;
+            object zawieszenie = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "czy_zaw");
+            var cos = zawieszenie.ToString ();
+            Session["czy_zaw"]= zawieszenie.ToString();
+            object poczatekZawieszenia = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "d_zawieszenia");
+            Session["poczatekZawieszenia"]= poczatekZawieszenia;
+            object koniecZawieszenia = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "dataKoncaZawieszenia");
+
+            Session["koniecZawieszenia"]= koniecZawieszenia;
+            // string zawieszenie = "";
             // ustawbaze();
-                    }
+        }
        
 
         protected void grid_RowInserting(object sender, ASPxDataInsertingEventArgs e)
@@ -265,7 +277,7 @@ namespace wab2018
         
         protected void ustawKwerendeOdczytu()
         {
-            string kwerendabazowa = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, COALESCE(czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident,   data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND(data_koncowa >= GETDATE()) ";
+            string kwerendabazowa = "SELECT  ulica, kod_poczt, miejscowosc, COALESCE(czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident,   data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND(data_koncowa >= GETDATE()) ";
             Session["kwerenda"] = kwerendabazowa;
             if (!ASPxCheckBox1 .Checked)
             {
@@ -273,7 +285,7 @@ namespace wab2018
             }
             else
             {
-                Session["kwerenda"] = "SELECT DISTINCT ulica, kod_poczt, miejscowosc, COALESCE(czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident,   data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND(data_koncowa < GETDATE())";
+                Session["kwerenda"] = "SELECT  ulica, kod_poczt, miejscowosc, COALESCE(czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident,   data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND(data_koncowa < GETDATE())";
             }
             // po specjalizacji
             if (DropDownList1.SelectedIndex==-1)

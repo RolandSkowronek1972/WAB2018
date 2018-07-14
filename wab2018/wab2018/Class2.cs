@@ -32,7 +32,20 @@ namespace wab2018
         //==========================================================================================================================================
         //==========================================================================================================================================
         //==========================================================================================================================================
+        public string podajNumerSkargiwRoku(string idOsoby, int rok)
+        {
+            log.Info("Start funkcji usun_Osobe");
+            DataTable parameters = Common.makeParameterTable();
+            parameters.Rows.Add("@rok", rok);
+            parameters.Rows.Add("@idBieglego", idOsoby);
+          string odp=  Common.runQuerryWithResult ("select (max(numer)+1) from tbl_skargi where rok=@rok and idBieglego=@idBieglego and czyus=0", con_str, parameters);
+            if (string.IsNullOrEmpty ( odp))
+            {
+                odp = "1";
+            }
+            return odp;
 
+        }// end of podajNumerSkargiwRoku
 
         public string usun_osobe(string id, string deleter)
         {
@@ -1682,7 +1695,7 @@ namespace wab2018
                 conn.Open();
                 SqlDataAdapter daMenu = new SqlDataAdapter();
                 daMenu.SelectCommand = new SqlCommand(querry, conn);
-                daMenu.SelectCommand.Parameters.AddWithValue("@idBieglego", idBieglego);
+                daMenu.SelectCommand.Parameters.AddWithValue("@biegly", idBieglego);
                 daMenu.Fill(dsLogin);
                 conn.Close();
                 dT = dsLogin.Tables[0];

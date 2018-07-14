@@ -4,15 +4,12 @@ using DevExpress.Web;
 
 namespace wab2018
 {
-    public partial class skargiOdczyt : System.Web.UI.UserControl
+    public partial class specjalizacjeBieglych : System.Web.UI.UserControl
     {
+        Class2 cl = new Class2();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                string[] names = Enum.GetNames(typeof(GridViewEditingMode));
-
-            }
+           
         }
 
         protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
@@ -35,17 +32,16 @@ namespace wab2018
 
         }
 
-        protected void ASPxGridView1_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
-        {
-            int index = 0;
-           
-                ASPxGridView1.SettingsEditing.Mode = (GridViewEditingMode)index;
-        }
+       
 
       
         protected void ASPxGridView1_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             e.Editor.ReadOnly = false;
+            if (e.Column.FieldName == "nazwa")
+            {
+                e.Editor.ReadOnly = true;
+            }
         }
 
         protected void ASPxGridView1_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -59,10 +55,22 @@ namespace wab2018
         protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             string biegly = (string)Session["idMediatora"];
-            e.NewValues["id_powolania"] = "1";
+          
             e.NewValues["id_bieglego"] = biegly;
         }
 
-       
+        protected void dodajSpecjalizacje(object sender, EventArgs e)
+        {
+            // ASPxComboBox1.cl
+            var cos = ASPxComboBox1.SelectedItem.Value;
+                var specjalizacja = ASPxComboBox1.SelectedItem.GetFieldValue("id_");
+            string biegly = (string)Session["idMediatora"];
+            cl.dodaj_specjalizacje_osoby(specjalizacja.ToString(), biegly);
+        }
+
+        protected void ASPxGridView1_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            
+        }
     }
 }

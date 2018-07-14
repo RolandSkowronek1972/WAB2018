@@ -43,34 +43,36 @@
 
 
 
-<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ListaPowolanMediatorow" KeyFieldName="ident" OnCustomCallback="ASPxGridView1_CustomCallback" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserted="ASPxGridView1_RowInserted" OnCellEditorInitialize="ASPxGridView1_CellEditorInitialize" OnRowUpdating="ASPxGridView1_RowUpdating" OnRowInserting="ASPxGridView1_RowInserting" Theme="Moderno">
+<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ListaPowolanMediatorow" KeyFieldName="ident" OnCustomCallback="ASPxGridView1_CustomCallback" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserted="ASPxGridView1_RowInserted" OnCellEditorInitialize="ASPxGridView1_CellEditorInitialize" OnRowUpdating="ASPxGridView1_RowUpdating" OnRowInserting="ASPxGridView1_RowInserting" Theme="Moderno" Width="100%">
     <Columns>
         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0">
         </dx:GridViewCommandColumn>
         <dx:GridViewDataTextColumn FieldName="ident" Visible="False" VisibleIndex="4">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Numer" FieldName="numer" VisibleIndex="1">
+        <dx:GridViewDataTextColumn Caption="Numer" FieldName="numer" VisibleIndex="1" Width="50px">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Rok" FieldName="rok" VisibleIndex="2">
+        <dx:GridViewDataTextColumn Caption="Rok" FieldName="rok" VisibleIndex="2" Width="50px">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Sygnatura" FieldName="Sygnatura" VisibleIndex="3">
+        <dx:GridViewDataTextColumn Caption="Sygnatura" FieldName="Sygnatura" VisibleIndex="3" Width="200px">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="wizytator" Name="Wizytator" VisibleIndex="10">
+        <dx:GridViewDataTextColumn FieldName="wizytator" Name="Wizytator" VisibleIndex="9" Width="300px">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn AllowTextTruncationInAdaptiveMode="True" Caption="Data wpływu" FieldName="dataWplywu" VisibleIndex="5">
+        <dx:GridViewDataDateColumn AllowTextTruncationInAdaptiveMode="True" Caption="Data wpływu" FieldName="dataWplywu" VisibleIndex="5" Width="100px">
             <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd">
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="dataPisma" Name="Data pisma" VisibleIndex="6">
+        <dx:GridViewDataDateColumn FieldName="dataPisma" Name="Data pisma" VisibleIndex="6" Width="100px">
             <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd">
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="dataZakreslenia" Name="Data zakreślenia" VisibleIndex="7">
+        <dx:GridViewDataDateColumn FieldName="dataZakreslenia" Name="Data zakreślenia" VisibleIndex="7" Width="100px">
             <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd">
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataCheckColumn FieldName="zakreslono" Name="Zakreślono" VisibleIndex="9">
+        <dx:GridViewDataCheckColumn FieldName="zakreslono" Name="Zakreślono" VisibleIndex="8" Width="50px">
         </dx:GridViewDataCheckColumn>
+        <dx:GridViewDataTextColumn Caption="Uwagi" FieldName="uwagi" VisibleIndex="10" Width="300px">
+        </dx:GridViewDataTextColumn>
     </Columns>
      <SettingsEditing Mode="Inline">
     </SettingsEditing>

@@ -28,7 +28,7 @@ namespace wab2018
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
             e.NewValues["data_od"] = DateTime.Now;
-            e.NewValues["data_do"] = DateTime.Now.AddYears(5);
+            e.NewValues["data_do"] =DateTime.Parse (  DateTime.Now.AddYears(5).Year+"-12-31");
             string biegly = (string)Session["idMediatora"];
             e.NewValues["id_bieglego"] = biegly;
             e.NewValues["d_kreacji"] = DateTime.Now.Date;

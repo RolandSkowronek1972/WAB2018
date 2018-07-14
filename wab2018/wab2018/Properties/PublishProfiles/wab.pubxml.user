@@ -22,7 +22,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2018 11:09:08</publishTime>
     </File>
     <File Include="biegliLista.aspx">
-      <publishTime>07/10/2018 11:01:45</publishTime>
+      <publishTime>07/11/2018 06:46:52</publishTime>
     </File>
     <File Include="biegliLista_old.aspx">
       <publishTime>07/09/2018 15:01:09</publishTime>
@@ -367,7 +367,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/10/2018 11:09:11</publishTime>
+      <publishTime>07/11/2018 06:55:27</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -658,16 +658,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2018 10:51:25</publishTime>
     </File>
     <File Include="userControls/cos.ascx">
-      <publishTime>07/10/2018 11:06:42</publishTime>
+      <publishTime>07/10/2018 13:21:12</publishTime>
     </File>
     <File Include="userControls/daneStatystyczne.ascx">
       <publishTime>06/24/2018 21:48:36</publishTime>
     </File>
     <File Include="userControls/historiaPowolanMediatirow.ascx">
-      <publishTime>07/03/2018 16:47:16</publishTime>
+      <publishTime>07/11/2018 05:52:59</publishTime>
     </File>
     <File Include="userControls/skargiBieglych.ascx">
-      <publishTime>07/10/2018 00:52:36</publishTime>
+      <publishTime>07/11/2018 04:01:10</publishTime>
     </File>
     <File Include="userControls/skargiOdczyt.ascx">
       <publishTime>07/10/2018 11:09:01</publishTime>
@@ -678,11 +678,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="userControls/specjalizacjeBiegli.ascx">
       <publishTime>07/10/2018 00:03:24</publishTime>
     </File>
+    <File Include="userControls/specjalizacjeBieglych.ascx">
+      <publishTime>07/11/2018 06:33:53</publishTime>
+    </File>
     <File Include="userControls/statystykiHistoria.ascx">
       <publishTime>07/06/2018 21:24:58</publishTime>
     </File>
+    <File Include="userControls/zawieszenia.ascx">
+      <publishTime>07/10/2018 21:23:48</publishTime>
+    </File>
     <File Include="version.txt">
-      <publishTime>07/10/2018 11:09:50</publishTime>
+      <publishTime>07/11/2018 06:41:01</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>
@@ -700,7 +706,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2018 10:10:00</publishTime>
     </File>
     <File Include="wykazSkarg.aspx">
-      <publishTime>07/10/2018 00:24:35</publishTime>
+      <publishTime>07/11/2018 06:54:56</publishTime>
     </File>
     <File Include="zawieszenia.ascx">
       <publishTime>06/25/2018 15:45:08</publishTime>

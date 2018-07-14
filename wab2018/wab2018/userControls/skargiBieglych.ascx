@@ -10,7 +10,7 @@ a:link, a:visited {
 
 </style>
 
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" DataSourceID="skargiSQL" AutoGenerateColumns="False" EnableTheming="True" Theme="Moderno" Width="100%" KeyFieldName="idSkargi">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" DataSourceID="skargiSQL" AutoGenerateColumns="False" EnableTheming="True" Theme="Moderno" Width="100%" KeyFieldName="idSkargi" OnInitNewRow="startDodawanianowejSkargi" OnCellEditorInitialize="ASPxGridView1_CellEditorInitialize">
             <Settings ShowFilterRow="True" />
                                                             
             <SettingsDataSecurity AllowDelete="False" />

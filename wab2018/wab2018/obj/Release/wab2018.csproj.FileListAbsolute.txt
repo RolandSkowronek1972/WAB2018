@@ -22,7 +22,6 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.ASPxThemes.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.Resources.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraGauges.v17.1.Core.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraGauges.v17.1.Presets.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraPrinting.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\log4net.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.dll
@@ -43,7 +42,6 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Utils.v17.1.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.ASPxGauges.v17.1.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.v17.1.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraGauges.v17.1.Core.xml
-C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraGauges.v17.1.Presets.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraPrinting.v17.1.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\log4net.xml
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Pdf.v17.1.Core.xml
@@ -77,10 +75,6 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\de\DevExpress.XtraGauges.v17.1.Core.res
 C:\projekts\wab_2018\wab2018\wab2018\bin\es\DevExpress.XtraGauges.v17.1.Core.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\ja\DevExpress.XtraGauges.v17.1.Core.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\ru\DevExpress.XtraGauges.v17.1.Core.resources.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\de\DevExpress.XtraGauges.v17.1.Presets.resources.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\es\DevExpress.XtraGauges.v17.1.Presets.resources.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\ja\DevExpress.XtraGauges.v17.1.Presets.resources.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\ru\DevExpress.XtraGauges.v17.1.Presets.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\de\DevExpress.XtraPrinting.v17.1.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\es\DevExpress.XtraPrinting.v17.1.resources.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\ja\DevExpress.XtraPrinting.v17.1.resources.dll

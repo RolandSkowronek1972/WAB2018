@@ -6,15 +6,13 @@ namespace wab2018
 {
     public partial class cos : System.Web.UI.UserControl
     {
+        Class2 cl = new Class2();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 string[] names = Enum.GetNames(typeof(GridViewEditingMode));
-//foreach (string name in names)
-            //        ddlEditMode.Items.Add(name);
-           //     ddlEditMode.Text = grid.SettingsEditing.Mode.ToString();
-             //   ASPxGridView1.StartEdit(1);
+
             }
         }
 
@@ -27,15 +25,17 @@ namespace wab2018
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            e.NewValues["data_od"] = DateTime.Now;
-            e.NewValues["data_do"] = DateTime.Now.AddYears(5);
             string biegly = (string)Session["idMediatora"];
-            e.NewValues["id_bieglego"] = biegly;
-            e.NewValues["d_kreacji"] = DateTime.Now.Date;
-            e.NewValues["kreator"] = (string)Session["user_id"];
-            e.NewValues["czyus"] = "0";
+            e.NewValues["idBieglego"] = biegly;
+        
           
+            e.NewValues["czyus"] = "0";
 
+            string idBieglego = (string)Session["id_osoby"];
+            string numer = cl.podajNumerSkargiwRoku(idBieglego, DateTime.Now.Year);
+            e.NewValues["rok"] = DateTime.Now.Year;
+            e.NewValues["numer"] = numer;
+          
         }
 
         protected void ASPxGridView1_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
@@ -49,6 +49,27 @@ namespace wab2018
         protected void ASPxGridView1_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             e.Editor.ReadOnly = false;
+            string idBieglego = (string)Session["id_osoby"];
+            if (e.Column.FieldName == "numer")
+            {
+                e.Editor.Value = cl.podajNumerSkargiwRoku(idBieglego, DateTime.Now.Year); ;
+            }
+            if (e.Column.FieldName == "rok")
+            {
+                e.Editor.Value = DateTime.Now.Year;
+
+            }
+            if (e.Column.FieldName == "dataWplywu")
+            {
+                e.Editor.Value = DateTime.Now.Date;
+
+            }
+            if (e.Column.FieldName == "dataPisma")
+            {
+                e.Editor.Value = DateTime.Now.Date;
+
+            }
+           
         }
 
         protected void ASPxGridView1_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -62,8 +83,8 @@ namespace wab2018
         protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             string biegly = (string)Session["idMediatora"];
-            e.NewValues["id_powolania"] = "1";
-            e.NewValues["id_bieglego"] = biegly;
+         
+            e.NewValues["idBieglego"] = biegly;
         }
 
        

@@ -22,34 +22,36 @@
             <SettingsDataSecurity AllowInsert="False" />
 
             <Columns>
-                 <dx:GridViewDataColumn Caption="Details" VisibleIndex="1" Width="15%">
+                 <dx:GridViewDataColumn VisibleIndex="1" Width="15%">
                 <DataItemTemplate>
-                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Edycja skargi</a>
+                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Pokaż dane biegłego</a>
                 </DataItemTemplate>
             </dx:GridViewDataColumn>
-                <dx:GridViewDataTextColumn Caption="Numer" FieldName="numer" ShowInCustomizationForm="True" VisibleIndex="3">
+                <dx:GridViewDataTextColumn Caption="Numer" FieldName="numer" ShowInCustomizationForm="True" VisibleIndex="3" Width="5%">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn Caption="Rok" FieldName="rok" ShowInCustomizationForm="True" VisibleIndex="4">
+                <dx:GridViewDataTextColumn Caption="Rok" FieldName="rok" ShowInCustomizationForm="True" VisibleIndex="4" Width="5%">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataDateColumn Caption="Data wpływu" FieldName="dataWplywu" ShowInCustomizationForm="True" VisibleIndex="6">
+                <dx:GridViewDataDateColumn Caption="Data wpływu" FieldName="dataWplywu" ShowInCustomizationForm="True" VisibleIndex="6" Width="7%">
                 </dx:GridViewDataDateColumn>
-                <dx:GridViewDataDateColumn Caption="Data pisma" FieldName="dataPisma" ShowInCustomizationForm="True" VisibleIndex="7">
+                <dx:GridViewDataDateColumn Caption="Data pisma" FieldName="dataPisma" ShowInCustomizationForm="True" VisibleIndex="7" Width="7%">
                 </dx:GridViewDataDateColumn>
-                <dx:GridViewDataTextColumn Caption="Sygnatura" FieldName="Sygnatura" ShowInCustomizationForm="True" VisibleIndex="8">
+                <dx:GridViewDataTextColumn Caption="Sygnatura" FieldName="Sygnatura" ShowInCustomizationForm="True" VisibleIndex="8" Width="10%">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn Caption="Biegły" FieldName="Biegly" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5">
+                <dx:GridViewDataTextColumn Caption="Biegły" FieldName="Biegly" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Width="15%">
                     <EditFormSettings Visible="False" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn Caption="Wizytator" FieldName="wizytator" ShowInCustomizationForm="True" VisibleIndex="9">
+                <dx:GridViewDataTextColumn Caption="Wizytator" FieldName="wizytator" ShowInCustomizationForm="True" VisibleIndex="9" Width="15%">
                 </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataCheckColumn Caption="Zakreślono" FieldName="zakreslono" VisibleIndex="10" meta:resourcekey="GridViewDataCheckColumnResource1" ShowInCustomizationForm="True">
+                    <dx:GridViewDataCheckColumn Caption="Zakreślono" FieldName="zakreslono" VisibleIndex="10" meta:resourcekey="GridViewDataCheckColumnResource1" ShowInCustomizationForm="True" Width="5%">
                          </dx:GridViewDataCheckColumn>
                  
-                <dx:GridViewDataTextColumn Caption="Uwagi" FieldName="uwagi" VisibleIndex="11">
+                <dx:GridViewDataTextColumn Caption="Uwagi" FieldName="uwagi" VisibleIndex="11" Width="15%">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewCommandColumn VisibleIndex="0">
+                <dx:GridViewCommandColumn VisibleIndex="0" Caption="  ">
                 </dx:GridViewCommandColumn>
             </Columns>
+               <SettingsPager Visible="False">
+            </SettingsPager>
                <SettingsEditing Mode="Batch" />
             
         </dx:ASPxGridView>

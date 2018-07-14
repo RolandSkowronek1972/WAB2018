@@ -67,8 +67,6 @@
     <Reference Include="DevExpress.Web.Mvc5.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v17.1.Presets, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
@@ -165,6 +163,7 @@
   <ItemGroup>
     <Content Include="biegliLista_old.aspx" />
     <Content Include="biegliLista.aspx" />
+    <Content Include="userControls\specjalizacjeBieglych.ascx" />
     <Content Include="userControls\skargiOdczyt.ascx" />
     <Content Include="userControls\daneStatystyczne.ascx" />
     <Content Include="userControls\cos.ascx" />
@@ -216,6 +215,7 @@
     <Content Include="userControls\specjalizacjeBiegli.ascx" />
     <Content Include="userControls\specjalizacje.ascx" />
     <Content Include="userControls\statystykiHistoria.ascx" />
+    <Content Include="userControls\zawieszenia.ascx" />
     <Content Include="zawieszenia.ascx" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -292,6 +292,13 @@
       <DependentUpon>biegliLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="nowiMediatorzy.cs" />
+    <Compile Include="userControls\specjalizacjeBieglych.ascx.cs">
+      <DependentUpon>specjalizacjeBieglych.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\specjalizacjeBieglych.ascx.designer.cs">
+      <DependentUpon>specjalizacjeBieglych.ascx</DependentUpon>
+    </Compile>
     <Compile Include="userControls\skargiOdczyt.ascx.cs">
       <DependentUpon>skargiOdczyt.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -354,6 +361,13 @@
     </Compile>
     <Compile Include="userControls\statystykiHistoria.ascx.designer.cs">
       <DependentUpon>statystykiHistoria.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\zawieszenia.ascx.cs">
+      <DependentUpon>zawieszenia.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\zawieszenia.ascx.designer.cs">
+      <DependentUpon>zawieszenia.ascx</DependentUpon>
     </Compile>
     <Compile Include="wykazSkarg.aspx.cs">
       <DependentUpon>wykazSkarg.aspx</DependentUpon>
