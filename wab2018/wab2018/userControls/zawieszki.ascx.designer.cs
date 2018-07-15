@@ -7,54 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wab2018 {
+namespace wab2018.userControls {
     
     
-    public partial class specjalizacjeBieglych {
+    public partial class zawieszki {
         
         /// <summary>
-        /// ListaPowolanMediatorow control.
+        /// ASPxCheckBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ListaPowolanMediatorow;
+        protected global::DevExpress.Web.ASPxCheckBox ASPxCheckBox1;
         
         /// <summary>
-        /// SpecjalizacjeSQL control.
+        /// ASPxLabel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SpecjalizacjeSQL;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel1;
         
         /// <summary>
-        /// ASPxComboBox1 control.
+        /// ASPxDateEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBox1;
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEdit1;
         
         /// <summary>
-        /// ASPxButton1 control.
+        /// ASPxLabel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton1;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel2;
         
         /// <summary>
-        /// ASPxGridView1 control.
+        /// ASPxDateEdit2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEdit2;
     }
 }

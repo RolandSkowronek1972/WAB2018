@@ -32,18 +32,36 @@ namespace wab2018
           
 
                 string rola = (string)Session["rola"];
-                if (rola == "1") //read only
+                switch (rola)
                 {
-                    grid.Visible = false;
-                    grid0.Visible = true;
-                }
-                else
-                {
+                    case "2":
+                        {
+                            grid.Visible = true;
+                            grid0.Visible = false;
 
-                    grid.Visible = true;
-                    grid0.Visible = false;
+                        }
+                        break;
+                    case "3":
+                        {
+                            grid.Visible = true;
+                            grid0.Visible = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            grid.Visible = true;
+                            grid0.Visible = false;
+
+                        }
+                        break;
+                    default:
+                        {
+                            grid.Visible = false;
+                            grid0.Visible = true;
+                        }
+                        break;
                 }
-                
 
 
             }
@@ -83,12 +101,18 @@ namespace wab2018
 
             }
             //d_zawieszenia
-            bool cos= nm.controlCheckbox("cbZawieszenie", grid);
-            e.NewValues["czy_zaw"] = nm.controlCheckbox("cbZawieszenie", grid);
-            if (nm.controlCheckbox("cbZawieszenie", grid))
+
+            var cos = (string)Session["czy_zawN"]; //nm.controlCheckbox("cbZawieszenie", grid);
+            e.NewValues["czy_zaw"] = false;
+
+            if (cos == "1")
             {
-                e.NewValues["d_zawieszenia"] = nm.controlTextDate("txPoczatekZawieszenia", grid);
-                e.NewValues["dataKoncaZawieszenia"] =  nm.controlTextDate("txKoniecZawieszenia", grid);
+                e.NewValues["czy_zaw"] = true;
+                DateTime poczZaw = (DateTime)Session["poczatekZawieszeniaN"];
+                DateTime konZaw = (DateTime)Session["koniecZawieszeniaN"];
+
+                e.NewValues["d_zawieszenia"] = poczZaw;
+                e.NewValues["dataKoncaZawieszenia"] = konZaw;
             }
             //dane adresowe
             e.NewValues["ulica"] = nm.controlText("txAdres", grid);
@@ -131,9 +155,29 @@ namespace wab2018
             string id = e.EditingKeyValue.ToString();
             Session["idMediatora"] = id;
             Session["id_osoby"] = id;
-            // ustawbaze();
-                    }
-       
+            object zawieszenie = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "czy_zaw");
+            var zawieszkax = zawieszenie.ToString();
+            if (zawieszkax.ToString() == "True")
+            {
+                zawieszkax = "1";
+            }
+            else
+            {
+                zawieszkax = "0";
+            }
+
+                Session["czy_zaw"] = zawieszkax.ToString();
+            if (zawieszkax.ToString() == "1")
+            {
+                object poczatekZawieszenia = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "d_zawieszenia");
+                Session["poczatekZawieszenia"] = (DateTime)poczatekZawieszenia;
+                object koniecZawieszenia = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "dataKoncaZawieszenia");
+                Session["koniecZawieszenia"] = (DateTime)koniecZawieszenia;
+            }
+
+
+        }
+
 
         protected void grid_RowInserting(object sender, ASPxDataInsertingEventArgs e)
         {
@@ -153,12 +197,18 @@ namespace wab2018
 
             }
             //d_zawieszenia
-            bool cos = nm.controlCheckbox("cbZawieszenie", grid);
-            e.NewValues["czy_zaw"] = nm.controlCheckbox("cbZawieszenie", grid);
-            if (nm.controlCheckbox("cbZawieszenie", grid))
+
+            var cos = (string)Session["czy_zawN"]; //nm.controlCheckbox("cbZawieszenie", grid);
+            e.NewValues["czy_zaw"] = false;
+
+            if (cos == "1")
             {
-                e.NewValues["d_zawieszenia"] = nm.controlTextDate("txPoczatekZawieszenia", grid);
-                e.NewValues["dataKoncaZawieszenia"] = nm.controlTextDate("txKoniecZawieszenia", grid);
+                e.NewValues["czy_zaw"] = true;
+                DateTime poczZaw = (DateTime)Session["poczatekZawieszeniaN"];
+                DateTime konZaw = (DateTime)Session["koniecZawieszeniaN"];
+
+                e.NewValues["d_zawieszenia"] = poczZaw;
+                e.NewValues["dataKoncaZawieszenia"] = konZaw;
             }
             //dane adresowe
             e.NewValues["ulica"] = nm.controlText("txAdres", grid);

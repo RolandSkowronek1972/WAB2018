@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wab2018.userControls {
+namespace wab2018 {
     
     
-    public partial class skargiBieglych {
+    public partial class historiaPowolanMediatirowOdczyt {
+        
+        /// <summary>
+        /// ListaPowolanMediatorow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ListaPowolanMediatorow;
         
         /// <summary>
         /// ASPxGridView1 control.
@@ -20,14 +29,5 @@ namespace wab2018.userControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
-        
-        /// <summary>
-        /// skargiSQL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource skargiSQL;
     }
 }

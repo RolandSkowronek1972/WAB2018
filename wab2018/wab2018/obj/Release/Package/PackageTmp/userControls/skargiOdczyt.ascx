@@ -6,7 +6,7 @@
 
 
 
-<asp:SqlDataSource ID="ListaPowolanMediatorow" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" DeleteCommand="UPDATE tbl_skargi SET czyus =1 WHERE (ident = @ident)" InsertCommand="INSERT INTO tbl_skargi(numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, czyus, idBieglego) VALUES (@numer, @rok, @dataWplywu, @dataPisma, @Sygnatura, @wizytator, @zakreslono, @dataZakreslenia, @uwagi, 0, @idBieglego)" SelectCommand="SELECT ident, numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, czyus, idBieglego FROM tbl_skargi WHERE (czyus = 0) AND (idBieglego = @id_bieglego) ORDER BY rok, numer" UpdateCommand="UPDATE tbl_skargi SET numer = @numer, rok = @rok, dataWplywu = @dataWplywu, dataPisma = @dataPisma, Sygnatura = @Sygnatura, wizytator = @wizytator, zakreslono = @zakreslono, dataZakreslenia = @dataZakreslenia, uwagi = @uwagi WHERE (ident = @ident)">
+<asp:SqlDataSource ID="ListaPowolanMediatorow" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" DeleteCommand="UPDATE tbl_skargi SET czyus =1 WHERE (ident = @ident)" InsertCommand="INSERT INTO tbl_skargi(numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, zakreslono, dataZakreslenia, uwagi, czyus, idBieglego) VALUES (@numer, @rok, @dataWplywu, @dataPisma, @Sygnatura, @wizytator, @zakreslono, @dataZakreslenia, @uwagi, 0, @idBieglego)" SelectCommand="SELECT ident, numer, rok, dataWplywu, dataPisma, Sygnatura, wizytator, COALESCE ( zakreslono,null,'0') as zakreslono, dataZakreslenia, uwagi, czyus, idBieglego FROM tbl_skargi WHERE (czyus = 0) AND (idBieglego = @id_bieglego) ORDER BY rok, numer" UpdateCommand="UPDATE tbl_skargi SET numer = @numer, rok = @rok, dataWplywu = @dataWplywu, dataPisma = @dataPisma, Sygnatura = @Sygnatura, wizytator = @wizytator, zakreslono = @zakreslono, dataZakreslenia = @dataZakreslenia, uwagi = @uwagi WHERE (ident = @ident)">
     <DeleteParameters>
         <asp:Parameter Name="ident" />
 
@@ -43,7 +43,7 @@
 
 
 
-<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ListaPowolanMediatorow" KeyFieldName="ident" OnCustomCallback="ASPxGridView1_CustomCallback" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserted="ASPxGridView1_RowInserted" OnCellEditorInitialize="ASPxGridView1_CellEditorInitialize" OnRowUpdating="ASPxGridView1_RowUpdating" OnRowInserting="ASPxGridView1_RowInserting" Theme="Moderno">
+<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ListaPowolanMediatorow" KeyFieldName="ident" OnCustomCallback="ASPxGridView1_CustomCallback" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserted="ASPxGridView1_RowInserted" OnCellEditorInitialize="ASPxGridView1_CellEditorInitialize" OnRowUpdating="ASPxGridView1_RowUpdating" OnRowInserting="ASPxGridView1_RowInserting" Theme="Moderno" Width="100%">
     <Columns>
         <dx:GridViewCommandColumn VisibleIndex="0">
         </dx:GridViewCommandColumn>
@@ -55,22 +55,24 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn Caption="Sygnatura" FieldName="Sygnatura" VisibleIndex="3">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn FieldName="wizytator" Name="Wizytator" VisibleIndex="10">
+        <dx:GridViewDataTextColumn FieldName="wizytator" Name="Wizytator" VisibleIndex="9" Caption="Wizytator">
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn AllowTextTruncationInAdaptiveMode="True" Caption="Data wpływu" FieldName="dataWplywu" VisibleIndex="5">
             <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd">
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="dataPisma" Name="Data pisma" VisibleIndex="6">
+        <dx:GridViewDataDateColumn FieldName="dataPisma" Name="Data pisma" VisibleIndex="6" Caption="Data pisma">
             <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd">
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn FieldName="dataZakreslenia" Name="Data zakreślenia" VisibleIndex="7">
+        <dx:GridViewDataDateColumn FieldName="dataZakreslenia" Name="Data zakreślenia" VisibleIndex="7" Caption="Data Zakreślenia">
             <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd">
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataCheckColumn FieldName="zakreslono" Name="Zakreślono" VisibleIndex="9">
+        <dx:GridViewDataCheckColumn FieldName="zakreslono" Name="Zakreślono" VisibleIndex="8" Caption="Zakreślono">
         </dx:GridViewDataCheckColumn>
+        <dx:GridViewDataTextColumn Caption="Uwagi" FieldName="uwagi" VisibleIndex="10">
+        </dx:GridViewDataTextColumn>
     </Columns>
      <SettingsEditing Mode="Inline">
     </SettingsEditing>

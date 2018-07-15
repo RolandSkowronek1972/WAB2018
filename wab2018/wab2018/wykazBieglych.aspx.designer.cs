@@ -112,15 +112,6 @@ namespace wab2018 {
         protected global::DevExpress.Web.ASPxGridViewExporter ASPxGridViewExporter1;
         
         /// <summary>
-        /// zawieszenia1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::wab2018.userControls.zawieszenia zawieszenia1;
-        
-        /// <summary>
         /// archiwum control.
         /// </summary>
         /// <remarks>

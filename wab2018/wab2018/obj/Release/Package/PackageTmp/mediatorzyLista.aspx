@@ -5,24 +5,73 @@
 <%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc2" %>
 <%@ Register src="userControls/statystykiHistoria.ascx" tagname="statystykiHistoria" tagprefix="uc4" %>
 <%@ Register src="userControls/specjalizacje.ascx" tagname="specjalizacje" tagprefix="uc3" %>
+<%@ Register src="userControls/historiaPowolanMediatirowOdczyt.ascx" tagname="historiaPowolanMediatirowOdczyt" tagprefix="uc5" %>
+<%@ Register src="userControls/zawieszki.ascx" tagname="zawieszki" tagprefix="uc6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-       
-        .auto-style2 {
-            width: 69px;
-        }
-        .auto-style3 {
-            height: 21px;
+       .auto-style21 {
+            width: 15%;
+            font-size: medium;
         }
         .auto-style4 {
             width: 20px;
             height: 21px;
         }
-        .auto-style5 {
+        .auto-style20 {
+            height: 21px;
+            font-size: large;
+            font-weight: bold;
+        }
+        .auto-style22 {
+            font-size: large;
+        }
+        .auto-style24 {
+            width: 17%;
             font-size: medium;
         }
-        .auto-style6 {
-            width: 604px;
+        .auto-style25 {
+            width: 17%;
+        }
+        .auto-style27 {
+            width: 39%;
+            font-size: medium;
+        }
+        .auto-style28 {
+            width: 39%;
+        }
+        .auto-style30 {
+            font-size: medium;
+        }
+        .auto-style31 {
+            -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+            background-color: #ededed;
+            -webkit-border-top-left-radius: 6px;
+            -moz-border-radius-topleft: 6px;
+            border-top-left-radius: 6px;
+            -webkit-border-top-right-radius: 6px;
+            -moz-border-radius-topright: 6px;
+            border-top-right-radius: 6px;
+            -webkit-border-bottom-right-radius: 6px;
+            -moz-border-radius-bottomright: 6px;
+            border-bottom-right-radius: 6px;
+            -webkit-border-bottom-left-radius: 6px;
+            -moz-border-radius-bottomleft: 6px;
+            border-bottom-left-radius: 6px;
+            text-indent: 0;
+            border: 1px solid #dcdcdc;
+            display: inline-block;
+            color: #777777;
+            font-family: arial;
+            font-size: 15px;
+            font-weight: bold;
+            font-style: normal;
+            line-height: 30px;
+            text-decoration: none;
+            text-align: center;
+            text-shadow: 1px 1px 0px #ffffff;
         }
         </style>
 </asp:Content>
@@ -58,24 +107,30 @@
    
         <h2>          &nbsp; Wykaz mediatorów sądowych</h2>   <br />
         <asp:SqlDataSource ID="daneSpecjalizacji" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT id_, nazwa FROM glo_specjalizacje WHERE (grupa = 1000) ORDER BY nazwa"></asp:SqlDataSource>
-        <table style="width:100%;">
+          <table style="width:100%;">
             <tr>
-                <td style="width: 60%; vertical-align: bottom;">
+                <td style="width: 10px; " class="przesuniecie">
                     <dx:ASPxCheckBox ID="ASPxCheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="zminaArchiwum" Text="Archiwum" Theme="Moderno">
                     </dx:ASPxCheckBox>
                 </td>
-                <td class="auto-style5" style="width: 10%; vertical-align: bottom;">
-                    Specjalizacje:</td>
-                <td style="width: 10%; vertical-align: bottom;">&nbsp;<dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px" OnCheckedChanged="ASPxCheckBox2_CheckedChanged" AutoPostBack="True" Theme="Moderno">
+                <td style="width: 10px; vertical-align: middle;" class="przesuniecie">&nbsp;&nbsp;&nbsp;<dx:ASPxCheckBox ID="ASPxCheckBox2" runat="server" Height="16px" OnCheckedChanged="ASPxCheckBox2_CheckedChanged" AutoPostBack="True" Theme="Moderno" Text="Specjalizacje">
                     </dx:ASPxCheckBox>
+                    &nbsp;
                 </td>
-                <td style="width: 10%; vertical-align: bottom;">
-                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="32px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="99px">
+                <td style="width: 10px; " class="przesuniecie">
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="32px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="400px">
                     </asp:DropDownList>
                 </td>
-                <td style="width: 10%; vertical-align: bottom;">
-                    <asp:Button ID="Button1" runat="server" OnClick="_print" Text="Twórz zestawienie" CssClass="dxbButton" />
+                <td style="vertical-align: middle; ">
+                &nbsp;
+                &nbsp;
+                    <asp:Button ID="Button1" runat="server" OnClick="_print" Text="Twórz zestawienie" CssClass="auto-style31" Width="174px" />
+
                 </td>
+                <td style="vertical-align: middle;">
+                    &nbsp;</td>
+                <td style="vertical-align: middle;">
+                    &nbsp;</td>
             </tr>
         </table>
     <dx:ASPxGridView ID="grid" runat="server" DataSourceID="mediatorzy" KeyFieldName="ident" Width="100%" EnableRowsCache="False" OnRowUpdating="updateMediatora" OnInitNewRow="InsertData" OnStartRowEditing="grid_StartRowEditing" OnRowInserting="grid_RowInserting" OnCancelRowEditing="grid_CancelRowEditing" OnRowValidating="grid_RowValidating" ValidationGroup = 'MyGroup' ViewStateMode="Enabled" AutoGenerateColumns="False" OnBeforePerformDataSelect="grid_BeforePerformDataSelect">
@@ -144,35 +199,36 @@
                             <dx:TabPage Text="Dane osobowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                       <table style="width:100%;" >
+              <table style="width:100%;" >
         <tr>
-            <td >Tytuł</td>
+             <td class="auto-style21">Tytuł</td>
+           
             <td >
-                <dx:ASPxTextBox ID="txTytul" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("tytul")%>'>
+                <dx:ASPxTextBox ID="txTytul" runat="server" Width="90%"  Theme="Moderno"  Text='<%# Eval("tytul")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td >Specjalizacja opis</td>
+            <td class="auto-style21"> Specjalizacja opis</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Imie</td>
+            <td class="auto-style21">Imie</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txImie" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("imie")%>' >
+                <dx:ASPxTextBox ID="txImie" runat="server" Width="90%"  Theme="Moderno"  Text='<%# Eval("imie")%>' >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class="prc50 normal " rowspan="7">
+            <td class="prc50 normal " rowspan="6">
                 <dx:ASPxMemo ID="txSpecjalizacjeOpis" runat="server" Height="100%"  Theme="Moderno"  Width="99%" Text='<%# Eval("specjalizacja_opis")%>'>
                 </dx:ASPxMemo>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Nazwisko</td>
+            <td class="auto-style21">Nazwisko</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("nazwisko")%>'  >
+                <dx:ASPxTextBox ID="txNazwisko" runat="server" Width="90%"  Theme="Moderno"  Text='<%# Eval("nazwisko")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -183,15 +239,15 @@
             <td class="col_20"></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">PESEL</td>
+            <td class="auto-style21">PESEL</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="170px"  Theme="Moderno"  Text='<%# Eval("Pesel")%>' >
+                <dx:ASPxTextBox ID="txPESEL" runat="server" Width="90%"  Theme="Moderno"  Text='<%# Eval("Pesel")%>' >
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Data powołania od: </td>
+            <td class="auto-style21">Data powołania od: </td>
             <td class="prc25">
               
                          <dx:ASPxDateEdit ID="txPoczatekPowolania" runat="server"  Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'> 
@@ -203,7 +259,7 @@
             <td class="col_20"></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Data powołania do: </td>
+            <td class="auto-style21">Data powołania do: </td>
             <td class="dxflEmptyItem">
                 <dx:ASPxDateEdit ID="txDataKoncaPowolania" runat="server"  Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval( ( "now.AddYear(5).Year"+":"+"DateTime.Now.Month"+":30")): Eval("data_koncowa") %>'> 
                 </dx:ASPxDateEdit>
@@ -211,91 +267,19 @@
             <td class="col_20"></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25"> 
- 
-                
-         
-            <dx:ASPxCheckBox ID="cbZawieszenie" runat="server"    Checked='<%# Eval("czy_zaw") != null ? Convert.ToBoolean ( Eval("czy_zaw")) : false %>'   Text="Zawieszenie" Theme="Moderno" CheckState="Unchecked" > 
-            <ClientSideEvents 
-                
-                CheckedChanged="function(s, e) {
-	         var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
-                    if (s.GetCheckState() ==&quot;Checked&quot;)
-                    {
-                        
-                        dvPassport.style.display = &quot;block&quot; ;
-                                    }
-                    else
-                    {
-                         dvPassport.style.display = &quot;none&quot; ;
-                
-                    }
-                }" ValueChanged="function(s, e) {
-             
-	 var dvPassport = document.getElementById(&quot;dvPassport&quot;);
-            var  PanelZawieszen=      document.getElementById(&quot;Panel1&quot;);
-                    if (s.GetCheckState() ==&quot;Checked&quot;)
-                    {
-                        
-                        dvPassport.style.display = &quot;block&quot; ;
-                                    }
-                    else
-                    {
-                         dvPassport.style.display = &quot;none&quot; ;
-                
-                    }
-
-}" />
-        </dx:ASPxCheckBox>
-           
-              
-            
-
-
-            </td>
-            <td class="dxflEmptyItem">
-                &nbsp;</td>
-            <td class="col_20"></td>
-        </tr>
-        <tr>
-            <td colspan="2" class=" normal przesuniecie prc25"> 
-         
-            
-                     <table style="width:100%;">
-                <tr>
-                    <td  class="prc50">Data początku zawieszenia</td>
-                    <td>                                                                                
-                        <dx:ASPxDateEdit ID="txPoczatekZawieszenia" runat="server" Theme="Moderno"  Value='<%# (Convert.ToDateTime (Eval("d_zawieszenia")) ==Convert.ToDateTime ( "1900-01-01 00:00:00.000")) ? Eval("now"): Eval("d_zawieszenia") %>'> 
-                          
-                        </dx:ASPxDateEdit>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Data końca zawieszenia</td>
-                    <td>
-                        <dx:ASPxDateEdit ID="txKoniecZawieszenia" runat="server" Theme="Moderno"  Value='<%# (Convert.ToDateTime(Eval("dataKoncaZawieszenia")) == Convert.ToDateTime ( "1900-01-01 00:00:00.000")) ? ( Convert.ToString( DateTime.Parse ( DateTime.Now.AddYears(5).Year.ToString() +"-"+ DateTime.Now.AddMonths(1).Month .ToString("D2") + "-01").AddDays (-1) )) : Eval("dataKoncaZawieszenia") %>'> 
-                            
-                        </dx:ASPxDateEdit>
-                    </td>
-                </tr>
-               
-            </table>
-               
+            <td class="auto-style30" colspan="3">
         
+        
+    
+        <uc6:zawieszki ID="zawieszki1" runat="server" />
+        
+        
+    
             </td>
-       
-      
-            <td class="col_20">
-                
-       
-               
-                </td>
         </tr>
-                                                                              
+                                                                                      
         
     </table>
-   
 <hr />
 
 
@@ -309,68 +293,68 @@
                                <dx:TabPage Text="Dane kontaktowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                <table style="width:100%;">
+                           <table style="width:100%;">
         <tr>
-            <td colspan="2" class="auto-style3"><b>Adres</b></td>
+           <td colspan="2" class="auto-style20">Adres</td>
             <td class="auto-style4"></td>
-            <td colspan="2" class="auto-style3"><b>Adres prywatny</b></td>
+      <td colspan="2" class="auto-style20">Adres prywatny</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Instytucja</td>
+            <td class="auto-style21">Instytucja</td>
             <td>
-                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'>
+                <dx:ASPxTextBox ID="txInstytucja" Theme="Moderno" runat="server" Width="90%" Text='<%# Eval("instytucja")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
-            <td class=" normal przesuniecie prc25">Adres</td>
+            <td class="auto-style21">Adres</td>
             <td>
-                <dx:ASPxTextBox ID="txAdresKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("adr_kores")%>'>
+                <dx:ASPxTextBox ID="txAdresKorespondencyjny"  Theme="Moderno" runat="server" Width="90%" Text='<%# Eval("adr_kores")%>'>
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Adres</td>
+            <td class="auto-style21">Adres</td>
             <td>
-                <dx:ASPxTextBox ID="txAdres" runat="server" Width="170px" Text='<%# Eval("ulica")%>'>
+                <dx:ASPxTextBox ID="txAdres" runat="server"  Theme="Moderno" Width="90%" Text='<%# Eval("ulica")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
-            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
+            <td class="auto-style21">Kod pocztowy</td>
             <td>
-                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'>
+                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny" Theme="Moderno"  runat="server" Width="90%" Text='<%# Eval("kod_poczt_kor")%>'>
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
+            <td class="auto-style21">Kod pocztowy</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txKodPocztowy" runat="server" Width="170px" Text='<%# Eval("kod_poczt")%>'>
+                <dx:ASPxTextBox ID="txKodPocztowy" runat="server" Theme="Moderno"  Width="90%" Text='<%# Eval("kod_poczt")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
-            <td class=" normal przesuniecie prc25">Miejscowosc</td>
+            <td class="auto-style21">Miejscowosc</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>'>
+                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny"  Theme="Moderno" runat="server" Width="90%" Text='<%# Eval("miejscowosc_kor")%>'>
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Miejscowosc</td>
+            <td class="auto-style21">Miejscowosc</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txMiejscowosc" runat="server" Width="170px" Text='<%# Eval("miejscowosc")%>'>
+                <dx:ASPxTextBox ID="txMiejscowosc" runat="server" Theme="Moderno"  Width="90%" Text='<%# Eval("miejscowosc")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
             <td class="prc25 normal">Telefon</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txTelefon2" runat="server" Width="170px" Text='<%# Eval("tel2")%>'>
+                <dx:ASPxTextBox ID="txTelefon2" runat="server" Width="90%" Text='<%# Eval("tel2")%>' Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Telefon </td>
+            <td class="auto-style21">Telefon </td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txTelefon1" runat="server" Width="170px" Text='<%# Eval("tel1")%>'>
+                <dx:ASPxTextBox ID="txTelefon1" runat="server"  Theme="Moderno" Width="90%" Text='<%# Eval("tel1")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
@@ -379,9 +363,9 @@
         </tr>
        
         <tr>
-            <td class=" normal przesuniecie prc25">Email</td>
+            <td class="auto-style21">Email</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txEmail" runat="server" Width="170px" Text='<%# Eval("email")%>'>
+                <dx:ASPxTextBox ID="txEmail" runat="server"  Theme="Moderno" Width="90%" Text='<%# Eval("email")%>'>
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
@@ -396,7 +380,7 @@
                               <dx:TabPage Text="Uwagi" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                           <dx:ASPxMemo ID="txUwagi" runat="server" Height="200px" Width="99%" Text='<%# Eval("uwagi")%>'> </dx:ASPxMemo>
+                                           <dx:ASPxMemo ID="txUwagi"  Theme="Moderno" runat="server" Height="200px" Width="99%" Text='<%# Eval("uwagi")%>'> </dx:ASPxMemo>
                                    
                                     </dx:ContentControl>
                                 </ContentCollection>
@@ -510,20 +494,20 @@
                             <dx:TabPage Text="Dane osobowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                 <table style="width:100%;" onload ="heja();">
+                            <table style="width:100%;" onload ="heja();">
         <tr>
             <td >Tytuł</td>
             <td >
-                <dx:ASPxTextBox ID="txTytul0" runat="server" Width="170px" Text='<%# Eval("tytul")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txTytul0" runat="server" Width="170px" Theme="Moderno"  Text='<%# Eval("tytul")%>' ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20"></td>
             <td >Specjalizacja opis</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Imie</td>
+            <td class="auto-style21">Imie</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txImie0" runat="server" Width="170px" Text='<%# Eval("imie")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txImie0" runat="server" Width="170px" Theme="Moderno"  Text='<%# Eval("imie")%>'  ReadOnly="true">
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -531,14 +515,14 @@
             </td>
             <td class="col_20"></td>
             <td class="prc50 normal " rowspan="8">
-                <dx:ASPxMemo ID="txSpecjalizacjeOpis0" runat="server" Height="100%" Width="99%" Text='<%# Eval("specjalizacja_opis")%>'  ReadOnly="true">
+                <dx:ASPxMemo ID="txSpecjalizacjeOpis0" runat="server" Height="100%" Theme="Moderno"  Width="99%" Text='<%# Eval("specjalizacja_opis")%>'  ReadOnly="true">
                 </dx:ASPxMemo>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Nazwisko</td>
+            <td class="auto-style21">Nazwisko</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txNazwisko0" runat="server" Width="170px" Text='<%# Eval("nazwisko")%>'   ReadOnly="true">
+                <dx:ASPxTextBox ID="txNazwisko0" runat="server" Width="170px" Theme="Moderno"  Text='<%# Eval("nazwisko")%>'   ReadOnly="true">
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -549,9 +533,9 @@
             <td class="col_20"></td>
         </tr>
                                         <tr>
-            <td class=" normal przesuniecie prc25">Instytucja</td>
+            <td class="auto-style21">Instytucja</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txInstytucja" runat="server" Width="170px" Text='<%# Eval("instytucja")%>'  >
+                <dx:ASPxTextBox ID="txInstytucja" runat="server" Theme="Moderno"  Width="170px" Text='<%# Eval("instytucja")%>'  >
                     <ValidationSettings>
                         <RequiredField IsRequired="true" />
                     </ValidationSettings>
@@ -562,18 +546,18 @@
             <td class="col_20"></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">PESEL</td>
+            <td class="auto-style21">PESEL</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txPESEL0" runat="server" Width="170px" Text='<%# Eval("Pesel")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txPESEL0" runat="server" Width="170px" Theme="Moderno"  Text='<%# Eval("Pesel")%>'  ReadOnly="true">
                 </dx:ASPxTextBox>
             </td>
             <td class="col_20">&nbsp;</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Data powołania od: </td>
+            <td class="auto-style21"> Data powołania od: </td>
             <td class="prc25">
               
-                         <dx:ASPxDateEdit ID="txPoczatekPowolania0" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'  ReadOnly="true">
+                         <dx:ASPxDateEdit ID="txPoczatekPowolania0" runat="server"  Theme="Moderno" Value='<%# (Convert.ToDateTime(Eval("data_poczatkowa")) == DateTime.MinValue) ? Eval("now"): Eval("data_poczatkowa") %>'  ReadOnly="true">
                 </dx:ASPxDateEdit>
                     
                  
@@ -582,15 +566,20 @@
             <td class="col_20"></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Data powołania do: </td>
+            <td class="auto-style21"> Data powołania do: </td>
             <td class="dxflEmptyItem">
-                <dx:ASPxDateEdit ID="txDataKoncaPowolania0" runat="server" Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval("now.AddYear(5)"): Eval("data_koncowa") %>' ReadOnly="true"> 
+                <dx:ASPxDateEdit ID="txDataKoncaPowolania0" runat="server" Theme="Moderno" Value='<%# (Convert.ToDateTime(Eval("data_koncowa")) == DateTime.MinValue) ?Eval("now.AddYear(5)"): Eval("data_koncowa") %>' ReadOnly="true"> 
                 </dx:ASPxDateEdit>
             </td>
             <td class="col_20"></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25"> 
+            <td class="auto-style21"> 
+ 
+                
+         
+                &nbsp;</td>
+            <td class="dxflEmptyItem">
  
                 
          
@@ -603,18 +592,16 @@
 
 
             </td>
-            <td class="dxflEmptyItem">
-                &nbsp;</td>
             <td class="col_20"></td>
         </tr>
         <tr>
             <td colspan="2" class=" normal przesuniecie prc25"> 
          
                 <div id="dvPassport0" style="display: block">
-                    JavaScript can change the style of an HTML element.
+                   
                      <table style="width:100%;">
                 <tr>
-                    <td  class="prc50">Data początku zawieszenia</td>
+                     <td class="auto-style27"> Data początku zawieszenia</td>
                     <td>                                                                                
                         <dx:ASPxDateEdit ID="txPoczatekZawieszenia0" runat="server" Theme="Moderno"  Value='<%# ((Eval("d_zawieszenia")) == null) ? Eval("now"): Eval("data_poczatkowa") %>'  ReadOnly="true"> 
                           
@@ -622,14 +609,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Data końca zawieszenia</td>
+                     <td class="auto-style27">Data końca zawieszenia</td>
                     <td>
                         <dx:ASPxDateEdit ID="txKoniecZawieszenia0" runat="server" Theme="Moderno"  Value='<%# ((Eval("dataKoncaZawieszenia")) == null) ? Eval("now"): Eval("data_poczatkowa") %>' ReadOnly="true"> 
                         </dx:ASPxDateEdit>
                     </td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
+                    <td class="auto-style28">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
@@ -659,82 +646,75 @@
                                <dx:TabPage Text="Dane kontaktowe" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                           <table style="width:100%;">
+                     <table style="width:100%;">
         <tr>
-            <td colspan="2">Adres </td>
-            <td class="auto-style2">&nbsp;</td>
-            <td colspan="2">Adres prywatny</td>
+            <td colspan="2"><span class="auto-style22"><strong>Adres</strong></span> </td>
+            <td colspan="2" class="auto-style22"><strong>Adres prywatny</strong></td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Instytucja</td>
+            <td class="auto-style21">Instytucja</td>
             <td>
-                <dx:ASPxTextBox ID="txInstytucja1" runat="server" Width="170px" Text='<%# Eval("instytucja")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txInstytucja1" runat="server" Width="90%" Text='<%# Eval("instytucja")%>' ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
-            <td class="auto-style2">&nbsp;</td>
-            <td class=" normal przesuniecie prc25">Adres</td>
+            <td class="auto-style24">Adres</td>
             <td>
-                <dx:ASPxTextBox ID="txAdresKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("adr_kores")%>'  ReadOnly="true">
-                </dx:ASPxTextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class=" normal przesuniecie prc25">Adres</td>
-            <td>
-                <dx:ASPxTextBox ID="txAdres0" runat="server" Width="170px" Text='<%# Eval("ulica")%>' ReadOnly="true" >
-                </dx:ASPxTextBox>
-            </td>
-            <td class="auto-style2">&nbsp;</td>
-            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
-            <td>
-                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txAdresKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("adr_kores")%>'  ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Kod pocztowy</td>
+            <td class="auto-style21">Adres</td>
+            <td>
+                <dx:ASPxTextBox ID="txAdres0" runat="server" Width="90%" Text='<%# Eval("ulica")%>' ReadOnly="true" Theme="Moderno" >
+                </dx:ASPxTextBox>
+            </td>
+            <td class="auto-style24">Kod pocztowy</td>
+            <td>
+                <dx:ASPxTextBox ID="txKodPocztowyKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("kod_poczt_kor")%>'  ReadOnly="true" Theme="Moderno">
+                </dx:ASPxTextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style21">Kod pocztowy</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txKodPocztowy0" runat="server" Width="170px" Text='<%# Eval("kod_poczt")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txKodPocztowy0" runat="server" Width="90%" Text='<%# Eval("kod_poczt")%>'  ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
-            <td class="auto-style2"></td>
-            <td class=" normal przesuniecie prc25">Miejscowość</td>
+            <td class="auto-style24">Miejscowość</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txMiejscowoscKorespondencyjny0" runat="server" Width="170px" Text='<%# Eval("miejscowosc_kor")%>' ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Miejscowosc</td>
+            <td class="auto-style21">Miejscowosc</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txMiejscowosc0" runat="server" Width="170px" Text='<%# Eval("miejscowosc")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txMiejscowosc0" runat="server" Width="90%" Text='<%# Eval("miejscowosc")%>' ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
-            <td class="auto-style2"></td>
-            <td class=" normal przesuniecie prc25">Telefon</td>
+            <td class="auto-style24">Telefon</td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txTelefon4" runat="server" Width="170px" Text='<%# Eval("tel2")%>'  ReadOnly="true">
+                <dx:ASPxTextBox ID="txTelefon4" runat="server" Width="170px" Text='<%# Eval("tel2")%>'  ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Telefon </td>
+            <td class="auto-style21">Telefon </td>
             <td class="prc25">
-                <dx:ASPxTextBox ID="txTelefon3" runat="server" Width="170px" Text='<%# Eval("tel1")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txTelefon3" runat="server" Width="90%" Text='<%# Eval("tel1")%>' ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
-            <td class="auto-style2">&nbsp;</td>
-            <td class="prc25 normal">&nbsp;</td>
+            <td class="auto-style25">&nbsp;</td>
             <td class="prc25 normal">&nbsp;</td>
         </tr>
         <tr>
-            <td class=" normal przesuniecie prc25">Email</td>
+            <td class="auto-style21">Email</td>
             <td class="dxflEmptyItem">
-                <dx:ASPxTextBox ID="txEmail0" runat="server" Width="170px" Text='<%# Eval("email")%>' ReadOnly="true">
+                <dx:ASPxTextBox ID="txEmail0" runat="server" Width="90%" Text='<%# Eval("email")%>' ReadOnly="true" Theme="Moderno">
                 </dx:ASPxTextBox>
             </td>
-            <td class="auto-style2"></td>
-            <td class="prc25 normal">&nbsp;</td>
+            <td class="auto-style25">&nbsp;</td>
             <td class="prc25 normal">&nbsp;</td>
         </tr>
         </table>
@@ -763,7 +743,7 @@
             </SelectParameters>
            
         </asp:SqlDataSource>    
-<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="specjalizacjeOsob" KeyFieldName="idSpecjalizacji" Theme="Moderno" EnableTheming="True">
+<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="specjalizacjeOsob1" KeyFieldName="idSpecjalizacji" Theme="Moderno" EnableTheming="True">
     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False" />
     <Columns>
         <dx:GridViewDataTextColumn FieldName="Row" ReadOnly="True" Visible="False" VisibleIndex="2">
@@ -793,7 +773,8 @@
                             <dx:TabPage Text="Historia powołań" Visible="true">
                                 <ContentCollection>
                                     <dx:ContentControl runat="server">
-                                     <uc1:historiaPowolanMediatirow ID="historiaPowolanMediatirow2" runat="server" />
+
+                                     <uc5:historiaPowolanMediatirowOdczyt ID="historiaPowolanMediatirowOdczyt1" runat="server" />
                                         <br /> 
                                         
                                 
@@ -884,13 +865,6 @@
        
         
         
-                                     
-
-        
-          
-        
-        
-        
         
        
        
@@ -905,85 +879,16 @@
         
                                      
 
-        
-          
-        
-        
-        
-        
-       
-       
-                 <br />
-        <br />
-        
-        
-        
-        
-       
-        
-        
-                                     
-
-        
-          
-        
              
-        
-        
-       
-        
-        
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
-        
-  
-        
-        
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
-        
-  
-        
-       
-        
-        
-                                     
-
-        
           
         
         
-        
+                 
+   
         
        
-        
-        
-        
-        
-        
-        
        
                  
-                                         
-        
-     
-        
         
         
         
@@ -991,17 +896,8 @@
        
         
         
-        
-        
-        
-        
-  
-        
-        
-        
-        <br />
-        
-        
+                     
+              
         
         
         <br />

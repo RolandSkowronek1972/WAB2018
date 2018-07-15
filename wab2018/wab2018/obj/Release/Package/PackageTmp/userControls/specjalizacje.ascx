@@ -19,14 +19,19 @@
            
         </asp:SqlDataSource>    
 <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="specjalizacjeOsob" KeyFieldName="idSpecjalizacji" OnRowUpdating="ASPxGridView1_RowUpdating" Theme="Moderno" EnableTheming="True" Width="90%">
-    <SettingsDataSecurity AllowDelete="False" AllowInsert="False" />
+    <EditFormLayoutProperties ColCount="2">
+        <Items>
+            <dx:GridViewColumnLayoutItem ColumnName="nazwa">
+            </dx:GridViewColumnLayoutItem>
+            <dx:GridViewColumnLayoutItem ColumnName="Opis">
+            </dx:GridViewColumnLayoutItem>
+        </Items>
+    </EditFormLayoutProperties>
     <Columns>
         <dx:GridViewDataTextColumn FieldName="Row" ReadOnly="True" Visible="False" VisibleIndex="3">
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataCheckColumn FieldName="stab" VisibleIndex="0" Caption="Posiadana specjalizacja" Width="25%">
         </dx:GridViewDataCheckColumn>
-        <dx:GridViewDataTextColumn FieldName="nazwa" ReadOnly="True" VisibleIndex="1" Caption="Nazwa specjalizacji" Width="25%">
-        </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="idSpecjalizacji" Visible="False" VisibleIndex="4">
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="idOsoby" Visible="False" VisibleIndex="5">
@@ -37,6 +42,8 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn Caption="Opis" ReadOnly="True" VisibleIndex="2" Width="50%">
         </dx:GridViewDataTextColumn>
+        <dx:GridViewDataComboBoxColumn Caption="Nazwa specjalizacji" FieldName="nazwa" ReadOnly="True" VisibleIndex="1" Width="25%">
+        </dx:GridViewDataComboBoxColumn>
     </Columns>
     <SettingsEditing Mode="Batch"></SettingsEditing>
 

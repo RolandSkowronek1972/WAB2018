@@ -10,7 +10,7 @@
 namespace wab2018.userControls {
     
     
-    public partial class zawieszenia {
+    public partial class zawieszkiOdczyt {
         
         /// <summary>
         /// ASPxCheckBox1 control.
@@ -22,30 +22,39 @@ namespace wab2018.userControls {
         protected global::DevExpress.Web.ASPxCheckBox ASPxCheckBox1;
         
         /// <summary>
-        /// Panel1 control.
+        /// ASPxLabel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel1;
         
         /// <summary>
-        /// txPoczatek control.
+        /// ASPxDateEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit txPoczatek;
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEdit1;
         
         /// <summary>
-        /// txKoniec control.
+        /// ASPxLabel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit txKoniec;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel2;
+        
+        /// <summary>
+        /// ASPxDateEdit2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEdit2;
     }
 }

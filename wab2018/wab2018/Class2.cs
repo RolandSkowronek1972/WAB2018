@@ -46,7 +46,20 @@ namespace wab2018
             return odp;
 
         }// end of podajNumerSkargiwRoku
+        public string podajNumerSkargiwRoku( int rok)
+        {
+            log.Info("Start funkcji usun_Osobe");
+            DataTable parameters = Common.makeParameterTable();
+            parameters.Rows.Add("@rok", rok);
+           
+            string odp = Common.runQuerryWithResult("select (max(numer)+1) from tbl_skargi where rok=@rok  and czyus=0", con_str, parameters);
+            if (string.IsNullOrEmpty(odp))
+            {
+                odp = "1";
+            }
+            return odp;
 
+        }// end of podajNumerSkargiwRoku
         public string usun_osobe(string id, string deleter)
         {
             log.Info("Start funkcji usun_Osobe");

@@ -172,6 +172,80 @@ namespace wab2018
 
                             }
                             break;
+                        case "4":
+                            {
+                                Menu1.Items.Clear();
+
+                                MenuItem mn = new MenuItem();
+                                mn.NavigateUrl = "default.aspx";
+                                mn.Text = "Obciążenie biegłych";
+                                Menu1.Items.Add(mn);
+
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "biegliLista.aspx";
+                                mn.Text = "Wykaz biegłych";
+                                Menu1.Items.Add(mn);
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "mediatorzyLista.aspx";
+                                mn.Text = "Wykaz mediatorów";
+                                Menu1.Items.Add(mn);
+
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "Lista_03.aspx";
+                                mn.Text = "Obciążenia";
+                                Menu1.Items.Add(mn);
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "wykazSkarg.aspx";
+                                mn.Text = "Wykaz skarg";
+                                Menu1.Items.Add(mn);
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "default.aspx?logout=1";
+                                mn.Text = "Wyloguj";
+                                Menu1.Items.Add(mn);
+                            }
+                            break;
+                        case "5":
+                            {
+                                Menu1.Items.Clear();
+
+                                MenuItem mn = new MenuItem();
+                                mn.NavigateUrl = "default.aspx";
+                                mn.Text = "Obciążenie biegłych";
+                                Menu1.Items.Add(mn);
+
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "biegliLista.aspx";
+                                mn.Text = "Wykaz biegłych";
+                                Menu1.Items.Add(mn);
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "mediatorzyLista.aspx";
+                                mn.Text = "Wykaz mediatorów";
+                                Menu1.Items.Add(mn);
+
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "Lista_03.aspx";
+                                mn.Text = "Obciążenia";
+                                Menu1.Items.Add(mn);
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "wykazSkarg.aspx";
+                                mn.Text = "Wykaz skarg";
+                                Menu1.Items.Add(mn);
+
+                                mn = new MenuItem();
+                                mn.NavigateUrl = "default.aspx?logout=1";
+                                mn.Text = "Wyloguj";
+                                Menu1.Items.Add(mn);
+                            }
+                            break;
                         default:
                             {
                                 Menu1.Items.Clear();

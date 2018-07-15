@@ -33,10 +33,6 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\EntityFramework.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\log4net.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\Microsoft.AspNet.EntityDataSource.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\Microsoft.Web.Infrastructure.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.OOXML.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.OpenXml4Net.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.OpenXmlFormats.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\System.Net.Http.Formatting.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\WebGrease.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Pdf.v17.1.Core.dll

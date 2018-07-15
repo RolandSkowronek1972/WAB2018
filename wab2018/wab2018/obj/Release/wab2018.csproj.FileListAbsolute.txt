@@ -24,10 +24,6 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraGauges.v17.1.Core.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraPrinting.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\log4net.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.OOXML.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.OpenXml4Net.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\NPOI.OpenXmlFormats.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Pdf.v17.1.Core.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Office.v17.1.Core.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraEditors.v17.1.dll

@@ -49,10 +49,10 @@ namespace wab2018
         protected void ASPxGridView1_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             e.Editor.ReadOnly = false;
-            string idBieglego = (string)Session["id_osoby"];
+            
             if (e.Column.FieldName == "numer")
             {
-                e.Editor.Value = cl.podajNumerSkargiwRoku(idBieglego, DateTime.Now.Year); ;
+                e.Editor.Value = cl.podajNumerSkargiwRoku( DateTime.Now.Year); ;
             }
             if (e.Column.FieldName == "rok")
             {
@@ -76,6 +76,11 @@ namespace wab2018
         {
            
             var ident = e.NewValues["ident"];
+            var zakreslenie = e.NewValues["zakreslono"];
+            if (zakreslenie == null)
+            {
+                e.NewValues["zakreslono"] = false;
+            }
         }
 
        
