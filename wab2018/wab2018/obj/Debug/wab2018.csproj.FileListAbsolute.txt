@@ -24,7 +24,6 @@ C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.RichEdit.v17.1.Core.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Utils.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.ASPxGauges.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.ASPxThemes.v17.1.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.Bootstrap.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.Resources.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.XtraGauges.v17.1.Core.dll

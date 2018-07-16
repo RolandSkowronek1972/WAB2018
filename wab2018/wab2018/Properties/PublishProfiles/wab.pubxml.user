@@ -22,7 +22,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2018 11:09:08</publishTime>
     </File>
     <File Include="biegliLista.aspx">
-      <publishTime>07/15/2018 15:03:35</publishTime>
+      <publishTime>07/16/2018 01:44:46</publishTime>
     </File>
     <File Include="biegliLista_old.aspx">
       <publishTime>07/09/2018 15:01:09</publishTime>
@@ -367,7 +367,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/15/2018 18:50:24</publishTime>
+      <publishTime>07/16/2018 01:45:52</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -517,7 +517,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2018 10:51:32</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
-      <publishTime>07/15/2018 18:16:35</publishTime>
+      <publishTime>07/16/2018 01:23:50</publishTime>
     </File>
     <File Include="nowyMediator.aspx">
       <publishTime>07/01/2018 13:18:20</publishTime>
@@ -572,6 +572,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/esm/popper.min.js.map">
       <publishTime>06/17/2018 14:28:52</publishTime>
+    </File>
+    <File Include="Scripts/jquerry-1.9.1.js">
+      <publishTime>07/16/2018 01:20:39</publishTime>
     </File>
     <File Include="Scripts/jquery-1.4.1.js">
       <publishTime>04/20/2018 09:41:07</publishTime>
@@ -700,7 +703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/15/2018 13:04:23</publishTime>
     </File>
     <File Include="version.txt">
-      <publishTime>07/15/2018 18:15:37</publishTime>
+      <publishTime>07/16/2018 00:59:46</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>
@@ -718,7 +721,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2018 10:10:00</publishTime>
     </File>
     <File Include="wykazSkarg.aspx">
-      <publishTime>07/15/2018 12:53:50</publishTime>
+      <publishTime>07/16/2018 00:59:46</publishTime>
     </File>
     <File Include="zawieszenia.ascx">
       <publishTime>06/25/2018 15:45:08</publishTime>

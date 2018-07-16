@@ -3,7 +3,7 @@
 <%@ Register src="userControls/historiaPowolanMediatirow.ascx" tagname="historiaPowolanMediatirow" tagprefix="uc1" %>
 <%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Data.Linq" tagprefix="dx" %>
 <%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc2" %>
-<%@ Register src="userControls/statystykiHistoria.ascx" tagname="statystykiHistoria" tagprefix="uc4" %>
+
 <%@ Register src="userControls/specjalizacje.ascx" tagname="specjalizacje" tagprefix="uc3" %>
 <%@ Register src="userControls/historiaPowolanMediatirowOdczyt.ascx" tagname="historiaPowolanMediatirowOdczyt" tagprefix="uc5" %>
 <%@ Register src="userControls/zawieszki.ascx" tagname="zawieszki" tagprefix="uc6" %>
@@ -76,7 +76,8 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    
+    <script src="Scripts/jquerry-1.9.1.js"></script>
     <script type="text/javascript">
         var index = -1;
        
