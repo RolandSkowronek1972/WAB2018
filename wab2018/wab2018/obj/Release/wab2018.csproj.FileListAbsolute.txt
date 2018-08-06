@@ -107,7 +107,6 @@ C:\projekts\wab_2018\wab2018\wab2018\obj\Release\wab2018.dll.licenses
 C:\projekts\wab_2018\wab2018\wab2018\obj\Release\wab2018.dll
 C:\projekts\wab_2018\wab2018\wab2018\obj\Release\wab2018.pdb
 C:\projekts\wab_2018\wab2018\wab2018\bin\AjaxMin.dll
-C:\projekts\wab_2018\wab2018\wab2018\bin\DevExpress.Web.Bootstrap.v17.1.dll
 C:\projekts\wab_2018\wab2018\wab2018\obj\Release\wab2018.csprojResolveAssemblyReference.cache
 C:\projekts\wab_2018\wab2018\wab2018\bin\log4net.config
 C:\projekts\wab_2018\wab2018\wab2018\bin\Antlr3.Runtime.dll

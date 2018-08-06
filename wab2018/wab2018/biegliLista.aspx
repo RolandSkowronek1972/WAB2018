@@ -181,7 +181,10 @@
          
            
         </Columns>
-           
+            <Settings ShowFilterBar="Visible" />
+        <SettingsFilterControl ViewMode="VisualAndText" AllowHierarchicalColumns="true" ShowAllDataSourceColumns="true" MaxHierarchyDepth="1" />
+        <SettingsPager PageSize="8" />
+       
         <SettingsPager AlwaysShowPager="True" PageSize="200" />
         
         

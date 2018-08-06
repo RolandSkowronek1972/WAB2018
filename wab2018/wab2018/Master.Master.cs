@@ -9,6 +9,9 @@ namespace wab2018
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var fileContents = System.IO.File.ReadAllText(Server.MapPath(@"~//version.txt"));    // file read with version
+            this.Page.Title = "Portal Biegłych i Mediatorów Sądowych  " + fileContents.ToString().Trim();
+
             string User_id = string.Empty;
 
             try

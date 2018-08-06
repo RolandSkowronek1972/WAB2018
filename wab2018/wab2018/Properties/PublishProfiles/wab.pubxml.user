@@ -22,7 +22,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2018 11:09:08</publishTime>
     </File>
     <File Include="biegliLista.aspx">
-      <publishTime>07/16/2018 01:44:46</publishTime>
+      <publishTime>07/16/2018 05:05:08</publishTime>
     </File>
     <File Include="biegliLista_old.aspx">
       <publishTime>07/09/2018 15:01:09</publishTime>
@@ -367,7 +367,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>07/16/2018 01:45:52</publishTime>
+      <publishTime>07/16/2018 07:37:29</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -664,7 +664,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/15/2018 12:53:50</publishTime>
     </File>
     <File Include="userControls/daneStatystyczne.ascx">
-      <publishTime>06/24/2018 21:48:36</publishTime>
+      <publishTime>07/16/2018 02:48:05</publishTime>
     </File>
     <File Include="userControls/historiaPowolanMediatirow.ascx">
       <publishTime>07/11/2018 05:52:59</publishTime>
@@ -703,7 +703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/15/2018 13:04:23</publishTime>
     </File>
     <File Include="version.txt">
-      <publishTime>07/16/2018 00:59:46</publishTime>
+      <publishTime>07/16/2018 07:36:21</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>
