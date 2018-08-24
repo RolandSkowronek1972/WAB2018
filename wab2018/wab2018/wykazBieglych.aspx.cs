@@ -1251,14 +1251,10 @@ namespace wab2018
                 // uttwórz listę osób z taka specjalizacją 
             }
 
-
-
             //==============================================================
-
-
+            
             // wyciąfnij listę ludzi z dana specjalizacją 
-            //        BaseFont cl.plFont2NEW = BaseFont.CreateFont(Server.MapPath("/fonts/") + "ARIAL.TTF", BaseFont.CP1257, BaseFont.EMBEDDED);
-
+         
             string sylfaenpath = Environment.GetEnvironmentVariable("SystemRoot") + "\\fonts\\sylfaen.ttf";
             BaseFont sylfaen = BaseFont.CreateFont(sylfaenpath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font head = new Font(sylfaen, 12f, Font.NORMAL, BaseColor.BLACK);
@@ -1273,7 +1269,7 @@ namespace wab2018
 
 
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
-            string path = Server.MapPath("//pdf");// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string path = Server.MapPath(@"~//pdf");// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
             pdfDoc.Open();
@@ -1524,7 +1520,7 @@ namespace wab2018
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
             //  PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream("C:\\temp\\" + filename, FileMode.Create));
 
-            string path = Server.MapPath("//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
+            string path = Server.MapPath(@"~//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
             string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
             pdfDoc.Open();

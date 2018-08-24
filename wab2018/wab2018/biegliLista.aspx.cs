@@ -152,12 +152,6 @@ namespace wab2018
             }
 
 
-        /*    if (nm.controlCheckbox("cbZawieszenie", grid))
-            {
-                
-                e.NewValues["d_zawieszenia"] = (DateTime)Session["poczatekZawieszeniaN"];// nm.controlTextDate("txPoczatekZawieszenia", grid);
-                e.NewValues["dataKoncaZawieszenia"] = (DateTime)Session["koniecZawieszeniaN"];//  nm.controlTextDate("txKoniecZawieszenia", grid);
-            }*/
             //dane adresowe
             e.NewValues["ulica"] = nm.controlText("txAdres", grid);
             e.NewValues["kod_poczt"] = nm.controlText("txKodPocztowy", grid);
@@ -193,6 +187,7 @@ namespace wab2018
             Session["idMediatora"] = idOsoby;
             Session["id_osoby"] = idOsoby;
             Session["czy_zaw"] = "0";
+          
         }
 
         protected void grid_StartRowEditing(object sender, ASPxStartRowEditingEventArgs e)
@@ -212,16 +207,7 @@ namespace wab2018
                 object koniecZawieszenia = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "dataKoncaZawieszenia");
                 Session["koniecZawieszenia"] = (DateTime)koniecZawieszenia;
             }
-           
-           
-     
 
-         //   Session["poczatekZawieszenia"]= poczatekZawieszenia;
-           // object koniecZawieszenia = grid.GetRowValuesByKeyValue(e.EditingKeyValue, "dataKoncaZawieszenia");
-
-      //      Session["koniecZawieszenia"]= koniecZawieszenia;
-            // string zawieszenie = "";
-            // ustawbaze();
         }
        
 
@@ -239,51 +225,60 @@ namespace wab2018
             }
             else
             {
-                e.NewValues["Pesel"] = nm.controlText("txPESEL", grid);
+                try
+                {
+                    e.NewValues["Pesel"] = Int64.Parse(nm.controlText("txPESEL", grid));
+                }
+                catch
+                {
+                    {
+                        e.NewValues["Pesel"] = 0;
+                    }
+
+
+                }
+                //d_zawieszenia
+
+                var cos = (string)Session["czy_zawN"]; //nm.controlCheckbox("cbZawieszenie", grid);
+                e.NewValues["czy_zaw"] = false;
+
+                if (cos == "1")
+                {
+                    e.NewValues["czy_zaw"] = true;
+                    DateTime poczZaw = (DateTime)Session["poczatekZawieszeniaN"];
+                    DateTime konZaw = (DateTime)Session["koniecZawieszeniaN"];
+
+                    e.NewValues["d_zawieszenia"] = poczZaw;
+                    e.NewValues["dataKoncaZawieszenia"] = konZaw;
+                }
+                //d_zawieszenia
+                /*  bool cos = nm.controlCheckbox("cbZawieszenie", grid);
+                  e.NewValues["czy_zaw"] = nm.controlCheckbox("cbZawieszenie", grid);
+                  if (nm.controlCheckbox("cbZawieszenie", grid))
+                  {
+                      e.NewValues["d_zawieszenia"] = nm.controlTextDate("txPoczatekZawieszenia", grid);
+                      e.NewValues["dataKoncaZawieszenia"] = nm.controlTextDate("txKoniecZawieszenia", grid);
+                  }*/
+                //dane adresowe
+                e.NewValues["ulica"] = nm.controlText("txAdres", grid);
+                e.NewValues["kod_poczt"] = nm.controlText("txKodPocztowy", grid);
+                e.NewValues["miejscowosc"] = nm.controlText("txMiejscowosc", grid);
+                e.NewValues["tel1"] = nm.controlText("txTelefon1", grid);
+                e.NewValues["tel2"] = nm.controlText("txTelefon2", grid);
+                e.NewValues["email"] = nm.controlText("txEmail", grid);
+                //dane korespondencyjne
+                e.NewValues["adr_kores"] = nm.controlText("txAdresKorespondencyjny", grid);
+                e.NewValues["kod_poczt_kor"] = nm.controlText("txKodPocztowyKorespondencyjny", grid);
+                e.NewValues["miejscowosc_kor"] = nm.controlText("txMiejscowoscKorespondencyjny", grid);
+                // uwagi i specjalizacje
+                e.NewValues["uwagi"] = nm.controlTextMemo("txUwagi", grid);
+                e.NewValues["specjalizacja_opis"] = nm.controlTextMemo("txSpecjalizacjeOpis", grid);
+                e.NewValues["instytucja"] = nm.controlText("txInstytucja", grid);
+
+
+
 
             }
-            //d_zawieszenia
-
-            var cos = (string)Session["czy_zawN"]; //nm.controlCheckbox("cbZawieszenie", grid);
-            e.NewValues["czy_zaw"] = false;
-
-            if (cos == "1")
-            {
-                e.NewValues["czy_zaw"] = true;
-                DateTime poczZaw = (DateTime)Session["poczatekZawieszeniaN"];
-                DateTime konZaw = (DateTime)Session["koniecZawieszeniaN"];
-
-                e.NewValues["d_zawieszenia"] = poczZaw;
-                e.NewValues["dataKoncaZawieszenia"] = konZaw;
-            }
-            //d_zawieszenia
-          /*  bool cos = nm.controlCheckbox("cbZawieszenie", grid);
-            e.NewValues["czy_zaw"] = nm.controlCheckbox("cbZawieszenie", grid);
-            if (nm.controlCheckbox("cbZawieszenie", grid))
-            {
-                e.NewValues["d_zawieszenia"] = nm.controlTextDate("txPoczatekZawieszenia", grid);
-                e.NewValues["dataKoncaZawieszenia"] = nm.controlTextDate("txKoniecZawieszenia", grid);
-            }*/
-            //dane adresowe
-            e.NewValues["ulica"] = nm.controlText("txAdres", grid);
-            e.NewValues["kod_poczt"] = nm.controlText("txKodPocztowy", grid);
-            e.NewValues["miejscowosc"] = nm.controlText("txMiejscowosc", grid);
-            e.NewValues["tel1"] = nm.controlText("txTelefon1", grid);
-            e.NewValues["tel2"] = nm.controlText("txTelefon2", grid);
-            e.NewValues["email"] = nm.controlText("txEmail", grid);
-            //dane korespondencyjne
-            e.NewValues["adr_kores"] = nm.controlText("txAdresKorespondencyjny", grid);
-            e.NewValues["kod_poczt_kor"] = nm.controlText("txKodPocztowyKorespondencyjny", grid);
-            e.NewValues["miejscowosc_kor"] = nm.controlText("txMiejscowoscKorespondencyjny", grid);
-            // uwagi i specjalizacje
-            e.NewValues["uwagi"] = nm.controlTextMemo("txUwagi", grid);
-            e.NewValues["specjalizacja_opis"] = nm.controlTextMemo("txSpecjalizacjeOpis", grid);
-            e.NewValues["instytucja"] = nm.controlText("txInstytucja", grid);
-
-
-
-
-
 
         }
 
@@ -330,7 +325,9 @@ namespace wab2018
         
         protected void ustawKwerendeOdczytu()
         {
-            string kwerendabazowa = "SELECT  ulica, kod_poczt, miejscowosc, COALESCE(czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident,   data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND(data_koncowa >= GETDATE()) ";
+            //SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, dbo.specjalizacjeLista(ident) + ' | ' + UPPER(specjalizacja_opis) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ < 2) AND (data_koncowa >= GETDATE()) ORDER BY nazwisko
+            //string kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, COALESCE (specjalizacjeWidok, '')  AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ < 2) AND (data_koncowa >= GETDATE())  ";
+            string kwerendabazowa = "SELECT        ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE(dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2)  AND (data_koncowa >= GETDATE())  ";
             Session["kwerenda"] = kwerendabazowa;
             if (!ASPxCheckBox1 .Checked)
             {
@@ -338,7 +335,8 @@ namespace wab2018
             }
             else
             {
-                Session["kwerenda"] = "SELECT  ulica, kod_poczt, miejscowosc, COALESCE(czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident,   data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND(data_koncowa < GETDATE())";
+                //  Session["kwerenda"] = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, COALESCE (specjalizacjeWidok, '')  AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM tbl_osoby WHERE (czyus = 0) AND (typ < 2) AND (data_koncowa < GETDATE())  ";
+                Session["kwerenda"] = "SELECT        ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE(dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, specjalizacja_opis, dbo.specjalizacjeLista(ident)  AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja FROM            tbl_osoby WHERE(czyus = 0) AND(typ < 2) AND  (data_koncowa < GETDATE())  ";
             }
             // po specjalizacji
             if (DropDownList1.SelectedIndex==-1)
@@ -506,7 +504,7 @@ namespace wab2018
 
 
             // wyciąfnij listę ludzi z dana specjalizacją 
-            //        BaseFont cl.plFont2NEW = BaseFont.CreateFont(Server.MapPath("/fonts/") + "ARIAL.TTF", BaseFont.CP1257, BaseFont.EMBEDDED);
+           
 
             string sylfaenpath = Environment.GetEnvironmentVariable("SystemRoot") + "\\fonts\\sylfaen.ttf";
             BaseFont sylfaen = BaseFont.CreateFont(sylfaenpath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -522,7 +520,7 @@ namespace wab2018
 
 
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
-            string path = Server.MapPath("//pdf");// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string path = Server.MapPath(@"~//pdf");// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
             pdfDoc.Open();
@@ -698,8 +696,7 @@ namespace wab2018
 
         }
 
-
-
+        
         protected void robRaportWszystkichSpecjalizacji()
         {
             //podliczenie
@@ -774,7 +771,7 @@ namespace wab2018
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
             //  PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream("C:\\temp\\" + filename, FileMode.Create));
 
-            string path = Server.MapPath("//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
+            string path = Server.MapPath(@"~//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
             string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
             pdfDoc.Open();
