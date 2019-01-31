@@ -428,27 +428,47 @@ namespace wab2018
 
         protected void twórzZestawienie(object sender, EventArgs e)
         {
-            internationalPDF();
-            if (ASPxCheckBox2.Checked)
+          //  internationalPDF();
+         //   DataTable data=  getDataFromGridview();
+            robRaportWszystkichSpecjalizacji(getDataFromGridview());
+          /*  if (ASPxCheckBox2.Checked)
             {
                 //jedna
-                robRaportjednejSpecjalizacji(DropDownList1.SelectedItem.Value.Trim());
+                robRaportjednejSpecjalizacji(DropDownList1.SelectedItem.Value.Trim(), data);
 
             }
             else
             {
-                robRaportWszystkichSpecjalizacji();
-            }
+                robRaportWszystkichSpecjalizacji(getDataFromGridview());
+            }*/
         }
+      protected  DataTable  getDataFromGridview()
+        {
+            DataTable identy = new DataTable();
+            identy.Columns.Add(new DataColumn("id", typeof(int)));
+      
+            int vrc = grid.VisibleRowCount;
+            int vrsi = grid.VisibleStartIndex;
 
-        protected void robRaportjednejSpecjalizacji(String specjalizacja)
+       
+            for (int i = 0; i < vrc; i++)
+            {
+             
+                int id_ = Convert.ToInt32(grid.GetRowValues(i, grid.KeyFieldName));
+                DataRow dR = identy.NewRow();
+                dR[0] = id_;
+                identy.Rows.Add(dR);
+            }
+            return identy;
+        }
+     /*   protected void robRaportjednejSpecjalizacji(String specjalizacja)
         {
             //podliczenie
             DataTable specjalizacjeWyliczenie = new DataTable();
             specjalizacjeWyliczenie.Columns.Add("nr", typeof(string));
             specjalizacjeWyliczenie.Columns.Add("str", typeof(string));
             DataTable specjalizacje = new DataTable();
-            specjalizacje = cl.odczytaj_specjalizacjeLista();
+        //    specjalizacje = cl.odczytaj_specjalizacjeLista();
 
 
             DataTable Biegli = new DataTable();
@@ -695,77 +715,285 @@ namespace wab2018
 
 
         }
-
-        
-        protected void robRaportWszystkichSpecjalizacji()
+*/
+        protected void robRaportjednejSpecjalizacji(String specjalizacja,DataTable daneBieglych)
         {
             //podliczenie
             DataTable specjalizacjeWyliczenie = new DataTable();
             specjalizacjeWyliczenie.Columns.Add("nr", typeof(string));
             specjalizacjeWyliczenie.Columns.Add("str", typeof(string));
             DataTable specjalizacje = new DataTable();
-            specjalizacje = cl.odczytaj_specjalizacjeLista();
+          //  specjalizacje = cl.odczytaj_specjalizacjeLista();
 
-            foreach (DataRow dRow in specjalizacje.Rows)
+
+            DataTable Biegli = new DataTable();
+            string idSpecjalizacji = specjalizacja;
+            string nazwaSpecjalizacji = DropDownList1.SelectedItem.Text.Trim();
+            int iloscStron = 0;
+            Biegli = cl.wyciagnijBieglychZSpecjalizacja(idSpecjalizacji, daneBieglych);
+            if (Biegli.Rows.Count > 0)
             {
+                iloscStron = 1;
+                PdfPTable tabelaGlowna = new PdfPTable(4);
+                int[] tblWidth = { 8, 30, 30, 32 };
 
-                DataTable Biegli = new DataTable();
-                string idSpecjalizacji = dRow[0].ToString().Trim();
-                string nazwaSpecjalizacji = dRow[1].ToString().Trim();
-                int iloscStron = 0;
+                tabelaGlowna = new PdfPTable(4);
+                tabelaGlowna = generujCzescRaportu(Biegli, nazwaSpecjalizacji);
 
-                Biegli = cl.wyciagnijBieglychZSpecjalizacja(idSpecjalizacji, ASPxCheckBox2.Checked);
-                if (Biegli.Rows.Count > 0)
+                if (tabelaGlowna.Rows.Count > 15)
                 {
-                    iloscStron = 1;
-                    PdfPTable tabelaGlowna = new PdfPTable(4);
-                    int[] tblWidth = { 8, 30, 30, 32 };
+                    int counter = 0;
+                    PdfPTable newTable = new PdfPTable(4);
+                    newTable.SetWidths(tblWidth);
+                    // podziel tabele
 
-                    tabelaGlowna = new PdfPTable(4);
-                    tabelaGlowna = generujCzescRaportu(Biegli, nazwaSpecjalizacji);
-
-                    if (tabelaGlowna.Rows.Count > 15)
+                    foreach (var TableRow in tabelaGlowna.Rows)
                     {
-                        int counter = 0;
-                        PdfPTable newTable = new PdfPTable(4);
-                        newTable.SetWidths(tblWidth);
-                        // podziel tabele
-
-                        foreach (var TableRow in tabelaGlowna.Rows)
+                        counter++;
+                        newTable.Rows.Add(TableRow);
+                        if (counter == 15)
                         {
-                            counter++;
-                            newTable.Rows.Add(TableRow);
-                            if (counter == 15)
-                            {
-                                iloscStron++;
-                                counter = 0;
-                            }
+                            iloscStron++;
+                            counter = 0;
                         }
-                        DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
-                        wyliczenie[0] = nazwaSpecjalizacji;
-                        wyliczenie[1] = iloscStron.ToString();
-                        specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+                    }
+                    DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
+                    wyliczenie[0] = nazwaSpecjalizacji;
+                    wyliczenie[1] = iloscStron.ToString();
+                    specjalizacjeWyliczenie.Rows.Add(wyliczenie);
 
-                    }
-                    else
-                    {
-                        DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
-                        wyliczenie[0] = nazwaSpecjalizacji;
-                        wyliczenie[1] = iloscStron.ToString();
-                        specjalizacjeWyliczenie.Rows.Add(wyliczenie);
-                    }
-                    // uttwórz listę osób z taka specjalizacją 
                 }
-
-            }// end of each
-
+                else
+                {
+                    DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
+                    wyliczenie[0] = nazwaSpecjalizacji;
+                    wyliczenie[1] = iloscStron.ToString();
+                    specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+                }
+                // uttwórz listę osób z taka specjalizacją 
+            }
 
 
 
             //==============================================================
 
 
+            // wyciąfnij listę ludzi z dana specjalizacją 
 
+
+            string sylfaenpath = Environment.GetEnvironmentVariable("SystemRoot") + "\\fonts\\sylfaen.ttf";
+            BaseFont sylfaen = BaseFont.CreateFont(sylfaenpath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font head = new Font(sylfaen, 12f, Font.NORMAL, BaseColor.BLACK);
+            Font normal = new Font(sylfaen, 10f, Font.NORMAL, BaseColor.BLACK);
+            Font underline = new Font(sylfaen, 10f, Font.UNDERLINE, BaseColor.BLACK);
+
+
+
+
+            //    var cl.plFontBIG = FontFactory.GetFont(BaseFont.HELVETICA, BaseFont.CP1257, 35, Font.NORMAL);
+
+
+
+            iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
+            string path = Server.MapPath(@"~//pdf");// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
+            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
+            pdfDoc.Open();
+
+
+            pdfDoc.AddTitle("zestawienie_Specjalizacji");
+            pdfDoc.AddCreationDate();
+
+
+            pdfDoc.Open();
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;" + "filename=zestawienie_Specjalizacji.pdf");
+
+
+            PdfPTable fitst = new PdfPTable(1);
+            fitst.DefaultCell.Border = Rectangle.NO_BORDER;
+            PdfPCell cell = new PdfPCell(new Paragraph(" ", head));
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            cell.FixedHeight = 100;
+            fitst.AddCell(cell);
+
+            cell = new PdfPCell(new Paragraph("LISTA", head));
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+
+            cell.Border = Rectangle.NO_BORDER;
+            fitst.AddCell(cell);
+            string text = "BIEGŁYCH SĄDOWYCH ";
+
+            cell = new PdfPCell(new Paragraph(text, head));
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            cell.FixedHeight = 100;
+            fitst.AddCell(cell);
+
+            cell = new PdfPCell(new Paragraph("", head));
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            cell.FixedHeight = 100;
+            fitst.AddCell(cell);
+
+            cell = new PdfPCell(new Paragraph("SĄDU OKRĘGOWEGO", head));
+            cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.FixedHeight = 100;
+            cell.Border = Rectangle.NO_BORDER;
+            fitst.AddCell(cell);
+            pdfDoc.Add(fitst);
+            pdfDoc.NewPage();
+            PdfPTable tab = new PdfPTable(3);
+            int[] tblWidth2 = { 10, 80, 10 };
+            tab.SetWidths(tblWidth2);
+            cell = new PdfPCell(new Paragraph("", cl.plFontBIG));
+            cell.FixedHeight = 100;
+            cell.Border = Rectangle.NO_BORDER;
+            tab.AddCell(cell);
+            tab.AddCell(cell);
+            tab.AddCell(cell);
+
+            cell = new PdfPCell(new Paragraph("Lp.", cl.plFont2));
+            tab.AddCell(cell);
+            cell = new PdfPCell(new Paragraph("Zakres", cl.plFont2));
+            tab.AddCell(cell);
+            cell = new PdfPCell(new Paragraph("Numer strony", cl.plFont2));
+
+            tab.AddCell(cell);
+
+            int biezacaStrona = 0;
+            int il = 0;
+            foreach (DataRow dRow in specjalizacjeWyliczenie.Rows)
+            {
+                il++;
+                tab.AddCell(new Paragraph(il.ToString(), cl.plFont2));
+                tab.AddCell(new Paragraph(dRow[0].ToString(), cl.plFont2));
+                biezacaStrona = biezacaStrona + int.Parse(dRow[1].ToString());
+                tab.AddCell(new Paragraph(biezacaStrona.ToString(), cl.plFont2));
+            }
+
+            pdfDoc.Add(tab);
+
+            pdfDoc.NewPage();
+
+            Biegli = new DataTable();
+            iloscStron = 0;
+            Biegli = cl.wyciagnijBieglychZSpecjalizacja(idSpecjalizacji, ASPxCheckBox2.Checked);
+            if (Biegli.Rows.Count > 0)
+            {
+                iloscStron = 1;
+                pdfDoc.Add(new Paragraph(" "));
+                pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji, cl.plFont1)));
+                pdfDoc.Add(new Paragraph(" "));
+                PdfPTable tabelaGlowna = new PdfPTable(4);
+                int[] tblWidth = { 8, 30, 30, 32 };
+                tabelaGlowna.SetWidths(tblWidth);
+                tabelaGlowna.AddCell(new Paragraph("Lp.", cl.plFont2));
+                tabelaGlowna.AddCell(new Paragraph("Nazwisko i imię", cl.plFont2));
+                tabelaGlowna.AddCell(new Paragraph("Adres- telefon", cl.plFont2));
+                tabelaGlowna.AddCell(new Paragraph("Zakres", cl.plFont2));
+
+
+                pdfDoc.Add(tabelaGlowna);
+                tabelaGlowna = new PdfPTable(4);
+
+                tabelaGlowna = generujCzescRaportu(Biegli, nazwaSpecjalizacji);
+
+                if (tabelaGlowna.Rows.Count > 15)
+                {
+                    int counter = 0;
+                    PdfPTable newTable = new PdfPTable(4);
+                    newTable.SetWidths(tblWidth);
+                    // podziel tabele
+
+                    foreach (var TableRow in tabelaGlowna.Rows)
+                    {
+                        counter++;
+                        newTable.Rows.Add(TableRow);
+                        if (counter == 15)
+                        {
+                            iloscStron++;
+                            counter = 0;
+                            pdfDoc.Add(newTable);
+                            pdfDoc.NewPage();
+                            pdfDoc.Add(new Paragraph(" "));
+                            pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji + " ciąg dalszy", cl.plFont1)));
+                            pdfDoc.Add(new Paragraph(" "));
+
+                            tabelaGlowna = new PdfPTable(4);
+
+                            tabelaGlowna.AddCell(new Paragraph("Lp.", cl.plFont2));
+                            tabelaGlowna.AddCell(new Paragraph("Nazwisko i imię", cl.plFont2));
+                            tabelaGlowna.AddCell(new Paragraph("Adres- telefon", cl.plFont2));
+
+                            tabelaGlowna.AddCell(new Paragraph("Zakres", cl.plFont2));
+                            tabelaGlowna.SetWidths(tblWidth);
+                        }
+                    }
+                    DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
+                    wyliczenie[0] = nazwaSpecjalizacji;
+                    wyliczenie[1] = iloscStron.ToString();
+                    specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+                    pdfDoc.Add(newTable);
+                    pdfDoc.NewPage();
+                }
+                else
+                {
+                    DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
+                    wyliczenie[0] = nazwaSpecjalizacji;
+                    wyliczenie[1] = iloscStron.ToString();
+                    specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+
+                    pdfDoc.Add(tabelaGlowna);
+                    pdfDoc.NewPage();
+
+                }
+                // uttwórz listę osób z taka specjalizacją 
+            }
+
+           
+            pdfDoc.Close();
+            WebClient client = new WebClient();
+            Byte[] buffer = client.DownloadData(fileName);
+            if (buffer != null)
+            {
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-lenght", buffer.Length.ToString());
+                Response.BinaryWrite(buffer);
+            }
+
+
+        }
+
+        protected DataRow wierszZBieglym(DataRow biegliRow,DataTable Biegli)
+        {
+            DataRow bieglyZatwierdzony = Biegli.NewRow();
+            try
+            {
+              
+                bieglyZatwierdzony[0] = biegliRow[0];
+                bieglyZatwierdzony[1] = biegliRow[1];
+                bieglyZatwierdzony[2] = biegliRow[2];
+                bieglyZatwierdzony[3] = biegliRow[3];
+                bieglyZatwierdzony[4] = biegliRow[4];
+                bieglyZatwierdzony[5] = biegliRow[5];
+                bieglyZatwierdzony[6] = biegliRow[6];
+                bieglyZatwierdzony[7] = biegliRow[7];
+                bieglyZatwierdzony[8] = biegliRow[8];
+            }
+            catch (Exception)
+            {  }
+               
+               return bieglyZatwierdzony;
+           
+
+        }
+
+
+        protected void robRaportWszystkichSpecjalizacji(DataTable listaBieglych)
+        {
             // wyciąfnij listę ludzi z dana specjalizacją 
 
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
@@ -814,71 +1042,130 @@ namespace wab2018
             fitst.AddCell(cell);
             pdfDoc.Add(fitst);
             pdfDoc.NewPage();
-            PdfPTable tab = new PdfPTable(3);
-            int[] tblWidth2 = { 10, 80, 10 };
-            tab.SetWidths(tblWidth2);
-            cell = new PdfPCell(new Paragraph("", cl.plFontBIG));
-            cell.FixedHeight = 100;
-            cell.Border = Rectangle.NO_BORDER;
-            tab.AddCell(cell);
-            tab.AddCell(cell);
-            tab.AddCell(cell);
+          //  PdfPTable tab = new PdfPTable(3);
+      //      int[] tblWidth2 = { 10, 80, 10 };
+      
+          //  int il = 0;
+            //podliczenie
+            DataTable specjalizacjeWyliczenie = new DataTable();
+            specjalizacjeWyliczenie.Columns.Add("nr", typeof(string));
+            specjalizacjeWyliczenie.Columns.Add("str", typeof(string));
+            DataTable Biegli = generujTabeleBieglychDoZestawienia();
+            int iloscStron = 0;
 
-            cell = new PdfPCell(new Paragraph("Lp.", cl.plFont2));
-
-            tab.AddCell(cell);
-
-            cell = new PdfPCell(new Paragraph("Zakres", cl.plFont2));
-
-            tab.AddCell(cell);
-
-            cell = new PdfPCell(new Paragraph("Numer strony", cl.plFont2));
-
-            tab.AddCell(cell);
-
-            int biezacaStrona = 0;
-            int il = 0;
-            foreach (DataRow dRow in specjalizacjeWyliczenie.Rows)
+            foreach (DataRow dRow in cl.odczytaj_specjalizacjeLista().Rows)
             {
-                il++;
-                tab.AddCell(new Paragraph(il.ToString(), cl.plFont2));
-                tab.AddCell(new Paragraph(dRow[0].ToString(), cl.plFont2));
-                biezacaStrona = biezacaStrona + int.Parse(dRow[1].ToString());
-                tab.AddCell(new Paragraph(biezacaStrona.ToString(), cl.plFont2));
-            }
+                Biegli = new DataTable();
+                Biegli = generujTabeleBieglychDoZestawienia();
 
-            pdfDoc.Add(tab);
-
-            pdfDoc.NewPage();
-
-            foreach (DataRow dRow in specjalizacje.Rows)
-            {
-
-                DataTable Biegli = new DataTable();
-                string idSpecjalizacji = dRow[0].ToString().Trim();
+                int idSpecjalizacji = int.Parse(dRow[0].ToString().Trim());
                 string nazwaSpecjalizacji = dRow[1].ToString().Trim();
-                int iloscStron = 0;
-                Biegli = cl.wyciagnijBieglychZSpecjalizacja(idSpecjalizacji, ASPxCheckBox2.Checked);
+
+                foreach (DataRow bieglyZlisty in listaBieglych.Rows)
+                {
+                    int idBieglego = int.Parse(bieglyZlisty[0].ToString().Trim());
+                    int ilosc = cl.czyJestSpecjalizacjauBieglego(idBieglego, idSpecjalizacji);
+                    if (ilosc > 0)
+                    {
+                        DataRow jedenBiegly = Biegli.NewRow();
+                        jedenBiegly = wierszZBieglym(bieglyZlisty, Biegli);
+                        Biegli.Rows.Add(jedenBiegly);
+                    }
+                }// end of foreach
+
+
+                PdfPTable tabelaGlowna = new PdfPTable(4);
+                int[] tblWidth = { 8, 30, 30, 32 };
+
                 if (Biegli.Rows.Count > 0)
                 {
-                    iloscStron = 1;
+                    float ilStr = (float)Biegli.Rows.Count / 15;
+                    iloscStron = (int)Math.Ceiling(ilStr);
+                    DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
+                    wyliczenie[0] = nazwaSpecjalizacji;
+                    wyliczenie[1] = iloscStron.ToString();
+
+                    specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+
+                }
+            }
+                // dodaj wyliczenia
+                int strona = 1;
+                PdfPTable tabelaWyliczenia = new PdfPTable(3);
+                int[] tblWidthX = { 10, 70, 20 };
+                cell = new PdfPCell(new Paragraph("", cl.plFontBIG));
+                cell.FixedHeight = 100;
+                cell.Border = Rectangle.NO_BORDER;
+                tabelaWyliczenia.AddCell(cell);
+                tabelaWyliczenia.AddCell(cell);
+                tabelaWyliczenia.AddCell(cell);
+                cell = new PdfPCell(new Paragraph("L.p.", cl.plFontBIG));
+                cell.Border = Rectangle.NO_BORDER;
+                tabelaWyliczenia.AddCell(cell);
+                cell = new PdfPCell(new Paragraph("Nazwa specjalizacji", cl.plFontBIG));
+                cell.Border = Rectangle.NO_BORDER;
+                tabelaWyliczenia.AddCell(cell);
+                cell = new PdfPCell(new Paragraph("Strona", cl.plFontBIG));
+                cell.Border = Rectangle.NO_BORDER;
+                tabelaWyliczenia.AddCell(cell);
+                int iterator = 1;
+                foreach (DataRow dRwyliczenie in specjalizacjeWyliczenie.Rows)
+                {
+
+                    cell = new PdfPCell(new Paragraph(iterator.ToString(), cl.plFont2));
+                    cell.Border = Rectangle.NO_BORDER;
+                    tabelaWyliczenia.AddCell(cell);
+                    cell = new PdfPCell(new Paragraph(dRwyliczenie[0].ToString().Trim(), cl.plFont2));
+                    cell.Border = Rectangle.NO_BORDER;
+                    tabelaWyliczenia.AddCell(cell);
+                    cell = new PdfPCell(new Paragraph(strona.ToString(), cl.plFont2));
+                    cell.Border = Rectangle.NO_BORDER;
+                    tabelaWyliczenia.AddCell(cell);
+                    strona = strona + int.Parse(dRwyliczenie[1].ToString().Trim());
+                    iterator++;
+                }
+                pdfDoc.Add(tabelaWyliczenia);
+            pdfDoc.NewPage();
+            //end of  po specjalizacjach
+
+            foreach (DataRow dRow in cl.odczytaj_specjalizacjeLista().Rows)
+            {
+                Biegli = new DataTable();
+                Biegli = generujTabeleBieglychDoZestawienia();
+
+                int idSpecjalizacji = int.Parse(dRow[0].ToString().Trim());
+                string nazwaSpecjalizacji = dRow[1].ToString().Trim();
+
+                foreach (DataRow bieglyZlisty in listaBieglych.Rows)
+                {
+                    int idBieglego = int.Parse(bieglyZlisty[0].ToString().Trim());
+                    int ilosc = cl.czyJestSpecjalizacjauBieglego(idBieglego, idSpecjalizacji);
+                    if (ilosc > 0)
+                    {
+                        DataRow jedenBiegly = Biegli.NewRow();
+                        jedenBiegly = wierszZBieglym(bieglyZlisty, Biegli);
+                        Biegli.Rows.Add(jedenBiegly);
+                    }
+                }// end of foreach
+
+
+                PdfPTable tabelaGlowna = new PdfPTable(4);
+                int[] tblWidth = { 8, 30, 30, 32 };
+
+                if (Biegli.Rows.Count > 0)
+                {
+                    float ilStr = (float)Biegli.Rows.Count / 15;
+                    iloscStron = (int)Math.Ceiling(ilStr);
+                    DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
+                    wyliczenie[0] = nazwaSpecjalizacji;
+                    wyliczenie[1] = iloscStron.ToString();
+
+                    specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+                    tabelaGlowna = new PdfPTable(4);
+                    tabelaGlowna = generujCzescRaportu(Biegli, nazwaSpecjalizacji);
                     pdfDoc.Add(new Paragraph(" "));
                     pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji, cl.plFont3)));
                     pdfDoc.Add(new Paragraph(" "));
-                    PdfPTable tabelaGlowna = new PdfPTable(4);
-                    int[] tblWidth = { 8, 30, 30, 32 };
-                    tabelaGlowna.AddCell(new Paragraph("Lp.", cl.plFont2));
-                    tabelaGlowna.AddCell(new Paragraph("Nazwisko i imię", cl.plFont2));
-                    tabelaGlowna.AddCell(new Paragraph("Adres- telefon", cl.plFont2));
-
-                    tabelaGlowna.AddCell(new Paragraph("Zakres", cl.plFont2));
-                    tabelaGlowna.SetWidths(tblWidth);
-
-
-                    pdfDoc.Add(tabelaGlowna);
-                    tabelaGlowna = new PdfPTable(5);
-
-                    tabelaGlowna = generujCzescRaportu(Biegli, nazwaSpecjalizacji);
 
                     if (tabelaGlowna.Rows.Count > 15)
                     {
@@ -906,85 +1193,104 @@ namespace wab2018
                                 tabelaGlowna.AddCell(new Paragraph("Lp.", cl.plFont2));
                                 tabelaGlowna.AddCell(new Paragraph("Nazwisko i imię", cl.plFont2));
                                 tabelaGlowna.AddCell(new Paragraph("Adres- telefon", cl.plFont2));
-
-
                                 tabelaGlowna.AddCell(new Paragraph("Zakres", cl.plFont2));
                             }
                         }
-                        DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
-                        wyliczenie[0] = nazwaSpecjalizacji;
-                        wyliczenie[1] = iloscStron.ToString();
-                        specjalizacjeWyliczenie.Rows.Add(wyliczenie);
+
                         pdfDoc.Add(newTable);
                         pdfDoc.NewPage();
                     }
                     else
                     {
-                        DataRow wyliczenie = specjalizacjeWyliczenie.NewRow();
-                        wyliczenie[0] = nazwaSpecjalizacji;
-                        wyliczenie[1] = iloscStron.ToString();
-                        specjalizacjeWyliczenie.Rows.Add(wyliczenie);
-
                         pdfDoc.Add(tabelaGlowna);
                         pdfDoc.NewPage();
 
                     }
                     // uttwórz listę osób z taka specjalizacją 
                 }
+            }//end of  po specjalizacjach
+            //==============================================================
+           
+        
 
-            }// end of each
-
-
+           
             pdfDoc.Close();
-            WebClient client = new WebClient();
-            Byte[] buffer = client.DownloadData(fileName);
-            if (buffer != null)
-            {
-                Response.ContentType = "application/pdf";
-                Response.AddHeader("content-lenght", buffer.Length.ToString());
-                Response.BinaryWrite(buffer);
-            }
-
-
+            string newFilename = fileName + ".pdf";
+            AddPageNumber(fileName, newFilename);
+            
         }
+
+     
+
+        protected DataTable generujTabeleBieglychDoZestawienia()
+        {
+            DataTable Biegli = new DataTable();
+            Biegli.Columns.Add("ident", typeof(int));
+            Biegli.Columns.Add("imie", typeof(string));
+            Biegli.Columns.Add("nazwisko", typeof(string));
+            Biegli.Columns.Add("ulica", typeof(string));
+            Biegli.Columns.Add("kod_poczt", typeof(string));
+            Biegli.Columns.Add("miejscowosc", typeof(string));
+            Biegli.Columns.Add("data_koncowa", typeof(string));
+            Biegli.Columns.Add("tytul", typeof(string));
+            Biegli.Columns.Add("tel1", typeof(string));
+            return Biegli;
+        }
+    
         protected PdfPTable generujCzescRaportu(DataTable biegli, string specjalizacje)
         {
-
+            if (biegli.Rows.Count ==0)
+            {
+                return null;
+            }
             int[] tblWidth = { 8, 30, 30, 32 };
 
 
             PdfPTable tabelaGlowna = new PdfPTable(4);
             tabelaGlowna.SetWidths(tblWidth);
             int iterator = 0;
+            tabelaGlowna.AddCell(new Paragraph("Lp.", cl.plFont2));
+            tabelaGlowna.AddCell(new Paragraph("Nazwisko i imię", cl.plFont2));
+            tabelaGlowna.AddCell(new Paragraph("Adres- telefon", cl.plFont2));
+
+
+            tabelaGlowna.AddCell(new Paragraph("Zakres", cl.plFont2));
             foreach (DataRow biegly in biegli.Rows)
             {
-                iterator++;
                 string Idbieglego = biegly[0].ToString();
+                DataTable daneBieglego = cl.wyciagnijBieglegoZSpecjalizacja(int.Parse(Idbieglego));
+                if (daneBieglego.Rows.Count==0)
+                {
+                    continue;
+                }
+                DataRow daneJednegoBieglego = daneBieglego.Rows[0];
+                iterator++;
+              
                 DataTable listaSpecjalizacjiBieglego = new DataTable();
                 listaSpecjalizacjiBieglego = cl.odczytaj_specjalizacje_osoby2(Idbieglego);
                 //dbo.tbl_osoby.ident, dbo.tbl_osoby.imie, dbo.tbl_osoby.nazwisko, dbo.tbl_osoby.ulica, dbo.tbl_osoby.kod_poczt, dbo.tbl_osoby.miejscowosc,   dbo.tbl_osoby.data_koncowa,  dbo.tbl_osoby.tytul,
-                string imie = biegly[1].ToString();
-                string nazwisko = biegly[2].ToString();
-                string tytul = biegly[7].ToString();
+                string imie = daneJednegoBieglego[1].ToString();
+                string nazwisko = daneJednegoBieglego[2].ToString();
+                string tytul = daneJednegoBieglego[7].ToString();
+                string telefon = daneJednegoBieglego[8].ToString();
+                string email = daneJednegoBieglego[9].ToString();
                 string dataKonca = string.Empty;
                 try
                 {
-                    dataKonca = DateTime.Parse(biegly[6].ToString()).ToShortDateString();
+                    dataKonca = DateTime.Parse(daneJednegoBieglego[6].ToString()).ToShortDateString();
                 }
                 catch (Exception ex)
-                {
-
-
-                }
+                {   }
+               
 
                 string innerTable = imie + Environment.NewLine + nazwisko + Environment.NewLine + tytul + Environment.NewLine + "kadencja do dnia: " + dataKonca;
                 tabelaGlowna.AddCell(new Paragraph(iterator.ToString(), cl.plFont1));
                 tabelaGlowna.AddCell(new Paragraph(innerTable, cl.plFont1));
-                string ulica = biegly[3].ToString();
-                string kod = biegly[4].ToString();
-                string miejscowosc = biegly[5].ToString();
-                string tel = biegly[8].ToString();
-                string adresTable = ulica + Environment.NewLine + kod + " " + miejscowosc + Environment.NewLine + tel;
+                string ulica = daneJednegoBieglego[3].ToString();
+                string kod = daneJednegoBieglego[4].ToString();
+                string miejscowosc = daneJednegoBieglego[5].ToString();
+                string tel = daneJednegoBieglego[8].ToString();
+                string adresTable = ulica + Environment.NewLine + kod + " " + miejscowosc + Environment.NewLine + tel + Environment.NewLine + email ;
                 tabelaGlowna.AddCell(new Paragraph(adresTable, cl.plFont1));
                 string specki = string.Empty;
                 string specjalizacjaOpis = cl.odczytaj_specjalizacje_osobyOpis(Idbieglego);
@@ -995,6 +1301,9 @@ namespace wab2018
                 }
                 specki = specki + specjalizacjaOpis;
                 tabelaGlowna.AddCell(new Paragraph(specki, cl.plFont1));
+
+
+
             }
 
 
@@ -1077,11 +1386,40 @@ namespace wab2018
                 Console.ReadLine();
             }
         }
-
+      
         protected void makeExcell(object sender, EventArgs e)
         {
             ASPxGridViewExporter1.FileName = "Wykaz Biegłych";
             ASPxGridViewExporter1.WriteXlsToResponse();
+          
+        }
+        void AddPageNumber(string fileIn, string fileOut)
+        {
+            byte[] bytes = File.ReadAllBytes(fileIn);
+            Font blackFont = FontFactory.GetFont("Arial", 12, Font.NORMAL, BaseColor.BLACK);
+            using (MemoryStream stream = new MemoryStream())
+            {
+                PdfReader reader = new PdfReader(bytes);
+                using (PdfStamper stamper = new PdfStamper(reader, stream))
+                {
+                    int pages = reader.NumberOfPages;
+                    for (int i = 3; i <= pages; i++)
+                    {
+                        ColumnText.ShowTextAligned(stamper.GetUnderContent(i), Element.ALIGN_RIGHT, new Phrase((i-2).ToString(), blackFont), 568f, 15f, 0);
+                    }
+                }
+                bytes = stream.ToArray();
+            }
+            File.WriteAllBytes(fileOut, bytes);
+            WebClient client = new WebClient();
+            Byte[] buffer = client.DownloadData(fileOut);
+            if (buffer != null)
+            {
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-lenght", buffer.Length.ToString());
+                Response.BinaryWrite(buffer);
+            }
+           
         }
     }
 

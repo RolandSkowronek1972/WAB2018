@@ -250,7 +250,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2018 11:20:50</publishTime>
     </File>
     <File Include="bin/log4net.config">
-      <publishTime>05/07/2018 17:59:15</publishTime>
+      <publishTime>12/24/2018 14:53:09</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>06/17/2018 14:29:37</publishTime>
@@ -367,7 +367,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:32:02</publishTime>
     </File>
     <File Include="bin/wab2018.dll">
-      <publishTime>08/23/2018 15:41:53</publishTime>
+      <publishTime>12/24/2018 14:34:20</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/17/2018 14:31:59</publishTime>
@@ -508,13 +508,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/20/2018 12:47:23</publishTime>
     </File>
     <File Include="log4net.config">
-      <publishTime>05/07/2018 17:59:15</publishTime>
+      <publishTime>12/24/2018 14:53:09</publishTime>
     </File>
     <File Include="logowanie.aspx">
       <publishTime>07/07/2018 11:13:00</publishTime>
     </File>
     <File Include="Master.Master">
-      <publishTime>07/07/2018 10:51:32</publishTime>
+      <publishTime>08/29/2018 19:02:52</publishTime>
     </File>
     <File Include="mediatorzyLista.aspx">
       <publishTime>07/16/2018 01:23:50</publishTime>
@@ -652,7 +652,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 14:28:45</publishTime>
     </File>
     <File Include="Site1.Master">
-      <publishTime>04/26/2018 14:26:10</publishTime>
+      <publishTime>08/29/2018 19:02:52</publishTime>
     </File>
     <File Include="skargiModel.edmx.diagram">
       <publishTime>06/17/2018 17:28:42</publishTime>
@@ -664,7 +664,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/15/2018 12:53:50</publishTime>
     </File>
     <File Include="userControls/daneStatystyczne.ascx">
-      <publishTime>07/16/2018 02:48:05</publishTime>
+      <publishTime>12/21/2018 18:29:06</publishTime>
     </File>
     <File Include="userControls/historiaPowolanMediatirow.ascx">
       <publishTime>07/11/2018 05:52:59</publishTime>
@@ -703,7 +703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/15/2018 13:04:23</publishTime>
     </File>
     <File Include="version.txt">
-      <publishTime>08/23/2018 15:41:24</publishTime>
+      <publishTime>12/24/2018 14:53:09</publishTime>
     </File>
     <File Include="WAB.edmx.diagram">
       <publishTime>07/01/2018 21:20:07</publishTime>

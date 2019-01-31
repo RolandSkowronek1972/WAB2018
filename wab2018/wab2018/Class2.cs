@@ -450,7 +450,77 @@ namespace wab2018
             { }
             return dT;
 
-        }// end of dodaj_specjalizacje
+        }// end of wyciagnijBieglychZSpecjalizacja
+        public DataTable wyciagnijBieglychZSpecjalizacja(string idSpecjalizacji, DataTable daneBieglych )
+        {
+            DataTable dT = new DataTable();
+            SqlConnection conn = new SqlConnection(con_str);
+            string querryExtention = " dbo.tbl_osoby.ident =0 ";
+            string kwerenda = string.Empty;
+            foreach (DataRow dRow in daneBieglych.Rows)
+            {
+                int ident = 0;
+                try
+                {
+                    ident = int.Parse(dRow[0].ToString());
+                    querryExtention = querryExtention + "  or  dbo.tbl_osoby.ident= "+ident.ToString () +" ";
+                }
+                catch 
+                {
+                }
+            }
+            kwerenda = "SELECT DISTINCT dbo.tbl_osoby.ident, dbo.tbl_osoby.imie, dbo.tbl_osoby.nazwisko, dbo.tbl_osoby.ulica, dbo.tbl_osoby.kod_poczt, dbo.tbl_osoby.miejscowosc,   dbo.tbl_osoby.data_koncowa,  dbo.tbl_osoby.tytul, dbo.tbl_osoby.tel1 FROM  dbo.tbl_specjalizacje_osob LEFT OUTER JOIN                          dbo.tbl_osoby ON dbo.tbl_specjalizacje_osob.id_osoby = dbo.tbl_osoby.ident WHERE   " + querryExtention;
+                try
+                {
+                    DataSet lista = new DataSet();
+                    conn.Open();
+                    SqlDataAdapter daMenu = new SqlDataAdapter();
+                    daMenu.SelectCommand = new SqlCommand(kwerenda, conn);
+                  //  daMenu.SelectCommand.Parameters.AddWithValue("@ident", ident);
+                    daMenu.Fill(lista);
+                    // zapis
+                  
+                    dT = lista.Tables[0];
+                    conn.Close();
+                }
+                catch (Exception ec)
+                { }
+              
+
+           
+
+            return dT;
+        }// end of wyciagnijBieglychZSpecjalizacja
+        public DataTable wyciagnijBieglegoZSpecjalizacja(int idBieglego)
+        {
+            DataTable dT = new DataTable();
+            SqlConnection conn = new SqlConnection(con_str);
+            string querryExtention = " dbo.tbl_osoby.ident ="+ idBieglego.ToString ();
+            string kwerenda = string.Empty;
+            
+            kwerenda = "SELECT DISTINCT dbo.tbl_osoby.ident, dbo.tbl_osoby.imie, dbo.tbl_osoby.nazwisko, dbo.tbl_osoby.ulica, dbo.tbl_osoby.kod_poczt, dbo.tbl_osoby.miejscowosc,   dbo.tbl_osoby.data_koncowa,  dbo.tbl_osoby.tytul, dbo.tbl_osoby.tel1, dbo.tbl_osoby.email FROM  dbo.tbl_specjalizacje_osob LEFT OUTER JOIN dbo.tbl_osoby ON dbo.tbl_specjalizacje_osob.id_osoby = dbo.tbl_osoby.ident WHERE   " + querryExtention;
+            try
+            {
+                DataSet lista = new DataSet();
+                conn.Open();
+                SqlDataAdapter daMenu = new SqlDataAdapter();
+                daMenu.SelectCommand = new SqlCommand(kwerenda, conn);
+                //  daMenu.SelectCommand.Parameters.AddWithValue("@ident", ident);
+                daMenu.Fill(lista);
+                // zapis
+
+                dT = lista.Tables[0];
+                conn.Close();
+            }
+            catch (Exception ec)
+            { }
+
+
+
+
+            return dT;
+        }// end of wyciagnijBieglychZSpecjalizacja
+
         public DataTable wyciagnijMediatorowZSpecjalizacja(string idSpecjalizacji, bool archiwum)
         {
             DataTable dT = new DataTable();
@@ -528,6 +598,13 @@ namespace wab2018
 
         }// end of dodaj_specjalizacje
 
+        public int czyJestSpecjalizacjauBieglego(int idBieglego, int idSpecjalizacji)
+        {
+          return int.Parse ( Common.runQuerryWithResult("SELECT count(*) FROM View_pozycje_specjalizacji where   (id_osoby = " + idBieglego.ToString() + ") and id_specjalizacji =" + idSpecjalizacji.ToString(), Common.con_str));
+
+        }
+
+        //SELECT count(*) FROM View_pozycje_specjalizacji where   (id_osoby = 10050) and id_specjalizacji =8
         public DataTable odczytaj_najnowsze_powolanie(string id)
         {
             DataTable dT = new DataTable();
@@ -613,7 +690,7 @@ namespace wab2018
             SqlCommand sqlCmd;
             using (sqlCmd = new SqlCommand())
             {
-                sqlCmd = new SqlCommand("DELETE FROM            tbl_Zawieszenia where idbieglego=@id_", conn);
+                sqlCmd = new SqlCommand("DELETE FROM tbl_Zawieszenia where idbieglego=@id_", conn);
                 try
                 {
                     conn.Open();
@@ -623,12 +700,8 @@ namespace wab2018
 
                 }
                 catch (Exception ex)
-                {
-
-                }
+                {  }
             }
-
-
 
         }// end of dodaj_specjalizacje
 
