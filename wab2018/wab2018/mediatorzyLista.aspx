@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master"  CodeBehind="mediatorzyLista.aspx.cs" Inherits="wab2018.mediatorzyLista"  enableEventValidation="false" %>
-<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <%@ Register src="userControls/historiaPowolanMediatirow.ascx" tagname="historiaPowolanMediatirow" tagprefix="uc1" %>
-<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Data.Linq" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Data.Linq" tagprefix="dx" %>
 <%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc2" %>
 
 <%@ Register src="userControls/specjalizacje.ascx" tagname="specjalizacje" tagprefix="uc3" %>
 <%@ Register src="userControls/historiaPowolanMediatirowOdczyt.ascx" tagname="historiaPowolanMediatirowOdczyt" tagprefix="uc5" %>
-<%@ Register src="userControls/zawieszki.ascx" tagname="zawieszki" tagprefix="uc6" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
        .auto-style21 {
@@ -272,7 +272,6 @@
         
         
     
-        <uc6:zawieszki ID="zawieszki1" runat="server" />
         
         
     

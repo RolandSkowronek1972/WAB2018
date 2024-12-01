@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="admin.aspx.cs" Inherits="wab2018.admin" %>
+<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -371,8 +372,7 @@ FROM         tbl_modyfikacje LEFT OUTER JOIN
             <h4>
                 <asp:Label ID="Label14" runat="server" Text="Specjalizacje"></asp:Label>
             </h4>
-     
-            <table width="100%">
+            &nbsp;<table width="100%">
                 <tr>
                     <td class="auto-style5">
                         <asp:SqlDataSource ID="specjalizacje" runat="server" 
@@ -463,7 +463,7 @@ FROM         tbl_modyfikacje LEFT OUTER JOIN
                     </td>
                 </tr>
             </table>
-            <br />
+           
        
       
        
@@ -871,4 +871,11 @@ FROM         tbl_modyfikacje LEFT OUTER JOIN
 </asp:Panel>
     </asp:Panel>
        </div>
-</asp:Content>
+        <div>
+    </div>
+
+
+    aass
+        </asp:Content>
+
+

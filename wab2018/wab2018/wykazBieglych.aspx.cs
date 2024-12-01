@@ -96,10 +96,8 @@ namespace wab2018
                     Panel11.Visible = true;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-
-
             }
             SqlDataSkargi2.DataBind();
             ListaSkarg.DataBind();
@@ -119,9 +117,8 @@ namespace wab2018
          //           DevExpress.Data.Filtering.CriteriaOperator.Parse("nazwisko=" + nazwisko.Trim()).ToString()
                      
                 }
-                catch (Exception)
+                catch
                 {
-
                 }
                 if (idBieglego > 0)
                 {
@@ -186,15 +183,7 @@ namespace wab2018
                 pcl.ExportToPdf(ms);
                 WriteResponse(this.Response, ms.ToArray(), System.Net.Mime.DispositionTypeNames.Inline.ToString());
             }
-            //  ASPxGridViewExporter1..GridView = ASPxGridView2;
-            /*PxGridViewExporter1.PrintSelectCheckBox = true;
-            ASPxGridViewExporter1.Landscape = true;
-
-            
-            ASPxGridViewExporter1.Landscape = true;
-            
-            ASPxGridViewExporter1.WritePdfToResponse();
-            */
+         
             listaBieglych.Columns["Column"].Visible = true;
         }
         public static void WriteResponse(HttpResponse response, byte[] filearray, string type)
@@ -393,6 +382,7 @@ namespace wab2018
             log = log + "Powolanie od: " + powolanieOd + "<br/>";
             log = log + "Powołanie do" + powolanieDo + "<br/>";
             string uwagi = TxUwagi.Text.Trim();
+           
             DateTime dataPoczatkuZawieszenia = DateTime.Parse("1900-01-01");
             DateTime dataKoncaZawieszenia = DateTime.Parse("1900-01-01");
 
@@ -419,7 +409,7 @@ namespace wab2018
                 {
                     dat_1 = ASPxDateEdit3.Date;
                 }
-                catch (Exception ex)
+                catch 
                 {
                     //  dat_1= poczPowolania.Date;
                 }
@@ -428,7 +418,7 @@ namespace wab2018
                 {
                     dat_2 = DateTime.Parse(powolanieDo.Trim());
                 }
-                catch (Exception ex)
+                catch 
                 {
                     dat_2 = ASPxDateEdit4.Date;
                 }
@@ -753,7 +743,7 @@ namespace wab2018
                     Panel2.Visible = false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 popup.ShowOnPageLoad = false;
             }
@@ -895,11 +885,10 @@ namespace wab2018
                         koniecZawieszeniaData.Visible = false;
                     }
 
-
                     zapamietajDaneBieglego();
                     GridView25.DataBind();
                 }
-                catch (Exception ex)
+                catch 
                 { }
 
             }
@@ -960,15 +949,13 @@ namespace wab2018
             }
             otworzPopup(employeeId, 1);
 
-
-
         }
 
-        protected void popup_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
+       protected void popup_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
         {
 
         }
-
+      
         protected void popup_Unload(object sender, EventArgs e)
         {
             listaBieglych.DataBind();
@@ -1720,10 +1707,8 @@ namespace wab2018
                 {
                     dataKonca = DateTime.Parse(biegly[6].ToString()).ToShortDateString();
                 }
-                catch (Exception ex)
+                catch 
                 {
-
-
                 }
 
                 string innerTable = imie + Environment.NewLine + nazwisko + Environment.NewLine + tytul + Environment.NewLine + "kadencja do dnia: " + dataKonca;
@@ -1746,9 +1731,7 @@ namespace wab2018
                 tabelaGlowna.AddCell(new Paragraph(specki, cl.plFont1));
             }
 
-
             return tabelaGlowna;
-
         }
 
         protected void ASPxGridViewExporter1_RenderBrick(object sender, ASPxGridViewExportRenderingEventArgs e)
@@ -1756,7 +1739,7 @@ namespace wab2018
             GridViewDataColumn dataColumn = e.Column as GridViewDataColumn;
             if (e.RowType == GridViewRowType.Data && dataColumn != null && dataColumn.FieldName == "Z")
             {
-                if (e.Text == "Niezaznaczony")
+                if (e.Text == "")
                 {
                     e.Text = "";
                 }
@@ -1766,9 +1749,6 @@ namespace wab2018
                 }
             }
         }
-
-    
-
         static private void internationalPDF()
         {
             try
@@ -1883,6 +1863,11 @@ namespace wab2018
         protected void listaBieglych_BeforePerformDataSelect(object sender, EventArgs e)
         {
 
+        }
+
+        protected void makeExcellforBIP(object sender, EventArgs e)
+        {
+           
         }
     }
 }

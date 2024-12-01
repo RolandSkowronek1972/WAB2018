@@ -44,7 +44,8 @@ namespace wab2018
                     Session["user_id"] = User_id;
 
                 }
-
+               
+             
                 if (User_id.Length > 0)
                 {
 
@@ -275,6 +276,8 @@ namespace wab2018
                     mn.Text = "Logowanie";
                     Menu1.Items.Add(mn);
                 }
+
+
             }
             catch (Exception ex)
             {

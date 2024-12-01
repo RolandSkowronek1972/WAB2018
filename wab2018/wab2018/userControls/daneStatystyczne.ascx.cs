@@ -1,22 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
+
 namespace wab2018
 {
     public partial class daneStatystyczne : System.Web.UI.UserControl
     {
-        Class2 cl = new Class2();
+        private Class2 cl = new Class2();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string idBieglego = (string)Session["id_osoby"];
-            if (DropDownList3.Items.Count==0)
+            if (DropDownList3.Items.Count == 0)
             {
-               
                 DropDownList3.DataBind();
+                if (Session["ddl2"] != null)
+                {
+                    try
+                    {
+                        int pozycja = (int)Session["ddl2"];
+                        DropDownList3.SelectedIndex = pozycja;
+                    }
+                    catch
+                    {
+                    }
+                }
                 zmienKwerende();
             }
         }
@@ -25,6 +32,7 @@ namespace wab2018
         {
             zmienKwerende();
         }
+
         protected void zmienKwerende()
         {
             Session["ddl2"] = DropDownList3.SelectedIndex;

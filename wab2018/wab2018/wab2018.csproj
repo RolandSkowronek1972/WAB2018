@@ -16,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>wab2018</RootNamespace>
     <AssemblyName>wab2018</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -28,6 +28,7 @@
     <TargetFrameworkProfile />
     <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,19 +58,25 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxGauges.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.Mvc5.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.Resources.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxGauges.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Mvc5.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\..\Statystyki2021\Statystyki_2018\obj\Release\Package\PackageTmp\bin\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -92,6 +99,20 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.1.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Statystyki2021\Statystyki_2018\obj\Release\Package\PackageTmp\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\..\Statystyki2021\Statystyki_2018\obj\Release\Package\PackageTmp\bin\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\..\..\Statystyki2021\Statystyki_2018\obj\Release\Package\PackageTmp\bin\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Statystyki2021\Statystyki_2018\obj\Release\Package\PackageTmp\bin\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -107,6 +128,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -135,6 +157,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="biegliListaOLD.aspx" />
     <Content Include="biegliLista.aspx" />
     <Content Include="Scripts\jquerry-1.9.1.js" />
     <Content Include="userControls\historiaPowolanMediatirowOdczyt.ascx" />
@@ -145,7 +168,6 @@
     <Content Include="mediatorzyLista.aspx" />
     <Content Include="Add_01.aspx" />
     <Content Include="admin.aspx" />
-    <Content Include="biegli.aspx" />
     <Content Include="cal1.ascx" />
     <Content Include="default.aspx" />
     <Content Include="druk1.aspx" />
@@ -186,9 +208,9 @@
     <Content Include="userControls\specjalizacjeBiegli.ascx" />
     <Content Include="userControls\specjalizacje.ascx" />
     <Content Include="userControls\speckiBieglych.ascx" />
-    <Content Include="userControls\statystykiHistoria.ascx" />
+    <Content Include="userControls\datyZawieszenia.ascx" />
     <Content Include="userControls\zawieszkiOdczyt.ascx" />
-    <Content Include="userControls\zawieszki.ascx" />
+    <Content Include="WebForm1.aspx" />
     <Content Include="zawieszenia.ascx" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -219,7 +241,9 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Site1.Master" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
@@ -232,6 +256,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Templates\Zestawienie.xlsx" />
+    <Content Include="Templates\ZestawienieBIP.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -243,6 +269,13 @@
     <Content Include="version.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="biegliListaOLD.aspx.cs">
+      <DependentUpon>biegliListaOLD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="biegliListaOLD.aspx.designer.cs">
+      <DependentUpon>biegliListaOLD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="biegliLista.aspx.cs">
       <DependentUpon>biegliLista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,6 +283,7 @@
     <Compile Include="biegliLista.aspx.designer.cs">
       <DependentUpon>biegliLista.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeSessionProvider .cs" />
     <Compile Include="nowiMediatorzy.cs" />
     <Compile Include="userControls\historiaPowolanMediatirowOdczyt.ascx.cs">
       <DependentUpon>historiaPowolanMediatirowOdczyt.ascx</DependentUpon>
@@ -314,12 +348,12 @@
     <Compile Include="userControls\speckiBieglych.ascx.designer.cs">
       <DependentUpon>speckiBieglych.ascx</DependentUpon>
     </Compile>
-    <Compile Include="userControls\statystykiHistoria.ascx.cs">
-      <DependentUpon>statystykiHistoria.ascx</DependentUpon>
+    <Compile Include="userControls\datyZawieszenia.ascx.cs">
+      <DependentUpon>datyZawieszenia.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="userControls\statystykiHistoria.ascx.designer.cs">
-      <DependentUpon>statystykiHistoria.ascx</DependentUpon>
+    <Compile Include="userControls\datyZawieszenia.ascx.designer.cs">
+      <DependentUpon>datyZawieszenia.ascx</DependentUpon>
     </Compile>
     <Compile Include="userControls\zawieszkiOdczyt.ascx.cs">
       <DependentUpon>zawieszkiOdczyt.ascx</DependentUpon>
@@ -328,12 +362,12 @@
     <Compile Include="userControls\zawieszkiOdczyt.ascx.designer.cs">
       <DependentUpon>zawieszkiOdczyt.ascx</DependentUpon>
     </Compile>
-    <Compile Include="userControls\zawieszki.ascx.cs">
-      <DependentUpon>zawieszki.ascx</DependentUpon>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="userControls\zawieszki.ascx.designer.cs">
-      <DependentUpon>zawieszki.ascx</DependentUpon>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="wykazSkarg.aspx.cs">
       <DependentUpon>wykazSkarg.aspx</DependentUpon>
@@ -349,7 +383,6 @@
     <Compile Include="zawieszenia.ascx.designer.cs">
       <DependentUpon>zawieszenia.ascx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\specjalizacje.cs" />
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -370,13 +403,6 @@
     </Compile>
     <Compile Include="admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="biegli.aspx.cs">
-      <DependentUpon>biegli.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="biegli.aspx.designer.cs">
-      <DependentUpon>biegli.aspx</DependentUpon>
     </Compile>
     <Compile Include="cal1.ascx.cs">
       <DependentUpon>cal1.ascx</DependentUpon>

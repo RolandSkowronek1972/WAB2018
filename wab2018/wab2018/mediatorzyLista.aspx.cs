@@ -243,7 +243,7 @@ namespace wab2018
                     int idOsoby = int.Parse((string)Session["id_osoby"]);
                     nm.usunTworzonaOsobe(idOsoby);
                 }
-                catch (Exception ex)
+                catch 
                 {
                     
                 }
@@ -341,16 +341,7 @@ namespace wab2018
                 pcl.ExportToPdf(ms);
                 WriteResponse(this.Response, ms.ToArray(), System.Net.Mime.DispositionTypeNames.Inline.ToString());
             }
-            //  ASPxGridViewExporter1..GridView = ASPxGridView2;
-            /*PxGridViewExporter1.PrintSelectCheckBox = true;
-            ASPxGridViewExporter1.Landscape = true;
 
-            
-            ASPxGridViewExporter1.Landscape = true;
-            
-            ASPxGridViewExporter1.WritePdfToResponse();
-            */
-            //listaBieglych.Columns["Column"].Visible = true;
         }
         public static void WriteResponse(HttpResponse response, byte[] filearray, string type)
         {

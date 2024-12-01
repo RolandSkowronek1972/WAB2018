@@ -25,6 +25,7 @@ background-image: -ms-linear-gradient(bottom, #6B6969 0%, #E0E0E0 26%);
 background-image: linear-gradient(to bottom, #6B6969 0%, #E0E0E0 26%);*/
 }
 
+
 a:link, a:visited {
     color: #3a4f63;
 }
@@ -181,10 +182,6 @@ first child of the left and right table columns */
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
-.header {
-
-
-}
 
 .newPage2 {
     
@@ -542,26 +539,7 @@ box-shadow:         2px 2px 3px 4px rgba(50, 50, 50, 0.41);
     color: black;
     z-index: 99999;
 }
- .Panel_1_cal
-    {
-        border-bottom: 2px solid white;
-    background-color: #D8E0E2;
-    left:190px;
-    margin-right: auto;
-    margin-left: auto;
-    -webkit-box-shadow: 2px 2px 3px 4px rgba(50, 50, 50, 0.41);
-    -moz-box-shadow: 2px 2px 3px 4px rgba(50, 50, 50, 0.41);
-    box-shadow: 2px 2px 3px 4px rgba(50, 50, 50, 0.41);
-        
-        
-        position:absolute;
-        top:269px;
-       
-        left:461px;
-        width:350px;
-        height:180px;
-        }
-        
+ 
 
  .Panel_1_1
     {
@@ -656,3 +634,42 @@ overflow:hidden;}
 {
 .noprint {display:none;}
 }
+
+.borderAllRed {
+    border: 1px solid #FF3413;
+    border: 1px solid #FF3413;
+}
+
+.borderTopLeftRed {
+    border-top: 1px solid #FF3413;
+    border-left: 1px solid #FF3413;
+}
+.borderTopRightRed {
+    border-top: 1px solid #FF3413;
+    border-right: 1px solid #FF3413;
+}
+.borderBottomLeftRed {
+    border-bottom: 1px solid #FF3413;
+    border-left: 1px solid #FF3413;
+}
+
+.borderBottomRightRed {
+    border-bottom: 1px solid #FF3413;
+    border-right: 1px solid #FF3413;
+}
+
+.borderTopRed {
+    border-top: 1px solid #FF3413;
+}
+.borderBottomRed {
+    border-top: 1px solid #FF3413;
+}
+
+.borderLeftRed {
+    border-left: 1px solid #FF3413;
+}
+.borderRightRed {
+    border-right: 1px solid #FF3413;
+}
+
+

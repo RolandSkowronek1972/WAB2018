@@ -50,8 +50,37 @@ namespace wab2018.userControls
         protected void ASPxGridView1_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
             Session["key"] = e.EditingKeyValue;
+            int rowIndex = ASPxGridView1.FindVisibleIndexByKeyValue(e.EditingKeyValue);
+            object  row = ASPxGridView1.GetRow(rowIndex);
+            System.Data.DataRowView nazwa = (System.Data.DataRowView)row;
+            ASPxComboBox combobox = ASPxGridView1.FindEditRowCellTemplateControl((GridViewDataColumn)ASPxGridView1.Columns["Nazwa specjalizacji"], "ASPxComboBox1") as ASPxComboBox;
+           int index= combobox.Items.IndexOfValue(nazwa[3].ToString());
+           combobox.SelectedIndex = index;
         }
 
+        protected void ASPxGridView1_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            object obj = e.Value;
+            System.Data.DataRowView nazwa = (System.Data.DataRowView)obj;
+            string aaa = nazwa[3].ToString();
+
+            ASPxComboBox cmb = e.Editor as ASPxComboBox;
+            cmb.SelectedIndex = 0;
+        }
+
+        protected void ASPxGridView1_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            string cos = e.ToString(); 
+        }
+
+        protected void initNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            ASPxComboBox combobox = ASPxGridView1.FindEditRowCellTemplateControl((GridViewDataColumn)ASPxGridView1.Columns["Nazwa specjalizacji"], "ASPxComboBox1") as ASPxComboBox;
+            combobox.Visible = true;
+            ASPxTextBox ASPxTextBox1 = ASPxGridView1.FindEditRowCellTemplateControl((GridViewDataColumn)ASPxGridView1.Columns["Nazwa specjalizacji"], "ASPxTextBox1") as ASPxTextBox;
+            ASPxTextBox1.Visible = false;
+            //ASPxTextBox1
+        }
     }
 
       

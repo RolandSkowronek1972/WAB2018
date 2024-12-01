@@ -2,7 +2,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="zawieszkiOdczyt.ascx.cs" Inherits="wab2018.userControls.zawieszkiOdczyt" %>
 
 
-<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 
 
 
@@ -51,6 +51,13 @@
 
 
         </td>
+    </tr>
+        <tr>
+        <td style="width: 15%">
+            <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Koniec zawieszenia" CssClass="auto-style1">
+            </dx:ASPxLabel>
+        </td>
+        
     </tr>
 </table>
 

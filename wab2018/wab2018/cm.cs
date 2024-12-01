@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 
 namespace wab2018
 {
-    class cm
+    internal class cm
     {
-
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public string con_str = ConfigurationManager.ConnectionStrings["wap"].ConnectionString;
@@ -30,9 +29,7 @@ namespace wab2018
                 case 12: return "grudzień";
                 default:
                     return "";
-
             }
-
         }
 
         public DataTable makeParameterTable()
@@ -41,10 +38,9 @@ namespace wab2018
             parameters.Columns.Add("name", typeof(String));
             parameters.Columns.Add("value", typeof(String));
             return parameters;
-
         }
 
-        public void runQuerry(string kwerenda,  DataTable parameters)
+        public void runQuerry(string kwerenda, DataTable parameters)
         {
             log.Debug("start runQuerry");
             var conn = new SqlConnection(con_str);
@@ -66,7 +62,6 @@ namespace wab2018
                     sqlCmd.ExecuteScalar();
                     log.Debug("querry executed");
                     conn.Close();
-
                 }
                 catch (Exception ex)
                 {
@@ -74,8 +69,6 @@ namespace wab2018
                     conn.Close();
                 }
             } // end of using
-
-
         }
 
         public void runQuerry(string kwerenda, string connStr, DataTable parameters)
@@ -100,7 +93,6 @@ namespace wab2018
                     sqlCmd.ExecuteScalar();
                     log.Debug("querry executed");
                     conn.Close();
-
                 }
                 catch (Exception ex)
                 {
@@ -108,10 +100,7 @@ namespace wab2018
                     conn.Close();
                 }
             } // end of using
-
-
         }
-
 
         public string runQuerryWithResult(string kwerenda, string connStr, DataTable parameters)
         {
@@ -136,7 +125,6 @@ namespace wab2018
                     result = sqlCmd.ExecuteScalar().ToString().Trim();
                     log.Debug("querry executed with result");
                     conn.Close();
-
                 }
                 catch (Exception ex)
                 {
@@ -145,8 +133,6 @@ namespace wab2018
                 }
                 return result;
             } // end of using
-
-
         }
 
         public string runQuerryWithResult(string kwerenda, string connStr)
@@ -172,105 +158,76 @@ namespace wab2018
                     conn.Close();
                 }
 
-                //    string.IsNullOrEmpty(result)  ? (log.Debug("return null value") ):  ( log.Debug("return value")); 
-
+                //    string.IsNullOrEmpty(result)  ? (log.Debug("return null value") ):  ( log.Debug("return value"));
 
                 return result;
             } // end of using
-
-
         }
 
-        public DataTable getDataTable( string Kwerenda)
+       /*
+
+        public DataTable getDataTable(string Kwerenda, string connectionString)
         {
-
-            SqlConnection conn = new SqlConnection(con_str);
-            DataSet lista = new DataSet();
-            DataTable returntable = new DataTable();
-            try
-            {
-                conn.Open();
-                SqlDataAdapter daMenu = new SqlDataAdapter();
-                daMenu.SelectCommand = new SqlCommand(Kwerenda, conn);
-                daMenu.Fill(lista);
-                conn.Close();
-                returntable = lista.Tables[0];
-
-            }
-            catch (Exception ec)
-            {
-                conn.Close();
-            }
-            return returntable;
-
-        }
-
-        public DataTable getDataTable(string connectionString, string Kwerenda)
-        {
-
+            
             SqlConnection conn = new SqlConnection(connectionString);
             DataSet lista = new DataSet();
             DataTable returntable = new DataTable();
             try
             {
                 conn.Open();
-                SqlDataAdapter daMenu = new SqlDataAdapter();
-                daMenu.SelectCommand = new SqlCommand(Kwerenda, conn);
-                daMenu.Fill(lista);
+                SqlDataAdapter daData = new SqlDataAdapter();
+                daData.SelectCommand = new SqlCommand(Kwerenda, conn);
+                daData.Fill(lista);
                 conn.Close();
                 returntable = lista.Tables[0];
-
             }
             catch (Exception ec)
             {
                 conn.Close();
             }
             return returntable;
-
         }
-
+        */
        
-        public DataTable getDataTable(string kwerenda, string connStr, DataTable parameters)
-        {
-            log.Info("Start getDataTable");
-            DataTable result = new DataTable();
-            var conn = new SqlConnection(connStr);
+         public DataTable getDataTable(string kwerenda, string connStr, DataTable parameters)
+         {
+             log.Info("Start getDataTable");
+             DataTable result = new DataTable();
+             var conn = new SqlConnection(connStr);
 
-            DataSet dsKwerendy = new DataSet();
-            dsKwerendy = new DataSet();
-            try
-            {
-                log.Info("Open DB connection");
-                conn.Open();
-                log.Info("DB connection is open");
-                SqlDataAdapter daMenu = new SqlDataAdapter();
-                daMenu.SelectCommand = new SqlCommand(kwerenda, conn);
-                foreach (DataRow row in parameters.Rows)
-                {
-                    daMenu.SelectCommand.Parameters.AddWithValue(row[0].ToString().Trim(), row[1].ToString().Trim());
-                }
-                log.Info("Executing querry");
-                daMenu.Fill(dsKwerendy);
-                log.Info("Querry is executed");
+             DataSet dsKwerendy = new DataSet();
+             dsKwerendy = new DataSet();
+             try
+             {
+                 log.Info("Open DB connection");
+                 conn.Open();
+                 log.Info("DB connection is open");
+                 SqlDataAdapter daData = new SqlDataAdapter();
+                 daData.SelectCommand = new SqlCommand(kwerenda, conn);
+                 foreach (DataRow row in parameters.Rows)
+                 {
+                     daData.SelectCommand.Parameters.AddWithValue(row[0].ToString().Trim(), row[1].ToString().Trim());
+                 }
+                 log.Info("Executing querry");
+                 daData.Fill(dsKwerendy);
+                 log.Info("Querry is executed");
 
-                conn.Close();
-                log.Info("DB  is closed");
+                 conn.Close();
+                 log.Info("DB  is closed");
 
-                result = dsKwerendy.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                log.Error("Error : " + ex.Message);
-                conn.Close();
-            }
+                 result = dsKwerendy.Tables[0];
+             }
+             catch (Exception ex)
+             {
+                 log.Error("Error : " + ex.Message);
+                 conn.Close();
+             }
 
-            return result;
-        } // end of getDataTable
-
+             return result;
+         } // end of getDataTable
+        
         //==========================================================================================================================================
         //==========================================================================================================================================
         //==========================================================================================================================================
-
-
     }
 }

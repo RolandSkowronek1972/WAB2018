@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wab2018 {
-    
-    
-    public partial class biegliLista {
-        
+namespace wab2018
+{
+
+
+    public partial class biegliLista
+    {
+
         /// <summary>
         /// daneSpecjalizacji control.
         /// </summary>
@@ -20,25 +22,25 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource daneSpecjalizacji;
-        
+
         /// <summary>
-        /// ASPxCheckBox1 control.
+        /// DropDownList2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCheckBox ASPxCheckBox1;
-        
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+
         /// <summary>
-        /// ASPxCheckBox2 control.
+        /// SpecjalizacjeCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCheckBox ASPxCheckBox2;
-        
+        protected global::DevExpress.Web.ASPxCheckBox SpecjalizacjeCheckBox;
+
         /// <summary>
         /// DropDownList1 control.
         /// </summary>
@@ -47,16 +49,7 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// LinkButton14 control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton14;
-        
+
         /// <summary>
         /// LinkButton6 control.
         /// </summary>
@@ -74,7 +67,25 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton6;
-        
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// LinkButton15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton15;
+
         /// <summary>
         /// grid control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView grid;
-        
+
         /// <summary>
         /// grid0 control.
         /// </summary>
@@ -92,7 +103,7 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView grid0;
-        
+
         /// <summary>
         /// mediatorzy control.
         /// </summary>
@@ -101,7 +112,7 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource mediatorzy;
-        
+
         /// <summary>
         /// ASPxGridViewExporter1 control.
         /// </summary>
@@ -110,5 +121,23 @@ namespace wab2018 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridViewExporter ASPxGridViewExporter1;
+
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// HiddenField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField;
     }
 }

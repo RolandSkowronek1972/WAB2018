@@ -3,6 +3,9 @@ using DevExpress.Web.Data;
 using DevExpress.Web;
 using System.Data;
 using System.Collections;
+using System.Web.UI.HtmlControls;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace wab2018
 {
@@ -11,15 +14,56 @@ namespace wab2018
     {
         public cm _cm = new cm();
 
+        
 
+            public string controlPanel(string control, ASPxGridView grid)
+        {
+            ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
+            Panel Panel1 = pageControl.FindControl(control) as Panel;
+            string pvalue = Panel1.Attributes["class"];
+            var cosik = Panel1.Style;
+            return pvalue;
+        }
+        public bool controlCheckBox(string control, ASPxGridView grid)
+        {
+            ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
+            CheckBox CB = pageControl.FindControl(control) as CheckBox;
+
+            return CB.Checked;
+        }
 
 
         public bool controlCheckbox(string control,ASPxGridView grid)
         {
             ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
             ASPxCheckBox txt = pageControl.FindControl(control) as ASPxCheckBox;
-
+            if (txt==null)
+            {
+                return false;
+            }
             return txt.Checked;
+        }
+        public string controlDropDownList(string control, ASPxGridView grid)
+        {
+            ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
+            try
+            {
+                DropDownList dropList= pageControl.FindControl(control) as DropDownList;
+                if (dropList.SelectedIndex>-1)
+                
+                {
+                    var aaa= dropList.SelectedValue;
+                    return dropList.SelectedValue;
+                }
+
+            }
+            catch (Exception)
+            {
+
+               
+            }
+            
+            return "zawieszono";
         }
         public string controlText(string control, ASPxGridView grid)
         {
@@ -39,7 +83,8 @@ namespace wab2018
             {
                 return "";
             }
-            return txt.Date.ToShortDateString();
+            
+            return txt.Date.ToString("yyyy-MM-dd");
         }
      
 
@@ -78,6 +123,18 @@ namespace wab2018
                 txt.Visible = visible;
             }
         }
-
+        public void controlVisibility(string control, ASPxGridView grid)
+        {
+            ASPxPageControl pageControl = grid.FindEditFormTemplateControl("ASPxPageControl1") as ASPxPageControl;
+           
+            HtmlControl  txt = pageControl.FindControl(control) as HtmlControl;
+            if (txt != null)
+            {
+                
+                txt.Style.Clear();
+                txt.Style.Add("display", "block");
+                txt.Style.Add(HtmlTextWriterStyle.Display, "block;");
+            }
+        }
     }
 }

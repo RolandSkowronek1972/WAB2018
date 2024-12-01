@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace wab2018
@@ -15,19 +11,16 @@ namespace wab2018
             if (!IsPostBack)
             {
                 zdecyduj();
-
-
             }
         }
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             zdecyduj();
-
         }
+
         protected void zdecyduj()
         {
-
             int flag = 0;
             // wyświetlaanie po kategorii
 
@@ -40,14 +33,10 @@ namespace wab2018
                     try
                     {
                         DropDownList2.DataBind();
-
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
                     }
-
-
                 }
                 Session["grupa"] = DropDownList2.SelectedValue.ToString().Trim();
             }
@@ -65,7 +54,6 @@ namespace wab2018
                 }
                 catch
                 {
-
                 }
 
                 if (CheckBox1.Checked)
@@ -77,12 +65,10 @@ namespace wab2018
                 {
                     specjalizacje.SelectCommand = "SELECT DISTINCT id_, nazwa, grupa FROM glo_specjalizacje ORDER BY nazwa";
                     DropDownList1.DataBind();
-
                 }
                 if (DropDownList1.Items.Count == 0)
                 {
                     DropDownList1.DataBind();
-
                 }
                 try
                 {
@@ -94,21 +80,15 @@ namespace wab2018
                 }
                 catch
                 {
-
-
                 }
-
             }
             else
             {
                 DropDownList1.Enabled = false;
             }
 
-
             wyswietl(flag);
-
         } // end of zdecyduj
-
 
         protected void wyswietl(int flag)
         {
@@ -119,39 +99,38 @@ namespace wab2018
                     case 0:
                         {
                             widok_glowny.SelectCommand = "SELECT DISTINCT nazwisko ,nazwisko + ' ' + imie AS biegly, stan, stan_inne, zwrocone, zwrocone_inne, opinie, przeterminowane, grzywna, data_poczatkowa, data_koncowa FROM obciazenia ORDER BY stan,stan_inne, zwrocone";
-
                         }
                         break;
+
                     case 1:
                         {
                             widok_glowny.SelectCommand = "SELECT DISTINCT nazwisko ,nazwisko + ' ' + imie AS biegly, stan, stan_inne, zwrocone, zwrocone_inne, opinie, przeterminowane, grzywna, data_poczatkowa, data_koncowa FROM obciazenia  where grupa=" + DropDownList2.SelectedValue.ToString().Trim() + "  order by stan,stan_inne, zwrocone";
-
                         }
                         break;
+
                     case 3:
                         {
                             widok_glowny.SelectCommand = "SELECT DISTINCT nazwisko ,nazwisko + ' ' + imie AS biegly, stan, stan_inne, zwrocone, zwrocone_inne, opinie, przeterminowane, grzywna, data_poczatkowa, data_koncowa FROM obciazenia  where  id_specjalizacji=" + DropDownList1.SelectedValue.ToString().Trim() + " and grupa=" + DropDownList2.SelectedValue.ToString().Trim() + "  order by stan,stan_inne, zwrocone";
-
                         }
                         break;
+
                     case 2:
                         {
                             widok_glowny.SelectCommand = "SELECT DISTINCT nazwisko ,nazwisko + ' ' + imie AS biegly, stan, stan_inne, zwrocone, zwrocone_inne, opinie, przeterminowane, grzywna, data_poczatkowa, data_koncowa FROM obciazenia  where  id_specjalizacji=" + DropDownList1.SelectedValue.ToString().Trim() + "  order by stan,stan_inne, zwrocone ;";
-
                         }
                         break;
+
                     default:
                         break;
                 }
+
                 GridView1.DataBind();
             }
             catch
             {
-
             }
-
-
         }
+
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             zdecyduj();
@@ -160,11 +139,7 @@ namespace wab2018
         protected void GridView1_Sorted(object sender, EventArgs e)
         {
             zdecyduj();
-
-
         }
-
-
 
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
@@ -175,9 +150,6 @@ namespace wab2018
         {
             zdecyduj();
         }
-
-
-
 
         protected void GridView1_RowCreated1(object sender, GridViewRowEventArgs e)
         {
@@ -222,13 +194,9 @@ namespace wab2018
 
                 GridView1.Controls[0].Controls.AddAt(0, HeaderGridRow);
 
-
                 ////  drugi wiersz
 
                 //W tym      nieusprawiedliwione
-
-
-
 
                 HeaderGrid = (GridView)sender;
                 HeaderGridRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Selected);
@@ -256,7 +224,6 @@ namespace wab2018
                 HeaderCell.ColumnSpan = 2;
                 HeaderGridRow.Cells.Add(HeaderCell);
                 GridView1.Controls[0].Controls.AddAt(0, HeaderGridRow);
-
 
                 HeaderCell = new TableCell();
                 HeaderCell.Text = "W tym z opinią";
@@ -288,7 +255,5 @@ namespace wab2018
                 GridView1.Controls[0].Controls.AddAt(0, HeaderGridRow);
             }
         }
-
-
     }
 }

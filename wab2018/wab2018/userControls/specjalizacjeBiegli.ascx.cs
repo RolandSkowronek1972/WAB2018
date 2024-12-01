@@ -14,7 +14,7 @@ namespace wab2018.userControls
                 string txt= (string)Session["id_osoby"];
                 ASPxGridView1.DataBind();
             }
-            catch (Exception ex)
+            catch 
             {      }
            
         }

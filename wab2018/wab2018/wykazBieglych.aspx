@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="wykazBieglych.aspx.cs" Inherits="wab2018.wykazBieglych" EnableEventValidation="false"  %>
 
-<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.Bootstrap.v17.1, Version=17.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Bootstrap" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.Bootstrap.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Bootstrap" tagprefix="dx" %>
 <%@ Register src="userControls/daneStatystyczne.ascx" tagname="daneStatystyczne" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -14,6 +14,13 @@
         }
          .auto-style1 {
              width: 229px;
+         }
+                
+         .auto-style2 {
+             width: 258px;
+         }
+         .auto-style3 {
+             width: 172px;
          }
                 
          </style>
@@ -62,7 +69,7 @@
             &nbsp;&nbsp;&nbsp;
                 <asp:SqlDataSource ID="specjalizacje" runat="server" ConnectionString="<%$ ConnectionStrings:wap %>" SelectCommand="SELECT [id_], [nazwa] FROM [glo_specjalizacje] ORDER BY [nazwa]"></asp:SqlDataSource>
             </td>
-            <td style="width: 300px">
+            <td class="auto-style3">
               
                     
 <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
@@ -70,15 +77,16 @@
                      onselectedindexchanged="wyswietlPoSpecjalizacji" Enabled="False" meta:resourcekey="DropDownList1Resource1">
                 </asp:DropDownList>
             </td>
-            <td>
+            <td class="auto-style2">
               
                     
                 <asp:CheckBox ID="CheckBox4" runat="server" Text="Archiwum" AutoPostBack="True" OnCheckedChanged="obsługaArchiwum" meta:resourcekey="CheckBox4Resource1" />
             </td>
-           <td align="right" style="width: 400px" >
+           <td align="right" style="width: 410px" >
                <asp:LinkButton ID="LinkButton4" runat="server" Text="Drukuj" CssClass="button_" OnClick="print_" meta:resourcekey="LinkButton4Resource1"></asp:LinkButton>
                <asp:LinkButton ID="LinkButton14" runat="server" CssClass="button_" OnClick="twórzZestawienie" meta:resourcekey="LinkButton14Resource1" Text="zestawienie"></asp:LinkButton>
                <asp:LinkButton ID="LinkButton6" runat="server" Text="Excel" CssClass="button_" OnClick="makeExcell" meta:resourcekey="LinkButton6Resource1" ></asp:LinkButton>
+               <asp:LinkButton ID="LinkButton15" runat="server" Text="Excel" CssClass="button_" OnClick="makeExcellforBIP" meta:resourcekey="LinkButton6Resource1" ></asp:LinkButton>
            </td>
          </tr>   
 
