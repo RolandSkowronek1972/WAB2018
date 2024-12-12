@@ -187,10 +187,10 @@
 
                 </td>
                 <td style="vertical-align: middle;">
-               <asp:LinkButton ID="LinkButton14" runat="server" CssClass="button_" OnClick="twórzZestawienie" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie"></asp:LinkButton>
+               <asp:LinkButton ID="LinkButton14" runat="server" CssClass="button_" OnClick="tworzZestawienie" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie"></asp:LinkButton>
                     <asp:LinkButton ID="LinkButton6" runat="server" Text="Excel" CssClass="button_" OnClick="_excell" meta:resourcekey="LinkButton6Resource1"></asp:LinkButton>
                     <asp:Button ID="Button1" runat="server" OnClick="_print" Text="Drukuj" CssClass="button_" />
-               <asp:LinkButton ID="LinkButton15" runat="server" CssClass="button_" OnClick="twórzZestawienieBIP" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie BIP" Width="124px"></asp:LinkButton>
+               <asp:LinkButton ID="LinkButton15" runat="server" CssClass="button_" OnClick="tworzZestawienieBIP" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie BIP" Width="124px"></asp:LinkButton>
                 </td>
             </tr>
         </table>

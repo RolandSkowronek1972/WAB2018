@@ -40,8 +40,11 @@ using static NPOI.HSSF.Util.HSSFColor;
 
 namespace wab2018
 {
+
     public partial class biegliLista : System.Web.UI.Page
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public  tabele tb = new tabele();
         private readonly nowiMediatorzy nm = new nowiMediatorzy();
         private cm Cm = new cm();
@@ -530,7 +533,7 @@ namespace wab2018
             DataTable parametry = Cm.makeParameterTable();
             parametry.Rows.Add("@imie", imie);
             parametry.Rows.Add("@nazwisko", nazwisko);
-            string ident = Cm.runQuerryWithResult("SELECT ident   FROM [tbl_osoby] where imie=@imie and nazwisko=@nazwisko", Cm.con_str, parametry);
+            string ident = Cm.runQuerryWithResult("SELECT ident   FROM [tbl_osoby] where imie=@imie and nazwisko=@nazwisko and czyus=0 ", Cm.con_str, parametry);
             int identInt = 0;
             try
             {
@@ -590,6 +593,7 @@ namespace wab2018
  
         private IList<DoWydruku> ListaDoDalszejObrobki()
         {
+
             DataTable dt = new DataTable();
             foreach (GridViewColumn column in grid.VisibleColumns)
             {
@@ -674,14 +678,16 @@ namespace wab2018
 
         private string GetUwagiBIP(int ident)
         {
+            log.Debug("GetUwagiBIP Start");
+            log.Debug("GetUwagiBIP Ident - " + ident.ToString());
             DataTable parametry = Cm.makeParameterTable();
 
             parametry = Cm.makeParameterTable();
             parametry.Rows.Add("@ident", ident);
-
+            log.Debug("GetUwagiBIP Run querry " );
             string uwagiBip = Cm.runQuerryWithResult("SELECT uwagiBIP FROM tbl_osoby WHERE ident = @ident", Cm.con_str, parametry);
-
-            
+            log.Debug("GetUwagiBIP uwagiBip - " + uwagiBip);
+            log.Debug("GetUwagiBIP End querry ");
             return uwagiBip;
         }
 
@@ -773,7 +779,7 @@ namespace wab2018
         }
 
        
-        protected void twórzZestawienie(object sender, EventArgs e)
+        protected void tworzZestawienie(object sender, EventArgs e)
         {
             if (SpecjalizacjeCheckBox.Checked)
             {
@@ -845,7 +851,7 @@ namespace wab2018
             { }
         }
 
-        protected void twórzZestawienieBIP(object sender, EventArgs e)
+        protected void tworzZestawienieBIP(object sender, EventArgs e)
         {
 
             // do likwidacji
