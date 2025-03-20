@@ -29,17 +29,17 @@ namespace wab2018
                         if (string.IsNullOrEmpty ( txDataPoczatku.Text.Trim () ))
                         {
                             txDataPoczatku.Date = DateTime.Now;
-                        //    txDataPoczatku.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                      
                             string dataKonca = DateTime.Now.AddYears(4).Year.ToString()+".12.31"  ;
                             txDataKonca.Date = DateTime.Parse(dataKonca );
 
-                          //  txDataKonca.Text = "31.12." + DateTime.Now.AddYears(4).Year.ToString();
+                          
                         }
                      
                         TextBox1.Focus();
                     }
                 }
-                catch (Exception ex)
+                catch 
                 {
                 }
 

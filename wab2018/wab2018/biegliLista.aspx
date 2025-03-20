@@ -10,17 +10,10 @@
 <%@ Register Src="userControls/speckiBieglych.ascx" TagName="speckiBieglych" TagPrefix="uc9" %>
 <%@ Register Src="userControls/zawieszkiOdczyt.ascx" TagName="zawieszkiOdczyt" TagPrefix="uc8" %>
 <%@ Register Src="userControls/historiaPowolanMediatirowOdczyt.ascx" TagName="historiaPowolanMediatirowOdczyt" TagPrefix="uc10" %>
+
 <%@ Register assembly="DevExpress.Web.ASPxTreeList.v17.1, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .hideAll {
-            display: none;
-        }
 
-        .showAll {
-            display: block;
-        }
-    </style>
     <script>
         function onClickHandler() {
            
@@ -94,6 +87,13 @@
           }
       </script>
     <style type="text/css">
+           .hideAll {
+       display: none;
+   }
+
+   .showAll {
+       display: block;
+   }
         .auto-style3 {
             height: 21px;
         }
@@ -183,8 +183,6 @@
                     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Theme="Moderno"  DataSourceID="daneSpecjalizacji" DataTextField="nazwa" DataValueField="id_" Enabled="False" Height="40px" OnSelectedIndexChanged="poSpecjalizacji" ViewStateMode="Enabled" Width="300px">
                     </asp:DropDownList>
 
-          
-
                 </td>
                 <td style="vertical-align: middle;">
                <asp:LinkButton ID="LinkButton14" runat="server" CssClass="button_" OnClick="tworzZestawienie" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie"></asp:LinkButton>
@@ -192,6 +190,8 @@
                     <asp:Button ID="Button1" runat="server" OnClick="_print" Text="Drukuj" CssClass="button_" />
                <asp:LinkButton ID="LinkButton15" runat="server" CssClass="button_" OnClick="tworzZestawienieBIP" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie BIP" Width="124px"></asp:LinkButton>
                 </td>
+                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_" OnClick="tworzZestawienieBIPX" meta:resourcekey="LinkButton14Resource1" Text="Zestawienie BIP" Width="124px"></asp:LinkButton>
+  </td>
             </tr>
         </table>
         <br />
@@ -221,16 +221,16 @@
                     </PropertiesTextEdit>
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataDateColumn Caption="Powołanie od" FieldName="data_poczatkowa" ShowInCustomizationForm="True" VisibleIndex="5" Width="6%">
-</dx:GridViewDataDateColumn>
+                </dx:GridViewDataDateColumn>
                     <dx:GridViewDataDateColumn Caption="Powołanie do" FieldName="data_koncowa" ShowInCustomizationForm="True" VisibleIndex="6" Width="6%">
-    </dx:GridViewDataDateColumn>
+                </dx:GridViewDataDateColumn>
                
                 <dx:GridViewDataTextColumn Caption="Rodzaj zawieszenia" FieldName="rodzaj_zawieszenia" ShowInCustomizationForm="True" VisibleIndex="8" Width="8%" Name="rodzaj_zawieszenia">
-</dx:GridViewDataTextColumn>
+                </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataTextColumn Caption="Informacje inna" FieldName="Informacje_o_wstrzymaniu" ShowInCustomizationForm="True" VisibleIndex="9" Width="8%" Name="rodzaj_zawieszenia">
-</dx:GridViewDataTextColumn>
+                </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn Caption="Telefon" FieldName="tel1" ShowInCustomizationForm="True" VisibleIndex="10" Width="8%">
-</dx:GridViewDataTextColumn>
+                </dx:GridViewDataTextColumn>
                 
                 <dx:GridViewDataTextColumn Caption="Specjalizacje" FieldName="specjalizacjeWidok" ShowInCustomizationForm="True" PropertiesTextEdit-EncodeHtml="false" VisibleIndex="13" Width="13%" Name="Specjalizacje">
                 </dx:GridViewDataTextColumn>
@@ -371,7 +371,7 @@ alert(&quot;open&quot;);
 
                                             </table>
                                           
-<div id="panelZawieszen" style='<%# (Convert.ToInt16(Eval("czy_zaw")) == 0) ?  "display:none;": "display:block;" %>'>
+                                            <div id="panelZawieszen" style='<%# (Convert.ToInt16(Eval("czy_zaw")) == 0) ?  "display:none;": "display:block;" %>'>
                                             
                                                 <table class="auto-style24">
                                                     <tr>
@@ -396,9 +396,10 @@ alert(&quot;open&quot;);
                                                         <td style="width: 50%">
 
                                                             <div id="powZaw" style="display: block">
-
-                                                                <asp:DropDownList Theme="Moderno" CssClass="dxeEditArea_Moderno dxeEditAreaSys" Style="border: thick" Height="40px" Width="200px" ID="powZawDropDownList" runat="server">
-
+                                                                   
+                                                                
+                                                                <asp:DropDownList Theme="Moderno" CssClass="dxeEditArea_Moderno dxeEditAreaSys" Style="border: thick" Height="40px" Width="200px" ID="powZawDropDownList"  Text='<%# Eval("rodzaj_zawieszenia")%>'  runat="server">
+                                                                    <asp:ListItem></asp:ListItem>
                                                                     <asp:ListItem>wstrzymano</asp:ListItem>
                                                                     <asp:ListItem>przerwa w opiniowaniu</asp:ListItem>
                                                                     <asp:ListItem>zawieszono</asp:ListItem>
@@ -919,6 +920,7 @@ alert(&quot;open&quot;);
         <asp:HiddenField ID="HiddenField" runat="server" />
 
         <br />
+      
 
          
                            

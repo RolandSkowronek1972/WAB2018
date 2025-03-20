@@ -19,13 +19,13 @@
         <asp:Parameter Name="numer" />
         <asp:Parameter Name="rok" />
         <asp:Parameter Name="dataWplywu" />
-       
         <asp:Parameter Name="dataPisma" />
         <asp:Parameter Name="Sygnatura" />
         <asp:Parameter Name="wizytator" />
         <asp:Parameter Name="zakreslono" />
         <asp:Parameter Name="dataZakreslenia" />
         <asp:Parameter Name="uwagi" />
+        <asp:Parameter Name="czyus" />
         <asp:Parameter Name="RodzajZalatwienia" />
         <asp:Parameter Name="informacjeozawieszeniu" />
         <asp:Parameter Name="SkladajacySkarge" />

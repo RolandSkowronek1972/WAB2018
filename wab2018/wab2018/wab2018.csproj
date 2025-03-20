@@ -283,7 +283,6 @@
     <Compile Include="biegliLista.aspx.designer.cs">
       <DependentUpon>biegliLista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeSessionProvider .cs" />
     <Compile Include="nowiMediatorzy.cs" />
     <Compile Include="userControls\historiaPowolanMediatirowOdczyt.ascx.cs">
       <DependentUpon>historiaPowolanMediatirowOdczyt.ascx</DependentUpon>

@@ -25,6 +25,7 @@ namespace wab2018
         public Font plFont1 = new Font(NewFont, 10f, Font.NORMAL, BaseColor.BLACK);
         public Font plFont = new Font(NewFont, 10f, Font.NORMAL, BaseColor.BLACK);
         public Font plFont2 = new Font(NewFont, 10f, Font.NORMAL, BaseColor.BLACK);
+        public Font plFont2Bold = new Font(NewFont, 10f, Font.BOLD, BaseColor.BLACK);
         public Font plFontBIG = new Font(NewFont, 15, Font.NORMAL, BaseColor.BLACK);
         public Font plFont3 = new Font(NewFont, 15, Font.NORMAL, BaseColor.BLACK);
 
@@ -274,7 +275,7 @@ namespace wab2018
             {
                 conn.Open();
                 SqlDataAdapter daMenu = new SqlDataAdapter();
-                daMenu.SelectCommand = new SqlCommand("SELECT DISTINCT  id_, nazwa FROM         glo_specjalizacje ORDER BY nazwa", conn);
+                daMenu.SelectCommand = new SqlCommand("SELECT DISTINCT  id_, nazwa FROM glo_specjalizacje ORDER BY nazwa", conn);
 
                 daMenu.Fill(lista);
                 conn.Close();
