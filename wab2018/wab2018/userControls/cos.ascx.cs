@@ -49,7 +49,10 @@ namespace wab2018
         protected void ASPxGridView1_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             e.Editor.ReadOnly = false;
-            
+          /*  if (e.Column.FieldName == "ident")
+            {
+                e.Editor.Value = cl.podajNumerSkargiwRoku(DateTime.Now.Year); ;
+            }
             if (e.Column.FieldName == "numer")
             {
                 e.Editor.Value = cl.podajNumerSkargiwRoku( DateTime.Now.Year); ;
@@ -69,7 +72,7 @@ namespace wab2018
                 e.Editor.Value = DateTime.Now.Date;
 
             }
-           
+           */
         }
 
         protected void ASPxGridView1_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)

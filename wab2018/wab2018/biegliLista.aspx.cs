@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Web.UI.WebControls;
 using System.Text;
+using static iTextSharp.text.pdf.AcroFields;
 
 namespace wab2018
 {
@@ -131,10 +132,12 @@ namespace wab2018
             }
 
             e.NewValues["czy_zaw"] = zawieszenie;
-            e.NewValues["Informacje_o_wstrzymaniu"] = nm.controlText("txInformacjeowstrzymaniu", grid);
+           
+
 
             if (zawieszenie)
             {
+                e.NewValues["Informacje_o_wstrzymaniu"] = nm.controlText("txInformacjeowstrzymaniu", grid);
                 e.NewValues["d_zawieszenia"] = nm.controlTextDate("txDataPoczatkuZawieszenia", grid);
                 e.NewValues["dataKoncaZawieszenia"] = nm.controlTextDate("txDataKoncaZawieszenia", grid);
                 e.NewValues["rodzaj_zawieszenia"] = nm.controlDropDownList("powZawDropDownList", grid);
@@ -143,7 +146,8 @@ namespace wab2018
             {
                 e.NewValues["d_zawieszenia"] = DateTime.Now;
                 e.NewValues["dataKoncaZawieszenia"] = DateTime.Now;
-                e.NewValues["rodzaj_zawieszenia "] = "";
+                e.NewValues["Informacje_o_wstrzymaniu"] = "";
+                e.NewValues["rodzaj_zawieszenia"] = "";
             }
             if (nm.controlText("txPESEL", grid) == null)
             {
@@ -560,7 +564,7 @@ namespace wab2018
                 doWydruku.powolanieDo = item[4].ToString();
 
                 doWydruku.telefon = item[6].ToString();
-                doWydruku.uwagi = item[8].ToString();
+                doWydruku.uwagi = GetUwagiBIP(Ident);
                 doWydruku.Kadencja = item[4].ToString();
                 doWydruku.spejalizacje = GetOpisSpecjalizacji(Ident);
                 doWydruku.spejalnosc = GetSpec(Ident);
@@ -657,15 +661,9 @@ namespace wab2018
 
                 foreach (DataRow itemIn in dt.Rows)
                 {
-                    int Ident = int.Parse( itemIn[10].ToString());
+                    int Ident = int.Parse(itemIn[10].ToString());
                     string zaw = string.Empty;
-                    /*
-                    int Ident = getId(itemIn[2].ToString(), itemIn[1].ToString());
-                    if (Ident == 0)
-                    {
-                        break;
-                    }
-                    */
+                   
                     int ilosc = GetInfoOfSpec(Ident.ToString(), IdSec);
                     if (ilosc != 0)
                     {
@@ -712,15 +710,9 @@ namespace wab2018
                 }
             }
 
-        
             return doWydrukuLista;
         }
-
-        private int CzyBieglyMaTaSpecjalizacje(int ident, int idSec)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         private int GetInfoOfSpec(string id, int specId)
         {
             log.Debug("GetInfoOfSpec Start");
@@ -1039,6 +1031,9 @@ namespace wab2018
 
             pdfDoc.Add(table);
 
+            string kwerenda = "SELECT View_SpecjalizacjeIOsoby.ident, tbl_osoby.imie, tbl_osoby.nazwisko, tbl_osoby.ulica, tbl_osoby.kod_poczt, tbl_osoby.miejscowosc, tbl_osoby.data_poczatkowa, tbl_osoby.data_koncowa, tbl_osoby.id_kreatora, tbl_osoby.data_kreacji, tbl_osoby.pesel, tbl_osoby.czyus, typ , tbl_osoby.tytul, tbl_osoby.czy_zaw, tbl_osoby.tel1 , tbl_osoby.tel2, tbl_osoby.email, tbl_osoby.adr_kores, tbl_osoby.kod_poczt_kor, tbl_osoby.miejscowosc_kor, tbl_osoby.uwagi, uwagiBIP,  tbl_osoby.specjalizacjeWidok, tbl_osoby.specjalizacja_opis,                   tbl_osoby.d_zawieszenia, tbl_osoby.typ, tbl_osoby.dataKoncaZawieszenia, tbl_osoby.instytucja, View_SpecjalizacjeIOsoby.nazwa, View_SpecjalizacjeIOsoby.id_ as identyfikatorSpecjalizacji,                   View_SpecjalizacjeIOsoby.Expr1 AS aktwnaSpecjalizacja FROM     tbl_osoby RIGHT OUTER JOIN                   View_SpecjalizacjeIOsoby ON tbl_osoby.ident = View_SpecjalizacjeIOsoby.ident WHERE (tbl_osoby.nazwisko IS NOT NULL) AND (tbl_osoby.typ < 2) AND (View_SpecjalizacjeIOsoby.Expr1 = 1)";
+            DataTable daneBieglych = Cm.getDataTable(kwerenda, Cm.con_str, Cm.makeParameterTable());
+
             foreach (var item in TaListaDoDalszejObrobki)
             {
                 table = new PdfPTable(7);
@@ -1147,7 +1142,7 @@ namespace wab2018
                             }
                             catch
                             {
-                                dr[53] = "";
+                                dr[5] = "";
                             }
 
                             dr[6] = item.uwagi.ToString();//uwagi
@@ -1171,7 +1166,7 @@ namespace wab2018
                         }
                         catch
                         {
-                            dr[53] = "";
+                            dr[5] = "";
                         }
 
                         dr[6] = item.uwagi.ToString();//uwagi
@@ -1215,6 +1210,276 @@ namespace wab2018
                 {
                 }
             }//end of using
+        }
+
+        protected void tworzZestawienieBIPexcelNew(object sender, EventArgs e)
+        {
+            IList<DoWydruku> TaListaDoDalszejObrobki = ListaDoDalszejObrobki();
+            IList<ListaIlosciSpecjalizacji> ListaIlosciSpecjalizacji = new List<ListaIlosciSpecjalizacji>();
+            foreach (var item in TaListaDoDalszejObrobki)
+            {
+                int iloscSpecjalizacji = PodajIloscSpecjalizacji(int.Parse(item.ident.ToString()));
+                if (iloscSpecjalizacji > 0)
+                {
+                    ListaIlosciSpecjalizacji elementListyIlosciSpecjalizacji = new ListaIlosciSpecjalizacji
+                    {
+                        UserId = item.ident,
+                        IloscSpecjalizacji = iloscSpecjalizacji
+                    };
+
+                    ListaIlosciSpecjalizacji.Add(elementListyIlosciSpecjalizacji);
+                }
+            }
+
+            DataTable excelTableBIP = new DataTable();
+            excelTableBIP.Columns.Add("specjalność", typeof(string));
+            excelTableBIP.Columns.Add("specjalizacje", typeof(string));
+            excelTableBIP.Columns.Add("nazwisko", typeof(string));
+            excelTableBIP.Columns.Add("imie", typeof(string));
+            excelTableBIP.Columns.Add("tytuł", typeof(string));
+            excelTableBIP.Columns.Add("kadencka", typeof(string));
+            excelTableBIP.Columns.Add("zawieszenie", typeof(string));
+            excelTableBIP.Columns.Add("uwagi", typeof(string));
+            excelTableBIP.Columns.Add("PoczatekZawieszenia", typeof(string));
+            excelTableBIP.Columns.Add("KoniecZawieszenia", typeof(string));
+
+            int i = 0;
+            List<BIP> BIPList = new List<BIP>();
+
+            foreach (var item in TaListaDoDalszejObrobki)
+            {
+                BIP oneBIP = new BIP();
+                try
+                {
+                    var ilosc = ListaIlosciSpecjalizacji.First(x => x.UserId == item.ident).IloscSpecjalizacji;
+                    if (ilosc > 1)
+                    {
+                        DataTable listaSpecjalizacjiBieglego = ListaIlosciSpecjalizacjiBieglego(item.ident);
+                        foreach (DataRow dRow in listaSpecjalizacjiBieglego.Rows)
+                        {
+                            DataRow dr = excelTableBIP.NewRow();
+                            oneBIP = new BIP();
+                            dr[0] = dRow[0].ToString();//spejalnosc
+                            oneBIP.spejalnosc= dRow[0].ToString();
+                            dr[1] = dRow[1].ToString();//spejalizacje
+                            oneBIP.spejalizacje= dRow[1].ToString();//spejalizacje
+                            dr[2] = item.nazwisko.ToString();//nazwisko
+
+                            oneBIP.nazwisko = item.nazwisko.ToString();//nazwisko
+
+                            dr[3] = item.imie.ToString();//imie
+                            oneBIP.imie = item.imie.ToString();//imie
+                            dr[4] = item.tytul.ToString();//tytul
+                            oneBIP.tytul = item.tytul.ToString();//tytul
+
+                            dr[5] = "";
+                            oneBIP.Kadencja = "";
+                            try
+                            {
+                                dr[5] = item.powolanieDo.ToString().Substring(0, 11);//powolanie
+                                oneBIP.Kadencja = item.powolanieDo.ToString().Substring(0, 11);//powolanie
+                            }
+                            catch
+                            { }
+
+                            dr[6] = item.zawieszono.ToString();//zawieszenie
+                            oneBIP.zawieszono = item.zawieszono.ToString();//zawieszenie
+                            dr[7] = item.uwagi.ToString();//uwagi
+                            oneBIP.uwagi = item.uwagi.ToString();//uwagi
+
+                            dr[8] = item.PoczatekZawieszeni.ToString();//PoczatekZawieszeni
+                            oneBIP.PoczatekZawieszeni = item.PoczatekZawieszeni.ToString();//PoczatekZawieszeni
+                            dr[9] = item.KoniecZawieszenia.ToString();//KoniecZawieszenia
+                            oneBIP.KoniecZawieszenia = item.KoniecZawieszenia.ToString();//KoniecZawieszenia
+                            BIPList.Add(oneBIP);
+                            excelTableBIP.Rows.Add(dr);
+                        }
+                    }
+                    else
+                    {
+                        DataRow dr = excelTableBIP.NewRow();
+                        oneBIP = new BIP();
+                        dr[0] = item.spejalnosc.ToString();//spejalnosc
+                        oneBIP.spejalnosc = item.spejalnosc.ToString();//spejalnosc
+                        dr[1] = item.spejalizacje.ToString();//spejalizacje
+                        oneBIP.spejalizacje = item.spejalizacje.ToString();//spejalizacje
+                        dr[2] = item.nazwisko.ToString();//nazwisko
+                        oneBIP.nazwisko = item.nazwisko.ToString();//nazwisko
+                        dr[3] = item.imie.ToString();//imie
+                        oneBIP.imie = item.imie.ToString();//imie
+                        dr[4] = item.tytul.ToString();//tytul
+                        oneBIP.tytul =  item.tytul.ToString();//tytul
+                        dr[5] = "";
+                        oneBIP.Kadencja = "";
+                        try
+                        {
+                            dr[5] = item.powolanieDo.ToString().Substring(0, 11);//powolanie
+                            oneBIP.Kadencja = item.powolanieDo.ToString().Substring(0, 11);//powolanie
+                        }
+                        catch
+                        {}
+
+                        dr[6] = item.zawieszono.ToString();//zawieszenie
+                        oneBIP.zawieszono = item.zawieszono.ToString();//zawieszenie
+                        dr[7] = item.uwagi.ToString();//uwagi
+                        oneBIP.uwagi = item.uwagi.ToString();//uwagi
+
+                        dr[8] = item.PoczatekZawieszeni.ToString();//PoczatekZawieszeni
+                        oneBIP.PoczatekZawieszeni = item.PoczatekZawieszeni.ToString();//PoczatekZawieszeni
+                        dr[9] = item.KoniecZawieszenia.ToString();//KoniecZawieszenia
+                        oneBIP.KoniecZawieszenia = item.KoniecZawieszenia.ToString();//KoniecZawieszenia
+                        BIPList.Add(oneBIP);
+                        excelTableBIP.Rows.Add(dr);
+                    }
+                }
+                catch
+                {
+                }
+            }
+            // sortowanie
+
+            List<BIP> SortedList = BIPList.OrderBy(o => o.spejalnosc).ToList();
+            //BIPList.Sort( );
+            // hier komt pdf
+            iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 0, 0, 10f, 10f);
+
+            string path = Server.MapPath(@"~//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
+            string fileName = path + "//Zestawienie_Specjalizacji_BIP_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
+            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
+
+            pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            pdfDoc.Open();
+
+            pdfDoc.AddTitle("zestawienie_Specjalizacji");
+            pdfDoc.AddCreationDate();
+
+            PdfPTable table = new PdfPTable(1);
+
+            PdfPCell headerCell = new PdfPCell(new Phrase("LISTA BIEGŁYCH SĄDOWYCH PRZY SĄDZIE OKRĘGOWYM NA DZIEŃ " + DateTime.Now.ToShortDateString(), cl.plFont3));
+
+            headerCell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            headerCell.Border = Rectangle.NO_BORDER;
+
+            table.AddCell(headerCell);
+            pdfDoc.Add(table);
+            table = new PdfPTable(7);
+
+            int[] tblWidth = { 20, 25, 15, 10, 10, 10, 10 };
+
+            table.SetWidths(tblWidth);
+
+            table.AddCell(new PdfPCell(new Phrase("Specjalność", cl.plFont2)));
+            table.AddCell(new PdfPCell(new Phrase("Specjalizacje", cl.plFont2)));
+            table.AddCell(new PdfPCell(new Phrase("Nazwisko", cl.plFont2)));
+            table.AddCell(new PdfPCell(new Phrase("Imię", cl.plFont2)));
+            table.AddCell(new PdfPCell(new Phrase("Tytuł", cl.plFont2)));
+            table.AddCell(new PdfPCell(new Phrase("Kadencja", cl.plFont2)));
+            table.AddCell(new PdfPCell(new Phrase("Uwagi", cl.plFont2)));
+
+            pdfDoc.Add(table);
+            foreach (var singleBIP in SortedList)
+            {
+                table = new PdfPTable(7);
+                table.SetWidths(tblWidth);
+                table.AddCell(new PdfPCell(new Phrase(singleBIP.spejalnosc.ToUpper(), cl.plFont2)));
+                table.AddCell(new PdfPCell(new Phrase(singleBIP.spejalizacje.ToString(), cl.plFont2)));
+                table.AddCell(new PdfPCell(new Phrase(singleBIP.nazwisko.ToString(), cl.plFont2Bold)));
+                table.AddCell(new PdfPCell(new Phrase(singleBIP.imie.ToString(), cl.plFont2)));
+                table.AddCell(new PdfPCell(new Phrase(singleBIP.tytul.ToString(), cl.plFont2)));
+                string data = singleBIP.Kadencja.ToString().ToString();
+                try
+                {
+                    data = data.Substring(0, 10);
+                }
+                catch
+                {
+                }
+                table.AddCell(new PdfPCell(new Phrase(data, cl.plFont2)));
+                var zawieszenie = singleBIP.zawieszono.ToString();
+                if (zawieszenie == "zawieszono")
+                {
+                    string poleUwagi = string.Empty;
+                    if (string.IsNullOrEmpty(singleBIP.uwagi.ToString()))
+                    {
+                        poleUwagi += "przerwa w opiniowaniu od " + singleBIP.PoczatekZawieszeni.Substring(0, 10) + " do " + singleBIP.KoniecZawieszenia.ToString().Substring(0, 10);
+                        table.AddCell(new PdfPCell(new Phrase(poleUwagi, cl.plFont2)));
+                    }
+                    else
+                    {
+                        poleUwagi =singleBIP.uwagi .ToString() + Environment.NewLine;
+                        poleUwagi += "przerwa w opiniowaniu od " + singleBIP.PoczatekZawieszeni.ToString().Substring(0, 10) + " do " + singleBIP.KoniecZawieszenia.ToString().Substring(0, 10);
+                        table.AddCell(new PdfPCell(new Phrase(poleUwagi, cl.plFont2)));
+                    }
+                }
+                else
+                {
+                    table.AddCell(new PdfPCell(new Phrase(singleBIP.uwagi.ToString(), cl.plFont2)));
+                }
+                pdfDoc.Add(table);
+
+            }  
+            /*
+            foreach (DataRow item in excelTableBIP.Rows)
+            {
+                table = new PdfPTable(7);
+                table.SetWidths(tblWidth);
+                table.AddCell(new PdfPCell(new Phrase(item[0].ToString().ToUpper(), cl.plFont2)));
+                table.AddCell(new PdfPCell(new Phrase(item[1].ToString(), cl.plFont2)));
+                table.AddCell(new PdfPCell(new Phrase(item[2].ToString(), cl.plFont2Bold)));
+                table.AddCell(new PdfPCell(new Phrase(item[3].ToString(), cl.plFont2)));
+                table.AddCell(new PdfPCell(new Phrase(item[4].ToString(), cl.plFont2)));
+                string data = item[5].ToString().ToString();
+                try
+                {
+                    data = data.Substring(0, 10);
+                }
+                catch
+                {
+                }
+
+                table.AddCell(new PdfPCell(new Phrase(data, cl.plFont2)));
+
+                // sprawdzenie zawieszenia
+                var zawieszenie = item[6].ToString();
+
+                if (zawieszenie == "zawieszono")
+                {
+                    string poleUwagi = string.Empty;
+                    if (string.IsNullOrEmpty(item[7].ToString()))
+                    {
+                        poleUwagi += "przerwa w opiniowaniu od " + item[8].ToString().Substring(0, 10) + " do " + item[9].ToString().Substring(0, 10);
+                        table.AddCell(new PdfPCell(new Phrase(poleUwagi, cl.plFont2)));
+                    }
+                    else
+                    {
+                        poleUwagi = item[7].ToString() + Environment.NewLine;
+                        poleUwagi += "przerwa w opiniowaniu od " + item[8].ToString().Substring(0, 10) + " do " + item[9].ToString().Substring(0, 10);
+                        table.AddCell(new PdfPCell(new Phrase(poleUwagi, cl.plFont2)));
+                    }
+                }
+                else
+                {
+                    table.AddCell(new PdfPCell(new Phrase(item[7].ToString(), cl.plFont2)));
+                }
+                //aaaa
+                pdfDoc.Add(table);
+            }
+            */
+            //save pdf
+
+            pdfDoc.Close();
+
+            WebClient client = new WebClient();
+            Byte[] buffer = client.DownloadData(fileName);
+            if (buffer != null)
+            {
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-lenght", buffer.Length.ToString());
+                Response.BinaryWrite(buffer);
+            }
+
+            ProcessStartInfo startInfo = new ProcessStartInfo(fileName);
+            Process.Start(startInfo);
         }
 
         private PdfPTable NaglowekZestawienia()
@@ -1386,7 +1651,7 @@ namespace wab2018
                     tabelaGlowna = new PdfPTable(4);
                     tabelaGlowna = generujCzescRaportuNew(daneBieglych, IdSpecjalizacji);
                     pdfDoc.Add(new Paragraph(" "));
-                    pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji, cl.plFont3)));
+                    pdfDoc.Add(new Paragraph(new Paragraph("" + nazwaSpecjalizacji, cl.plFont3)));
                     pdfDoc.Add(new Paragraph(" "));
 
                     if (tabelaGlowna.Rows.Count > 15)
@@ -1429,7 +1694,7 @@ namespace wab2018
                                 pdfDoc.Add(newTable);
                                 pdfDoc.NewPage();
                                 pdfDoc.Add(new Paragraph(" "));
-                                pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji, cl.plFont3)));
+                                pdfDoc.Add(new Paragraph(new Paragraph("" + nazwaSpecjalizacji, cl.plFont3)));
                                 pdfDoc.Add(new Paragraph(" "));
 
                                 newTable = new PdfPTable(4);
@@ -1539,7 +1804,7 @@ namespace wab2018
                             pdfDoc.Add(newTable);
                             pdfDoc.NewPage();
                             pdfDoc.Add(new Paragraph(" "));
-                            pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji, cl.plFont3)));
+                            pdfDoc.Add(new Paragraph(new Paragraph( nazwaSpecjalizacji, cl.plFont3)));
                             pdfDoc.Add(new Paragraph(" "));
 
                             newTable = new PdfPTable(4);
@@ -1860,6 +2125,30 @@ namespace wab2018
         public string spejalizacje { get; set; }
 
         public string spejalnosc { get; set; }
+        public string Kadencja { get; set; }
+        public string PoczatekZawieszeni { get; set; }
+        public string KoniecZawieszenia { get; set; }
+    }
+    public class BIP
+    {
+        public int ident { get; set; }
+        public string spejalnosc { get; set; }
+        public string spejalizacje { get; set; }
+
+        public string nazwisko { get; set; }
+        public string imie { get; set; }
+        public string tytul { get; set; }
+
+        public string powolanieOd { get; set; }
+        public string powolanieDo { get; set; }
+
+        public string zawieszono { get; set; }
+
+
+        public string uwagi { get; set; }
+
+        public string uwagiBIP { get; set; }
+        
         public string Kadencja { get; set; }
         public string PoczatekZawieszeni { get; set; }
         public string KoniecZawieszenia { get; set; }
