@@ -127,6 +127,7 @@ namespace wab2018
 
             foreach (DataRow item in dt.Rows)
             {
+                var Numer = item[0].ToString();
                 var biegły = item[2].ToString();
                 var rok = item[1].ToString();
                 var DataWplywu  = item[3].ToString();
@@ -137,9 +138,9 @@ namespace wab2018
                 var dataZakreslenia = item[8].ToString();
                 var rodzajZalatwienia = item[9].ToString();
                 var skladajacySkarge    = item[10].ToString();
-                var uwagi = ""; item[11].ToString();
+                var uwagi = item[11].ToString();
                 table.AddCell(defaultPDFCell(biegły));
-                table.AddCell(defaultPDFCell(rok));
+                table.AddCell(defaultPDFCell(Numer +"/" + rok));
                 table.AddCell(defaultPDFCell(CutDate(DataWplywu)));
                 table.AddCell(defaultPDFCell(CutDate(dataWplywuPisma)));
                 table.AddCell(defaultPDFCell(sygnatura));

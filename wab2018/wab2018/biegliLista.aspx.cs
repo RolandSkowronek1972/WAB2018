@@ -298,14 +298,14 @@ namespace wab2018
                             string specjalizacja = DropDownList1.SelectedValue;
                             nazwaSpeckajlizacji = NazwaSpecjalizacji(specjalizacja);
 
-                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ, rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE  (data_koncowa >= GETDATE()) and (czyus = 0) and typ = 1 ";
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ, rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE   czyus = 0 and typ = 1 AND (data_koncowa >= GETDATE())";
                             kwerendabazowa = kwerendabazowa + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
 
                             Session["kwerenda"] = kwerendabazowa;
                         }
                         else
                         {
-                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (data_koncowa >= GETDATE()) and (czyus = 0) and typ = 1 ";
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus = 0) and typ = 1 AND (data_koncowa >= GETDATE())";
                         }
                     }
                     break;
@@ -318,18 +318,36 @@ namespace wab2018
                             string specjalizacja = DropDownList1.SelectedValue;
                             nazwaSpeckajlizacji = NazwaSpecjalizacji(specjalizacja);
 
-                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus = 0) AND (typ >= 2) AND (data_koncowa <= GETDATE()) and typ =1 ";
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus = 0) AND (typ = 1) AND (data_koncowa <= GETDATE()) ";
                             kwerendabazowa = kwerendabazowa + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
 
                             Session["kwerenda"] = kwerendabazowa;
                         }
                         else
                         {
-                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu FROM tbl_osoby WHERE (data_koncowa <= GETDATE()) and typ = 1 ";
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu FROM tbl_osoby WHERE (czyus = 0) AND (typ = 1) AND (data_koncowa <= GETDATE()) ";
                         }
                     }
                     break;
+                case 4:
+                    {
+                        //Usunięci
+                        if (SpecjalizacjeCheckBox.Checked)
+                        {
+                            string specjalizacja = DropDownList1.SelectedValue;
+                            nazwaSpeckajlizacji = NazwaSpecjalizacji(specjalizacja);
 
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus = 1) AND (typ = 1)  ";
+                            kwerendabazowa = kwerendabazowa + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
+
+                            Session["kwerenda"] = kwerendabazowa;
+                        }
+                        else
+                        {
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu FROM tbl_osoby WHERE (czyus = 1) and typ = 1 ";
+                        }
+                    }
+                    break;
                 default:
                     {
                         if (SpecjalizacjeCheckBox.Checked)
@@ -337,14 +355,17 @@ namespace wab2018
                             string specjalizacja = DropDownList1.SelectedValue;
                             nazwaSpeckajlizacji = NazwaSpecjalizacji(specjalizacja);
 
-                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus  = 0) And (typ = 1) ";
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus  = 0) And (typ = 1) ";
+                                         
+
+
                             kwerendabazowa = kwerendabazowa + "  and (select count(*) from tbl_specjalizacje_osob where id_specjalizacji =" + specjalizacja.Trim() + " and id_osoby=tbl_osoby.ident )=1 ";
 
                             Session["kwerenda"] = kwerendabazowa;
                         }
                         else
                         {
-                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (typ = 1) ";
+                            kwerendabazowa = "SELECT ulica, kod_poczt, miejscowosc, COALESCE (czy_zaw, 0) AS czy_zaw, tel2, email, COALESCE (d_zawieszenia, '1900-01-01') AS d_zawieszenia, COALESCE (dataKoncaZawieszenia, '1900-01-01') AS dataKoncaZawieszenia, GETDATE() AS now, tytul, uwagi, uwagiBIP,  specjalizacja_opis, dbo.specjalizacjeLista(ident) AS specjalizacjeWidok, miejscowosc_kor, kod_poczt_kor, adr_kores, imie, ident, data_poczatkowa, data_koncowa, pesel, tel1, typ, nazwisko, instytucja, REPLACE(REPLACE(REPLACE(specjalizacjeWidok, '<table>', ''), '<br>', ''), '<br/>', '') AS bezTabeli, '" + nazwaSpeckajlizacji + "' as jednaSpecjalizacja, czyus, typ,rodzaj_zawieszenia, Informacje_o_wstrzymaniu  FROM tbl_osoby WHERE (czyus  = 0) And (typ = 1) ";
                         }
                     }
                     break;
@@ -1338,7 +1359,7 @@ namespace wab2018
             }
             // sortowanie
 
-            List<BIP> SortedList = BIPList.OrderBy(o => o.spejalnosc).ToList();
+            List<BIP> SortedList = BIPList.OrderBy(o => o.spejalnosc).ThenBy(o => o.nazwisko).ToList();
             //BIPList.Sort( );
             // hier komt pdf
             iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 0, 0, 10f, 10f);
@@ -1613,23 +1634,12 @@ namespace wab2018
                     wierszWyliczen["iloscStron"] = iloscStron;
                 }
             }
-
-            //nagłówek
-            iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
-
+          
             string path = Server.MapPath(@"~//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
             string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
-            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
-            pdfDoc.Open();
-
-            pdfDoc.AddTitle("zestawienie_Specjalizacji");
-            pdfDoc.AddCreationDate();
-
-            // koniec naglowka
-
-            pdfDoc.Add(NaglowekZestawienia());
-            pdfDoc.NewPage();
-
+      
+          
+            iTextSharp.text.Document pdfDoc = BeginOfSummary(path, fileName);// new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
             //podliczenie
 
             pdfDoc.Add(tabelaWyliczenia(IlosciBieglychPoSpecjalizacji));
@@ -1654,7 +1664,7 @@ namespace wab2018
                     pdfDoc.Add(new Paragraph(new Paragraph("" + nazwaSpecjalizacji, cl.plFont3)));
                     pdfDoc.Add(new Paragraph(" "));
 
-                    if (tabelaGlowna.Rows.Count > 15)
+                    if (tabelaGlowna.Rows.Count > 9)
                     {
                         //   int counter = 0;
                         int licznik = 0;
@@ -1686,7 +1696,7 @@ namespace wab2018
                             licznik++;
                             iter++;
 
-                            if (licznik == 13)
+                            if (licznik == 9)
                             {
                                 iloscStron++;
                                 licznik = 0;
@@ -1726,8 +1736,33 @@ namespace wab2018
             AddPageNumber(fileName, newFilename);
         }
 
+
+        private iTextSharp.text.Document  BeginOfSummary(string path, string fileName)
+        {
+
+
+            iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
+
+        
+            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
+            pdfDoc.Open();
+            //nagłówek
+            pdfDoc.AddTitle("zestawienie_Specjalizacji");
+            pdfDoc.AddCreationDate();
+            pdfDoc.Add(NaglowekZestawienia());
+
+            // koniec naglowka
+
+            pdfDoc.NewPage();
+            return pdfDoc;
+
+        }
+
         private void robRaportjednejSpecjalizacji(System.Web.UI.WebControls.ListItem selectedItem, DataTable listaBieglych)
         {
+            string path = Server.MapPath(@"~//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
+            string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
+
             int idSpecjalizacji = 0;
             string nazwaSpecjalizacji = string.Empty;
             try
@@ -1739,19 +1774,8 @@ namespace wab2018
             {
                 return;
             }
-            iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
+            iTextSharp.text.Document pdfDoc = BeginOfSummary(path, fileName);// new iTextSharp.text.Document(PageSize.A4, 10f, 10f, 10f, 0f);
 
-            string path = Server.MapPath(@"~//pdf"); //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments );
-            string fileName = path + "//zestawienie_Specjalizacji_" + DateTime.Now.ToString().Replace(":", "-") + ".pdf";
-            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(fileName, FileMode.Create));
-            pdfDoc.Open();
-
-            pdfDoc.AddTitle("zestawienie_Specjalizacji");
-            pdfDoc.AddCreationDate();
-
-            //podliczenie
-
-            pdfDoc.NewPage();
 
             //==============================================================
             int iloscStron = 0;
@@ -1762,10 +1786,10 @@ namespace wab2018
                 // tabelaGlowna = generujCzescRaportuNew(listaBieglych, idSpecjalizacji.ToString());
 
                 pdfDoc.Add(new Paragraph(" "));
-                pdfDoc.Add(new Paragraph(new Paragraph("        " + nazwaSpecjalizacji, cl.plFont3)));
+                pdfDoc.Add(new Paragraph(new Paragraph( nazwaSpecjalizacji, cl.plFont3)));
                 pdfDoc.Add(new Paragraph(" "));
                 int[] tblWidth = { 8, 30, 30, 32 };
-                if (tabelaGlowna.Rows.Count > 15)
+                if (tabelaGlowna.Rows.Count > 9)
                 {
                     //   int counter = 0;
                     int licznik = 0;
@@ -1797,7 +1821,7 @@ namespace wab2018
                         licznik++;
                         iter++;
 
-                        if (licznik == 15)
+                        if (licznik == 9)
                         {
                             iloscStron++;
                             licznik = 0;

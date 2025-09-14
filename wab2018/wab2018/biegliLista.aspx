@@ -170,6 +170,7 @@
                         <asp:ListItem Value="2">Czynni</asp:ListItem>
                         <asp:ListItem Value="1">Wszyscy</asp:ListItem>
                         <asp:ListItem Value="3">Archiwalni</asp:ListItem>
+                           <asp:ListItem Value="4">Usunięci</asp:ListItem>
                     </asp:DropDownList>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
